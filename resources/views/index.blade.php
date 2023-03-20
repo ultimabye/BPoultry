@@ -4,16 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Bootstrap 5 Responsive Layout with Sidebar</title>
     <!-- Bootstrap CSS -->
     @include('cdn')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <script type="text/javascript" src="{{asset('js/customJavaScript.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
 
 </head>
 
 <body onload="onLoad()">
+
+
     <header>
+        @if (session('status'))
+            <div class="alert alert-success col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                {{ session('status') }}
+            </div>
+        @endif
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,7 +45,9 @@
         </nav>
     </header>
     <div class="container-fluid">
+
         <div class="row">
+
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
@@ -59,10 +69,12 @@
                     </ul>
                 </div>
             </nav>
+
+
             @include('header')
             <div id="section-sales" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 @include('addSale')
-                
+
             </div>
             <div id="sectionLogout" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 <h1 class="h2">Ad Group</h1>
@@ -76,8 +88,8 @@
             <div id="section-addData" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 @include('addData')
             </div>
-        
-           
+
+
 
         </div>
     </div>
