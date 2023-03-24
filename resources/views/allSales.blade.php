@@ -52,7 +52,7 @@
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->customer->name }}</td>
                                 <td>{{ $sale->discount }}</td>
-                                <td>N/A</td>
+                                <td>{{ $sale->supplier->name }}</td>
                                 <td>{{ $sale->sale_price }}</td>
                                 <td>{{ $sale->amount_due }}</td>
                                 <td>
