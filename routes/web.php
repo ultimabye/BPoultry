@@ -23,9 +23,49 @@ Route::get('/contact', function () {
 Route::get('/index', function () {
     return view('index');
 });
+Route::get('/index2', function () {
+    return view('index2');
+});
+Route::get('/addCustomer', function () {
+    return view('addCustomer');
+});
+Route::get('/allCustomers', function () {
+    return view('allCustomers');
+});
+
+Route::get('/addExpenses', function () {
+    return view('addExpenses');
+});
+Route::get('/allExpenses', function () {
+    return view('allExpenses');
+});
+Route::get('/addSupplier', function () {
+    return view('addSupplier');
+});
+Route::get('/allSuppliers', function () {
+    return view('allSuppliers');
+});
+Route::get('/addProduct', function () {
+    return view('addProduct');
+});
+Route::get('/allProducts', function () {
+    return view('allProducts');
+});
+Route::get('/addSale', function () {
+    return view('addSale');
+});
+Route::get('/allSales', function () {
+    return view('allSales');
+});
+
+
+
+
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::post('save-new-supplier', [SuppliersController::class, 'store']);

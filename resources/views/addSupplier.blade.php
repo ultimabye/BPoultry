@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Ad Group</title>
+    <!-- Bootstrap CSS -->
+    @include('cdn')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
+
+</head>
+<body>
+    @include('nav')
+
 <div class="container mt-5">
     <h1>Supplier Form</h1>
     <form method="post" action="{{ url('save-new-supplier') }}">
@@ -18,3 +35,5 @@
         <button type="button" class="btn btn-secondary">Cancel</button>
     </form>
 </div>
+</body>
+</html>

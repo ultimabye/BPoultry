@@ -1,5 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Ad Group</title>
+    <!-- Bootstrap CSS -->
+    @include('cdn')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
+
+</head>
+<body>
+    @include('nav')
+    <div class="container mt-5">
+
+
+
 <div class="container mt-5">
-    <h1>Expences Form</h1>
+    <h1>Add Expenses</h1>
     <form>
       <div class="mb-3">
         <label for="expence-name" class="form-label">Expence Name</label>
@@ -22,3 +42,6 @@
       <button type="button" class="btn btn-secondary">Cancel</button>
     </form>
   </div>
+    </div>
+</body>
+</html>
