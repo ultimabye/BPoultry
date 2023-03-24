@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SuppliersController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +31,6 @@ Route::get('/index2', function () {
 Route::get('/addCustomer', function () {
     return view('addCustomer');
 });
-Route::get('/allCustomers', function () {
-    return view('allCustomers');
-});
 
 Route::get('/addExpenses', function () {
     return view('addExpenses');
@@ -42,15 +41,7 @@ Route::get('/allExpenses', function () {
 Route::get('/addSupplier', function () {
     return view('addSupplier');
 });
-Route::get('/allSuppliers', function () {
-    return view('allSuppliers');
-});
-Route::get('/addProduct', function () {
-    return view('addProduct');
-});
-Route::get('/allProducts', function () {
-    return view('allProducts');
-});
+
 Route::get('/addSale', function () {
     return view('addSale');
 });
@@ -60,12 +51,19 @@ Route::get('/allSales', function () {
 
 
 
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::post('save-new-supplier', [SuppliersController::class, 'store']);
+Route::get('/allSuppliers',  [SuppliersController::class, 'index']);
+
+
+Route::post('save-new-customer', [CustomerController::class, 'store']);
+Route::get('/allCustomers',  [CustomerController::class, 'index']);
+
+
+Route::get('/addProduct',  [PurchasesController::class, 'prepareNewPurchase']);
+Route::post('save-new-purchase', [PurchasesController::class, 'store']);
+Route::get('/allProducts',  [PurchasesController::class, 'index']);

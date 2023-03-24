@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supplier;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-use function PHPUnit\Framework\isEmpty;
-
-class SuppliersController extends Controller
+class CustomerController extends Controller
 {
-
-
     public function index(Request $request)
     {
         $query = $request->search;
         if ($query) {
-            $suppliers = Supplier::where('name', 'like', '%' . $query . '%')->get();
+            $customers = Customer::where('name', 'like', '%' . $query . '%')->get();
         } else {
-            $suppliers = Supplier::all();
+            $customers = Customer::all();
         }
 
-        return view('allSuppliers', compact('suppliers'));
+        return view('allCustomers', compact('customers'));
     }
 
 
@@ -42,12 +38,13 @@ class SuppliersController extends Controller
 
 
 
-        $post = new Supplier();
+        $post = new Customer();
         $post->name = $request->name;
         $post->number = $request->number;
         $post->address = $request->address;
         $post->save();
         Session::flash('status', "success");
-        Session::flash('status-message', 'New Supplier saved successfully.');
+        Session::flash('status-message', 'New Customer saved successfully.');
+        return back()->withInput();
     }
 }
