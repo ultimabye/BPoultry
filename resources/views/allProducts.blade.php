@@ -53,13 +53,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($purchases as $purchase)
+                        @forelse($products as $product)
                             <tr>
-                                <td>{{ $purchase->name }}</td>
-                                <td>{{ $purchase->quantity }}</td>
-                                <td>{{ $purchase->supplier_id }}</td>
-                                <td>Rs. {{ $purchase->purchase_price }}</td>
-                                <td>Rs. {{ $purchase->amount_due }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->supplier_id }}</td>
+                                <td>Rs. {{ $product->purchase_price }}</td>
+                                <td>Rs. {{ $product->amount_due }}</td>
 
                             </tr>
                         @empty

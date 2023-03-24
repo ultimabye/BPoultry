@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchasesController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,9 +48,6 @@ Route::get('/addSupplier', function () {
 Route::get('/addSale', function () {
     return view('addSale');
 });
-Route::get('/allSales', function () {
-    return view('allSales');
-});
 
 
 
@@ -56,7 +56,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::post('save-new-supplier', [SuppliersController::class, 'store']);
+Route::post('/save-new-supplier', [SuppliersController::class, 'store']);
 Route::get('/allSuppliers',  [SuppliersController::class, 'index']);
 
 
@@ -64,6 +64,11 @@ Route::post('save-new-customer', [CustomerController::class, 'store']);
 Route::get('/allCustomers',  [CustomerController::class, 'index']);
 
 
-Route::get('/addProduct',  [PurchasesController::class, 'prepareNewPurchase']);
-Route::post('save-new-purchase', [PurchasesController::class, 'store']);
-Route::get('/allProducts',  [PurchasesController::class, 'index']);
+Route::get('/addProduct',  [ProductController::class, 'prepareNewPurchase']);
+Route::post('save-new-purchase', [ProductController::class, 'store']);
+Route::get('/allProducts',  [ProductController::class, 'index']);
+
+
+Route::get('/addSale',  [SalesController::class, 'prepareNewSale']);
+Route::post('save-new-sale', [SalesController::class, 'store']);
+Route::get('/allSales',  [SalesController::class, 'index']);

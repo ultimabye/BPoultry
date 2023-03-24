@@ -42,12 +42,13 @@ class SuppliersController extends Controller
 
 
 
-        $post = new Supplier();
-        $post->name = $request->name;
-        $post->number = $request->number;
-        $post->address = $request->address;
-        $post->save();
+        $item = new Supplier();
+        $item->name = $request->name;
+        $item->number = $request->number;
+        $item->address = $request->address;
+        $item->save();
         Session::flash('status', "success");
         Session::flash('status-message', 'New Supplier saved successfully.');
+        return back()->withInput();
     }
 }

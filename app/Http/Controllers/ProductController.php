@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchase;
+use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class PurchasesController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request)
     {
         $query = $request->search;
         if ($query) {
-            $purchases = Purchase::where('name', 'like', '%' . $query . '%')->get();
+            $products = Product::where('name', 'like', '%' . $query . '%')->get();
         } else {
-            $purchases = Purchase::all();
+            $products = Product::all();
         }
 
-        return view('allProducts', compact('purchases'));
+        return view('allProducts', compact('products'));
     }
 
 
@@ -41,12 +41,12 @@ class PurchasesController extends Controller
 
 
 
-        $item = new Purchase();
+        $item = new Product();
         $item->name = $request->name;
         $item->quantity = $request->quantity;
         $item->purchase_price = $request->purchase_price;
         $item->amount_due = $request->amount_due;
-        $item->supplier_id = 0;
+        $item->supplier_id = $request->supplier_id;
         $item->save();
         Session::flash('status', "success");
         Session::flash('status-message', 'New Purchase saved successfully.');
