@@ -34,7 +34,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="product-name" class="form-label">Product Name</label>
-                        <select name="product_id" id="purchase" class="purchase">
+                        <select name="product_id" id="purchase" class=" form-select purchase">
                             <option disable selected>--select product--</option>
                             @foreach ($products as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="customer-name" class="form-label">Customer Name</label>
-                        <select name="customer_id" id="customer" class="customer">
+                        <select name="customer_id" id="customer" class="form-select customer">
                             <option disable selected>--select customer--</option>
                             @foreach ($customers as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="supplier-name" class="form-label">Supplier Name</label>
-                        <select name="supplier_id" id="supplier" class="supplier">
+                        <select name="supplier_id" id="supplier" class="form-select supplier">
                             <option disable selected>--select supplier--</option>
                             @foreach ($suppliers as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>

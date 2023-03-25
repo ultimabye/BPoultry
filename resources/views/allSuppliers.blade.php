@@ -28,15 +28,7 @@
                             value="{{ request('search') }}">
                     </form>
                 </div>
-                <div class="mb-3">
-                    <label for="filter" class="form-label">Filter by:</label>
-                    <select id="filter" class="form-select">
-                        <option value="">All</option>
-                        <option value="Hardware">Hardware</option>
-                        <option value="Office Supplies">Office Supplies</option>
-                        <option value="Food and Beverage">Food and Beverage</option>
-                    </select>
-                </div>
+               
                 <table class="table">
                     <thead>
                         <tr>

@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>    
 
 </head>
 
@@ -39,9 +39,9 @@
                             <th>Discount (%)</th>
                             <th>Supplier Name</th>
                             <th>Sale Date</th>
-                            <th>Amount</th>
-                            <th>Cash or Due</th>
-                            <th></th>
+                            <th>Total Amount</th>
+                            <th>Amount Due</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -53,14 +53,10 @@
                                 <td>{{ $sale->customer->name }}</td>
                                 <td>{{ $sale->discount }}</td>
                                 <td>{{ $sale->supplier->name }}</td>
+                                <td></td>
                                 <td>{{ $sale->sale_price }}</td>
                                 <td>{{ $sale->amount_due }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary me-2"><i class="bi bi-pencil"></i>
-                                        Edit</button>
-                                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i>
-                                        Delete</button>
-                                </td>
+                              
                             </tr>
                         @empty
                             <li class="list-group-item list-group-item-danger">No Sales Found.</li>
