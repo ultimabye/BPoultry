@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('quantity');
-            $table->string('supplier_id');
+
+            $table->bigInteger('supplier_id')->unsigned();
+            $table->foreign('supplier_id')
+                ->references("id")
+                ->on("suppliers");
+
             $table->string('purchase_price');
             $table->string('amount_due');
             $table->timestamps();

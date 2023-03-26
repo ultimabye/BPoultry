@@ -54,8 +54,8 @@
                                 <td>{{ $sale->discount }}</td>
                                 <td>{{ $sale->supplier->name }}</td>
                                 <td></td>
-                                <td>{{ $sale->sale_price }}</td>
-                                <td>{{ $sale->amount_due }}</td>
+                                <td>Rs. {{ $sale->sale_price }}</td>
+                                <td>Rs. {{ $sale->amount_due }}</td>
                               
                             </tr>
                         @empty

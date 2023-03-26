@@ -13,7 +13,8 @@ class Sale extends Model
     {
         return $this->hasOne(
             Product::class,
-            "id"
+            "id",
+            "product_id"
         );
     }
 
@@ -22,7 +23,8 @@ class Sale extends Model
     {
         return $this->hasOne(
             Supplier::class,
-            "id"
+            "id",
+            "supplier_id"
         );
     }
 
@@ -31,7 +33,8 @@ class Sale extends Model
     {
         return $this->hasOne(
             Customer::class,
-            "id"
+            "id",
+            "customer_id"
         );
     }
 }

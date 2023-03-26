@@ -21,7 +21,6 @@ class SalesController extends Controller
         } else {
             $sales = Sale::all();
         }
-
         return view('allSales', compact('sales'));
     }
 
@@ -44,18 +43,28 @@ class SalesController extends Controller
         }
 
 
+        $product = Product::where("id", $request->product_id)->first();
 
-        $item = new Sale();
-        $item->product_id = $request->product_id;
-        $item->customer_id = $request->customer_id;
-        $item->supplier_id = $request->supplier_id;
-        $item->quantity = $request->quantity;
-        $item->sale_price = $request->sale_price;
-        $item->amount_due = $request->amount_due;
-        $item->discount = $request->discount;
-        $item->save();
-        Session::flash('status', "success");
-        Session::flash('status-message', 'New Sale saved successfully.');
+        if ($product && $request->quantity <= $product->quantity) {
+            $item = new Sale();
+            $item->product_id = $request->product_id;
+            $item->customer_id = $request->customer_id;
+            $item->supplier_id = $request->supplier_id;
+            $item->quantity = $request->quantity;
+            $item->sale_price = $request->sale_price;
+            $item->amount_due = $request->amount_due;
+            $item->discount = $request->discount;
+            $item->save();
+
+            $product->quantity = $product->quantity - $item->quantity;
+            $product->save();
+            Session::flash('status', "success");
+            Session::flash('status-message', 'New Sale saved successfully.');
+            return back()->withInput();
+        }
+
+        Session::flash('status', "error");
+        Session::flash('status-message', 'Specified product is out of stock.');
         return back()->withInput();
     }
 

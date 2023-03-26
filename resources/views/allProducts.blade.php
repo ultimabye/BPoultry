@@ -57,15 +57,15 @@
                             <tr>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->supplier_id }}</td>
+                                <td>{{ $product->supplier->name }}</td>
                                 <td>Rs. {{ $product->purchase_price }}</td>
                                 <td>Rs. {{ $product->amount_due }}</td>
 
                             </tr>
                         @empty
-                            <li class="list-group-item list-group-item-danger">No purchases found.</li>
+                            <li class="list-group-item list-group-item-danger">No products found.</li>
                         @endforelse
-            
+
                     </tbody>
                 </table>
             </div>

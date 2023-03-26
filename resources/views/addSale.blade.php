@@ -34,7 +34,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="product-name" class="form-label">Product Name</label>
-                        <select name="product_id" id="purchase" class=" form-select purchase">
+                        <select name="product_id" onchange="showQuantity(this.value)" id="purchase" class=" form-select purchase">
                             <option disable selected>--select product--</option>
                             @foreach ($products as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -67,7 +67,7 @@
 
                 <div class="col">
                     <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
+                        <label for="quantity" id="quantity-label" class="form-label">Quantity</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
                     </div>
                     <div class="mb-3">
