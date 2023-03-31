@@ -24,3 +24,4 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-yr+MVQ+/Sl3lc+B5hbm3WUBDf3B5cGLTDh9Zht5x5+s5l5R52wehqL06rHJU8/h+gMFWvzC+6UH9DQ8mi6ScOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  
+<script src="https://kit.fontawesome.com/3b0a9ce7a0.js" crossorigin="anonymous"></script>

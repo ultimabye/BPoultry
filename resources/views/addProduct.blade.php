@@ -27,18 +27,13 @@
         @endif
     @endif
     <div class="container mt-5">
-        <h1>Add Purchase</h1>
+        <h1>Add Product</h1>
         <form method="post" action="{{ url('save-new-purchase') }}">
             @csrf
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="productName" name="name"
                     placeholder="Enter product name" required>
-            </div>
-            <div class="mb-3">
-                <label for="productQuantity" class="form-label">Product Quantity</label>
-                <input type="number" class="form-control" id="productQuantity" name="quantity"
-                    placeholder="Enter product quantity" required>
             </div>
             <div class="mb-3">
                 <label for="supplier" class="form-label">Supplier</label>
@@ -49,15 +44,11 @@
                     @endforeach
                 </select>
             </div>
+        
             <div class="mb-3">
-                <label for="retailPrice" class="form-label">Total Price</label>
+                <label for="retailPrice" class="form-label">Price per unit</label>
                 <input type="number" class="form-control" id="retailPrice" name="purchase_price"
                     placeholder="Enter retail price" required>
-            </div>
-            <div class="mb-3">
-                <label for="salePrice" class="form-label">Amount Due</label>
-                <input type="number" class="form-control" id="salePrice" name="amount_due"
-                    placeholder="Enter sale price" required>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-secondary">Cancel</button>

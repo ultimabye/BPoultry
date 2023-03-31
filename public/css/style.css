@@ -41,3 +41,13 @@
         margin-left: 0;
     }
 }
+
+@media print {
+    #filter-btn,
+    #clear-btn,
+    #pdf-export-btn,
+    #print-btn {
+      display: none;
+    }
+  }
+  

@@ -49,6 +49,14 @@ Route::get('/addSale', function () {
     return view('addSale');
 });
 
+Route::get('/addPurchase', function () {
+    return view('addPurchase');
+});
+Route::get('/allPurchases', function () {
+    return view('allPurchases');
+});
+
+
 
 
 Auth::routes();

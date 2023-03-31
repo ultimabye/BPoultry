@@ -24,7 +24,7 @@
                   <h2>All Sales</h2>
                   <p class="lead mb-0">500</p>
                 </div>
-                <span class="material-icons fs-1">shopping_cart</span>
+                <span><i class="fa-solid fa-cart-shopping-fast"></i></span>
               </a>
             </div>
             <div class="col-md-3">
@@ -33,7 +33,7 @@
                   <h2>All Customers</h2>
                   <p class="lead mb-0">250</p>
                 </div>
-                <span class="material-icons fs-1">person</span>
+                <span><i class="fa-solid fa-user"></i></span>
               </a>
             </div>
             <div class="col-md-3">
@@ -60,7 +60,7 @@
                   <h2>All Expenses</h2>
                   <p class="lead mb-0">$10,000</p>
                 </div>
-                <span class="material-icons fs-1">attach_money</span>
+                <span ><i class="fa-duotone fa-dollar-sign fa-bounce fa-lg"></i></span>
               </a>
             </div>
           </div>
