@@ -22,7 +22,25 @@ class SalesController extends Controller
         } else {
             $sales = Sale::all();
         }
-        return view('allSales', compact('sales'));
+
+        $totalAmount = 0;
+        $amountDue = 0;
+
+        foreach ($sales as $item) {
+            $totalAmount += ($item->quantity * $item->product->unit_price) - (($item->quantity * $item->product->unit_price) / 100 * $item->discount);
+            $totalAmount += $item->freight_charges;
+
+            $amountDue += $item->amount_due;
+        }
+
+        $amountReceived = $totalAmount - $amountDue;
+
+        return view('allSales', compact(
+            'sales',
+            'totalAmount',
+            'amountReceived',
+            'amountDue'
+        ));
     }
 
 

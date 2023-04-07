@@ -21,7 +21,24 @@ class PurchaseController extends Controller
             $purchases = Purchase::all();
         }
 
-        return view('allPurchases', compact('purchases'));
+        $totalAmount = 0;
+        $amountDue = 0;
+
+        foreach ($purchases as $item) {
+            $totalAmount += $item->quantity * $item->product->unit_price;
+            $totalAmount += $item->freight_charges;
+
+            $amountDue += $item->amount_due;
+        }
+
+        $amountPaid = $totalAmount - $amountDue;
+
+        return view('allPurchases', compact(
+            'purchases',
+            'totalAmount',
+            'amountDue',
+            'amountPaid'
+        ));
     }
 
 

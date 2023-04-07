@@ -92,8 +92,8 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th>Rs: 500000</th>
-                        <th>Rs: 200000</th>
+                        <th>Rs: {{ $totalAmount }}</th>
+                        <th>Rs: {{ $amountDue }}</th>
                     </tr>
                     <tr>
                         <th></th>
@@ -112,7 +112,7 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th>Rs: 500000</th>
+                        <th>Rs: {{ $amountPaid }}</th>
                         <th></th>
                     </tr>
                 </thead>

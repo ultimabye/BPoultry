@@ -60,9 +60,9 @@
                                 <td>Rs. {{ $sale->amount_due }}</td>
                             </tr>
 
-                           
 
-                            
+
+
 
                         @empty
                             <li class="list-group-item list-group-item-danger">No Sales Found.</li>
@@ -87,8 +87,8 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>Rs: 500000</th>
-                            <th>Rs: 200000</th>
+                            <th>Rs: {{ $totalAmount }}</th>
+                            <th>Rs: {{ $amountDue }}</th>
                         </tr>
                         <tr>
                             <th></th>
@@ -97,7 +97,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>Amount Paid</th>
+                            <th>Amount Received</th>
                             <th></th>
                         </tr>
                         <tr>
@@ -107,7 +107,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>Rs: 300000</th>
+                            <th>Rs: {{ $amountReceived }}</th>
                             <th></th>
                         </tr>
 
