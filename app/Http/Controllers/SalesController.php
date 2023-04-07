@@ -82,9 +82,27 @@ class SalesController extends Controller
                 $product->available_stock = 0;
             }
             $product->save();
-            Session::flash('status', "success");
-            Session::flash('status-message', 'New Sale saved successfully.');
-            return back()->withInput();
+
+
+
+            $subTotal = $item->product->unit_price * $item->quantity;
+            $total = $subTotal + $item->freight_charges;
+            $discountRate = $item->discount;
+            $discountAmount = 0;
+            $discountAmount = $subTotal / 100 * $discountRate;
+            
+            return redirect()->route('saleReceipt')->with(
+                [
+                    'sale_data' => $item,
+                    'product_data' => $product,
+                    'supplier' => $product->supplier,
+                    'sub_total' => $subTotal,
+                    'total' => $total,
+                    'discountAmount' => $discountAmount,
+                    'discountRate' => $discountRate,
+                    'customer' => $item->customer
+                ]
+            );
         }
 
         Session::flash('status', "error");

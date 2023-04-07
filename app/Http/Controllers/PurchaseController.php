@@ -75,9 +75,18 @@ class PurchaseController extends Controller
         $product->available_stock = $product->available_stock + $item->quantity;
         $product->save();
 
-        Session::flash('status', "success");
-        Session::flash('status-message', 'New Purchase saved successfully.');
-        return back()->withInput();
+
+        $subTotal = $item->product->unit_price * $item->quantity;
+        $total = $subTotal + $item->freight_charges;
+        return redirect()->route('purchaseReceipt')->with(
+            [
+                'purchase_data' => $item,
+                'product_data' => $product,
+                'supplier' => $product->supplier,
+                'sub_total' => $subTotal,
+                'total' => $total
+            ]
+        );
     }
 
 
