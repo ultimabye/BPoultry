@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -74,10 +74,50 @@
                         <li class="list-group-item list-group-item-danger">No Purchase Found.</li>
                     @endforelse
                 </tbody>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Grand Total</th>
+                        <th>Total Due</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Rs: 500000</th>
+                        <th>Rs: 200000</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Amount Paid</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Rs: 500000</th>
+                        <th></th>
+                    </tr>
+                </thead>
             </table>
         </div>
-        <label for="totalPurchases"><b>Total Purchases:</b></label>
-        <label id="totalPurchases"><b>Rs: 0</b></label>
         <div class="row mt-3">
             <div class="col-md-12 text-end">
                 <button type="button" class="btn btn-secondary" id="print-btn">Print</button>

@@ -58,17 +58,65 @@
                                     {{ $sale->product->unit_price * $sale->quantity - (($sale->product->unit_price * $sale->quantity) / 100) * $sale->discount }}
                                 </td>
                                 <td>Rs. {{ $sale->amount_due }}</td>
-
                             </tr>
+
+                           
+
+                            
+
                         @empty
                             <li class="list-group-item list-group-item-danger">No Sales Found.</li>
                         @endforelse
 
                     </tbody>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Grand Total</th>
+                            <th>Total Due</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Rs: 500000</th>
+                            <th>Rs: 200000</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Amount Paid</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Rs: 300000</th>
+                            <th></th>
+                        </tr>
+
+
+                    </thead>
                 </table>
+
+
             </div>
-            <label for="totalSales"><b>Total Sales:</b></label>
-            <label id="totalSales"><b>Rs: 0</b></label>
         </div>
 
     </div>
