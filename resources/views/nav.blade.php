@@ -15,7 +15,7 @@
               Sales Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addSale">Add Sales</a></li>
+              <li><a class="dropdown-item" href="addSale">New Sale</a></li>
               <li><a class="dropdown-item" href="allSales">Sales Reports</a></li>
             </ul>
           </li>
@@ -24,8 +24,8 @@
               Suppliers
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addSupplier">Add Suppliers</a></li>
-              <li><a class="dropdown-item" href="allSuppliers#">Show Suppliers</a></li>
+              <li><a class="dropdown-item" href="addSupplier">Add Supplier</a></li>
+              <li><a class="dropdown-item" href="allSuppliers#">Suppliers</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -33,8 +33,8 @@
               Customers
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addCustomer">Add Customer</a></li>
-              <li><a class="dropdown-item" href="allCustomers">All Customers</a></li>
+              <li><a class="dropdown-item" href="addCustomer">New Customer</a></li>
+              <li><a class="dropdown-item" href="allCustomers">Customers</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -42,10 +42,10 @@
               Products
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addProduct">Add Product</a></li>
-              <li><a class="dropdown-item" href="allProducts">All Stocks</a></li>
-              <li><a class="dropdown-item" href="addPurchase">Add Purchase</a></li>
+              <li><a class="dropdown-item" href="addProduct">New Product</a></li>
+              <li><a class="dropdown-item" href="addPurchase">New Purchase</a></li>
               <li><a class="dropdown-item" href="allPurchases">Purchases</a></li>
+              <li><a class="dropdown-item" href="allProducts">Available Stock</a></li>
               
             </ul>
           </li>

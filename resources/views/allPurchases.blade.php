@@ -63,8 +63,12 @@
                             <td>Rs. {{ $item->quantity * $item->product->unit_price }}</td>
                             <td>Rs. {{ $item->freight_charges }}</td>
                             <td>Rs. {{ $item->quantity * $item->product->unit_price + $item->freight_charges }}</td>
-                            <td>Rs. {{ $item->quantity * $item->product->unit_price + $item->freight_charges }}</td>
 
+                            @if ($item->amount_due)
+                                <td>Rs. {{ $item->amount_due }}</td>
+                            @else
+                                <td>NIL</td>
+                            @endif
                         </tr>
                     @empty
                         <li class="list-group-item list-group-item-danger">No Purchase Found.</li>

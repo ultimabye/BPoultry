@@ -26,15 +26,11 @@ return new class extends Migration
                 ->references("id")
                 ->on("customers");
 
-            $table->bigInteger('supplier_id')->unsigned();
-            $table->foreign('supplier_id')
-                ->references("id")
-                ->on("suppliers");
-
-            $table->string('sale_price');
-            $table->string('amount_due');
-            $table->string('discount');
-            $table->string('quantity');
+            $table->float('freight_charges')->default(0.0);
+            $table->float('amount_due')->default(0.0);
+            $table->integer('discount')->default(0);
+            $table->integer('quantity');
+            $table->unsignedBigInteger('date')->default(0);
             $table->timestamps();
         });
     }

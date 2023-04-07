@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Purchase;
 use App\Models\Sale;
 use App\Models\Supplier;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -31,9 +32,10 @@ class SalesController extends Controller
         $validator = Validator::make($request->all(), [
             'product_id' => 'required|string|min:1|max:255',
             'customer_id' => 'required|string|max:255',
-            'supplier_id' => 'required|string|max:255',
-            'sale_price' => 'required|string|max:255',
-            'amount_due' => 'required|string|max:255'
+            'quantity' => 'required|integer',
+            'freight_charges' => 'required|numeric',
+            'discount' => 'required|integer',
+            'due_amount' => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
@@ -44,19 +46,23 @@ class SalesController extends Controller
 
 
         $product = Product::where("id", $request->product_id)->first();
+        if ($product && $request->quantity <= $product->available_stock) {
+            $date = new DateTime($request->date);
 
-        if ($product && $request->quantity <= $product->quantity) {
             $item = new Sale();
             $item->product_id = $request->product_id;
             $item->customer_id = $request->customer_id;
-            $item->supplier_id = $request->supplier_id;
             $item->quantity = $request->quantity;
-            $item->sale_price = $request->sale_price;
-            $item->amount_due = $request->amount_due;
+            $item->freight_charges = $request->freight_charges;
+            $item->amount_due = $request->due_amount;
             $item->discount = $request->discount;
+            $item->date = $date->getTimestamp();
             $item->save();
 
-            $product->quantity = $product->quantity - $item->quantity;
+            $product->available_stock = $product->available_stock - $item->quantity;
+            if ($product->available_stock < 0) {
+                $product->available_stock = 0;
+            }
             $product->save();
             Session::flash('status', "success");
             Session::flash('status-message', 'New Sale saved successfully.');

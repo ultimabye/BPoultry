@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>    
+    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
 
 </head>
 
@@ -41,22 +41,24 @@
                             <th>Supplier Name</th>
                             <th>Total Amount</th>
                             <th>Amount Due</th>
-                        
+
                         </tr>
                     </thead>
                     <tbody>
 
                         @forelse($sales as $sale)
                             <tr>
-                                <td></td>
+                                <td>{{ date('m/d/Y', $sale->date) }}</td>
                                 <td>{{ $sale->product->name }}</td>
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->customer->name }}</td>
                                 <td>{{ $sale->discount }}</td>
-                                <td>{{ $sale->supplier->name }}</td>
-                                <td>Rs. {{ $sale->sale_price }}</td>
+                                <td>{{ $sale->product->supplier->name }}</td>
+                                <td>Rs.
+                                    {{ $sale->product->unit_price * $sale->quantity - (($sale->product->unit_price * $sale->quantity) / 100) * $sale->discount }}
+                                </td>
                                 <td>Rs. {{ $sale->amount_due }}</td>
-                              
+
                             </tr>
                         @empty
                             <li class="list-group-item list-group-item-danger">No Sales Found.</li>
@@ -66,9 +68,9 @@
                 </table>
             </div>
             <label for="totalSales"><b>Total Sales:</b></label>
-        <label id="totalSales"><b>Rs: 0</b></label>
+            <label id="totalSales"><b>Rs: 0</b></label>
         </div>
-        
+
     </div>
 
 

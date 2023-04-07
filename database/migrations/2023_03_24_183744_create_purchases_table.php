@@ -23,6 +23,7 @@ return new class extends Migration
 
             $table->integer('quantity');
             $table->bigInteger('freight_charges')->default(0);
+            $table->bigInteger('amount_due')->default(0);
             $table->unsignedBigInteger("date")->default(0);
 
             $table->timestamps();

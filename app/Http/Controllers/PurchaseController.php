@@ -33,6 +33,7 @@ class PurchaseController extends Controller
             'product' => 'required|string|min:1|max:255',
             'quantity' => 'required|string|max:255',
             'freight_charges' => 'required|string|max:255',
+            'due_amount' => 'required|integer',
             'date' => 'required|date'
         ]);
 
@@ -49,6 +50,7 @@ class PurchaseController extends Controller
         $item->product_id = $request->product;
         $item->quantity = $request->quantity;
         $item->freight_charges = $request->freight_charges;
+        $item->amount_due = $request->due_amount;
         $item->date = $date->getTimestamp();
         $item->save();
 

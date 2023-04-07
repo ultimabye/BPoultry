@@ -27,7 +27,7 @@ $('#purchase').on('change', function() {
             discount = 0;
         }
         var discountAmount = (subtotal*discount)/100;
-        $('#discount').text('Rs: ' + discountAmount.toFixed(2));
+        $('#discount_label').text('Rs: ' + discountAmount.toFixed(2));
         
 
         var total = (subtotal + frate) - discountAmount ;

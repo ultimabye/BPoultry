@@ -58,7 +58,7 @@
                     <input type="date" class="form-control" name="date" id="date">
                     <br>
                     <label for="amountDue">Amount Due</label>
-                    <input type="number" class="form-control" name="amount_due" id="amountDue">
+                    <input type="number" class="form-control" name="due_amount" id="amountDue">
                     <br>
                     <label for="total"><b>Total Amount:</b></label>
                     <label id="total"><b>Rs 0</b></label>
