@@ -50,6 +50,16 @@ Route::get('/addSale', function () {
     return view('addSale');
 });
 
+Route::get('/saleReceipt', function () {
+    return view('saleReceipt');
+});
+
+Route::get('/purchaseReceipt', function () {
+    return view('purchaseReceipt');
+});
+
+
+
 
 
 
@@ -81,3 +91,5 @@ Route::get('/allPurchases',  [PurchaseController::class, 'index']);
 Route::get('/addSale',  [SalesController::class, 'prepareNewSale']);
 Route::post('save-new-sale', [SalesController::class, 'store']);
 Route::get('/allSales',  [SalesController::class, 'index']);
+
+
