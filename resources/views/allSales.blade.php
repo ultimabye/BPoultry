@@ -33,12 +33,12 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Sale Date</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Customer Name</th>
                             <th>Discount (%)</th>
                             <th>Supplier Name</th>
-                            <th>Sale Date</th>
                             <th>Total Amount</th>
                             <th>Amount Due</th>
                         
@@ -48,12 +48,12 @@
 
                         @forelse($sales as $sale)
                             <tr>
+                                <td></td>
                                 <td>{{ $sale->product->name }}</td>
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->customer->name }}</td>
                                 <td>{{ $sale->discount }}</td>
                                 <td>{{ $sale->supplier->name }}</td>
-                                <td></td>
                                 <td>Rs. {{ $sale->sale_price }}</td>
                                 <td>Rs. {{ $sale->amount_due }}</td>
                               
@@ -65,8 +65,10 @@
                     </tbody>
                 </table>
             </div>
+            <label for="totalSales"><b>Total Sales:</b></label>
+        <label id="totalSales"><b>Rs: 0</b></label>
         </div>
-
+        
     </div>
 
 

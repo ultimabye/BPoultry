@@ -1,8 +1,12 @@
 
+
+// var supplier = $('#purchase option:selected').data('supplier');
+
 $(document).ready(function() {
     $('#quantity, #frate').on('input', function() {
       var quantity = $('#quantity').val();
-      var price = parseFloat($('#product option:selected').attr('data-price'));
+      //var price = parseFloat($('#products option:selected').attr('data-price'));
+      var price = $('#purchase option:selected').data('price');
       var subtotal = quantity * price;
       var frate = parseFloat($('#frate').val());
       if (isNaN(frate)) {
@@ -12,6 +16,17 @@ $(document).ready(function() {
       $('#subtotal').text('Rs' + subtotal.toFixed(2));
       $('#total').text('Rs' + total.toFixed(2));
     });
+
+    $('#purchase').on('change', function() {
+      // Get the selected option's supplier
+      var supplier = $(this).find('option:selected').data('supplier');
+    
+      // Set the supplier on the input field
+      $('#supplier').val(supplier);
+    });
+
+
+
   });
 
 

@@ -42,10 +42,11 @@
               Products
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="addProduct">Add Product</a></li>
+              <li><a class="dropdown-item" href="allProducts">All Stocks</a></li>
               <li><a class="dropdown-item" href="addPurchase">Add Purchase</a></li>
               <li><a class="dropdown-item" href="allPurchases">Purchases</a></li>
-              <li><a class="dropdown-item" href="addProduct">Add Product</a></li>
-              <li><a class="dropdown-item" href="allProducts">Products</a></li>
+              
             </ul>
           </li>
           <li class="nav-item dropdown">

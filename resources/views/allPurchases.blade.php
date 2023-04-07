@@ -50,6 +50,7 @@
                         <th>Subtotal</th>
                         <th>Freight Charges</th>
                         <th>Total Amount</th>
+                        <th>Due Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +63,7 @@
                             <td>Rs. {{ $item->quantity * $item->product->unit_price }}</td>
                             <td>Rs. {{ $item->freight_charges }}</td>
                             <td>Rs. {{ $item->quantity * $item->product->unit_price + $item->freight_charges }}</td>
+                            <td>Rs. {{ $item->quantity * $item->product->unit_price + $item->freight_charges }}</td>
 
                         </tr>
                     @empty
@@ -70,6 +72,8 @@
                 </tbody>
             </table>
         </div>
+        <label for="totalPurchases"><b>Total Purchases:</b></label>
+        <label id="totalPurchases"><b>Rs: 0</b></label>
         <div class="row mt-3">
             <div class="col-md-12 text-end">
                 <button type="button" class="btn btn-secondary" id="print-btn">Print</button>

@@ -10,6 +10,8 @@
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addSales.js') }}"></script>
+
 
 </head>
 
@@ -34,10 +36,10 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="product-name" class="form-label">Product Name</label>
-                        <select name="product_id" onchange="showQuantity(this.value)" id="purchase" class=" form-select purchase">
+                        <select name="product_id"  id="purchase" class=" form-select purchase">
                             <option disable selected>--select product--</option>
                             @foreach ($products as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}" data-price="{{ $item->unit_price }}" data-supplier="{{ $item->supplier->name }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -46,22 +48,27 @@
                         <select name="customer_id" id="customer" class="form-select customer">
                             <option disable selected>--select customer--</option>
                             @foreach ($customers as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}" >{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="supplier-name" class="form-label">Supplier Name</label>
-                        <select name="supplier_id" id="supplier" class="form-select supplier">
+                        <input disabled type="text" class="form-select supplier" id="supplier" name="supplier_id">
+                        {{-- <select name="supplier_id" id="supplier" class="form-select supplier">
                             <option disable selected>--select supplier--</option>
                             @foreach ($suppliers as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
-                        </select>
+                        </select> --}}
                     </div>
                     <div class="mb-3">
-                        <label for="sale-amount" class="form-label">Sale Price</label>
-                        <input type="number" class="form-control" id="sale-amount" name="sale_price" placeholder="Total Amount ">
+                    <label for="frate">Freight charges:</label>
+                    <input type="number" class="form-control" name="freight_charges" id="frate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subTotal" class="form-label">Sub Total</label>
+                        <input disabled type="number" class="form-control" id="subTotal" name="subTotal">
                     </div>
                 </div>
 
@@ -72,17 +79,27 @@
                     </div>
                     <div class="mb-3">
                         <label for="sale-discount" class="form-label">Discount</label>
-                        <input type="number" class="form-control" id="sale-discount" name="discount"
+                        <input type="number" class="form-control" id="discount" name="discount"
                             placeholder="Enter the discount %">
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount-due" class="form-label">Due Amount</label>
+                        <input type="number" class="form-control" id="amount-due" name="amount_due" placeholder="Due Amount">
                     </div>
                     <div class="mb-3">
                         <label for="sale-date" class="form-label">Sale Date</label>
                         <input type="date" class="form-control" id="sale-date">
                     </div>
                     <div class="mb-3">
-                        <label for="amount-due" class="form-label">Due Amount</label>
-                        <input type="number" class="form-control" id="amount-due" name="amount_due" placeholder="Due Amount">
+                        <br>
+                        <label for="discount"><b>Discount Amount:</b></label>
+                        <label id="discount"><b>Rs: 0</b></label>
                     </div>
+                    <div class="mb-3">
+                        <label for="total"><b>Total Amount:</b></label>
+                        <label id="total"><b>Rs: 0</b></label>
+                    </div>
+                    
 
 
                 </div>

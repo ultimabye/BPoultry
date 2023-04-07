@@ -36,15 +36,13 @@
                     <select name="product" id="purchase" class=" form-select purchase">
                         <option disable selected>--select product--</option>
                         @foreach ($products as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" data-price="{{ $item->unit_price }}" data-supplier="{{ $item->supplier->name }}">{{ $item->name}}</option>
+
                         @endforeach
                     </select>
                     <br>
                     <label for="supplier">Supplier:</label>
-                    <select class="form-select" id="supplier">
-                        <option selected>Select a supplier</option>
-                        <!-- List of suppliers -->
-                    </select>
+                    <input disabled type="text" class="form-control" id="supplier" >
                     <br>
                     <label for="quantity">Quantity:</label>
                     <input type="number" class="form-control" name="quantity" id="quantity">
@@ -58,6 +56,9 @@
                     <br>
                     <label for="date">Date:</label>
                     <input type="date" class="form-control" name="date" id="date">
+                    <br>
+                    <label for="amountDue">Amount Due</label>
+                    <input type="number" class="form-control" name="amount_due" id="amountDue">
                     <br>
                     <label for="total"><b>Total Amount:</b></label>
                     <label id="total"><b>Rs 0</b></label>
