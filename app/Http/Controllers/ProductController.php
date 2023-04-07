@@ -28,9 +28,8 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
-            'quantity' => 'required|string|max:255',
-            'purchase_price' => 'required|string|max:255',
-            'amount_due' => 'required|string|max:255'
+            'supplier' => 'required|string|max:255',
+            'unit_price' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -43,18 +42,16 @@ class ProductController extends Controller
 
         $item = new Product();
         $item->name = $request->name;
-        $item->quantity = $request->quantity;
-        $item->purchase_price = $request->purchase_price;
-        $item->amount_due = $request->amount_due;
-        $item->supplier_id = $request->supplier_id;
+        $item->unit_price = $request->unit_price;
+        $item->supplier_id = $request->supplier;
         $item->save();
         Session::flash('status', "success");
-        Session::flash('status-message', 'New Purchase saved successfully.');
+        Session::flash('status-message', 'New Product saved successfully.');
         return back()->withInput();
     }
 
 
-    public function prepareNewPurchase(Request $request)
+    public function prepareNewProduct(Request $request)
     {
         $suppliers = Supplier::all();
         return view('addProduct', compact('suppliers'));

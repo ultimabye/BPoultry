@@ -7,24 +7,23 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.s
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
 
-            $table->bigInteger('product_id')->unsigned();
-            $table->foreign('product_id')
+            $table->bigInteger('supplier_id')->unsigned();
+            $table->foreign('supplier_id')
                 ->references("id")
-                ->on("products");
+                ->on("suppliers");
 
-            $table->integer('quantity');
-            $table->bigInteger('freight_charges')->default(0);
-            $table->unsignedBigInteger("date")->default(0);
-
+            $table->integer('unit_price');
+            $table->integer('available_stock')->default(0);
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('products');
     }
 };

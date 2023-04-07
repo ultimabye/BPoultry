@@ -28,7 +28,7 @@
     @endif
     <div class="container mt-5">
         <h1>Add Product</h1>
-        <form method="post" action="{{ url('save-new-purchase') }}">
+        <form method="post" action="{{ url('save-new-product') }}">
             @csrf
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
@@ -37,17 +37,17 @@
             </div>
             <div class="mb-3">
                 <label for="supplier" class="form-label">Supplier</label>
-                <select name="supplier_id" id="supplier" class=" form-select supplier">
+                <select name="supplier" id="supplier" class=" form-select supplier">
                     <option disable selected>--select supplier--</option>
                     @foreach ($suppliers as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 </select>
             </div>
-        
+
             <div class="mb-3">
                 <label for="retailPrice" class="form-label">Price per unit</label>
-                <input type="number" class="form-control" id="retailPrice" name="purchase_price"
+                <input type="number" class="form-control" id="retailPrice" name="unit_price"
                     placeholder="Enter retail price" required>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>

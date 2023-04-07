@@ -17,7 +17,7 @@
     @include('nav')
 
     <div class="container mt-5">
-        <h1>All Product</h1>
+        <h1>Available Stock</h1>
 
         <div class="container">
             <div class="row mb-3">
@@ -46,20 +46,18 @@
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Product Quantity</th>
+                            <th>Available Stock</th>
                             <th>Supplier</th>
-                            <th>Purchase Price</th>
-                            <th>Amount Due</th>
+                            <th>Unit Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->available_stock }}</td>
                                 <td>{{ $product->supplier->name }}</td>
-                                <td>Rs. {{ $product->purchase_price }}</td>
-                                <td>Rs. {{ $product->amount_due }}</td>
+                                <td>Rs. {{ $product->unit_price }}</td>
 
                             </tr>
                         @empty

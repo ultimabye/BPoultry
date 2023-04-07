@@ -15,55 +15,68 @@
 
 <body>
     @include('nav')
-        <div class="container mt-5">
-            <h1>Purchases Report</h1>
-            <div class="row mb-3">
-              <div class="col-md-3">
+    <div class="container mt-5">
+        <h1>Purchases Report</h1>
+        <div class="row mb-3">
+            <div class="col-md-3">
                 <label for="from-date">From:</label>
                 <input type="date" class="form-control" id="from-date">
-              </div>
-              <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
                 <label for="to-date">To:</label>
                 <input type="date" class="form-control" id="to-date">
-              </div>
-              <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
                 <label for="supplier-filter">Supplier:</label>
                 <select class="form-select" id="supplier-filter">
-                  <option value="">All Suppliers</option>
-                  <!-- List of suppliers -->
+                    <option value="">All Suppliers</option>
+                    <!-- List of suppliers -->
                 </select>
-              </div>
-              <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
                 <br>
                 <button type="button" class="btn btn-primary" id="filter-btn">Filter</button>
                 <button type="button" class="btn btn-secondary" id="clear-btn">Clear</button>
-              </div>
             </div>
-            <div class="table-responsive">
-              <table class="table table-striped">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Product</th>
-                    <th>Supplier</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th>Freight Charges</th>
-                    <th>Total Amount</th>
-                  </tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Supplier</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Freight Charges</th>
+                        <th>Total Amount</th>
+                    </tr>
                 </thead>
-                <tbody id="purchases-table-body">
-                  <!-- Purchase records will be added dynamically here -->
+                <tbody>
+                    @forelse($purchases as $item)
+                        <tr>
+                            <td>{{ date('m/d/Y', $item->date) }}</td>
+                            <td>{{ $item->product->name }}</td>
+                            <td>{{ $item->product->supplier->name }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>Rs. {{ $item->quantity * $item->product->unit_price }}</td>
+                            <td>Rs. {{ $item->freight_charges }}</td>
+                            <td>Rs. {{ $item->quantity * $item->product->unit_price + $item->freight_charges }}</td>
+
+                        </tr>
+                    @empty
+                        <li class="list-group-item list-group-item-danger">No Purchase Found.</li>
+                    @endforelse
                 </tbody>
-              </table>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12 text-end">
+            </table>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 text-end">
                 <button type="button" class="btn btn-secondary" id="print-btn">Print</button>
-               
-              </div>
+
             </div>
-          </div>
+        </div>
+    </div>
 </body>
 
 </html>

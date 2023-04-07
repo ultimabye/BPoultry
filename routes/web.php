@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
@@ -49,12 +50,7 @@ Route::get('/addSale', function () {
     return view('addSale');
 });
 
-Route::get('/addPurchase', function () {
-    return view('addPurchase');
-});
-Route::get('/allPurchases', function () {
-    return view('allPurchases');
-});
+
 
 
 
@@ -72,9 +68,14 @@ Route::post('save-new-customer', [CustomerController::class, 'store']);
 Route::get('/allCustomers',  [CustomerController::class, 'index']);
 
 
-Route::get('/addProduct',  [ProductController::class, 'prepareNewPurchase']);
-Route::post('save-new-purchase', [ProductController::class, 'store']);
+Route::get('/addProduct',  [ProductController::class, 'prepareNewProduct']);
+Route::post('save-new-product', [ProductController::class, 'store']);
 Route::get('/allProducts',  [ProductController::class, 'index']);
+
+Route::get('/addPurchase',  [PurchaseController::class, 'prepareNewPurchase']);
+Route::post('save-new-purchase', [PurchaseController::class, 'store']);
+Route::get('/allPurchases',  [PurchaseController::class, 'index']);
+
 
 
 Route::get('/addSale',  [SalesController::class, 'prepareNewSale']);
