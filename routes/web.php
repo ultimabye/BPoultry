@@ -49,6 +49,9 @@ Route::get('/addSupplier', function () {
 Route::get('/addSale', function () {
     return view('addSale');
 });
+Route::get('/index2', function () {
+    return view('index2');
+});
 
 Route::get('/saleReceipt', function () {
     return view('saleReceipt');
