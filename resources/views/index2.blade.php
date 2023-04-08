@@ -19,7 +19,7 @@
         <div class="container mt-4">
           <div class="row">
             <div class="col-md-3">
-              <a href="#" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
+              <a href="allSales" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
                 <div>
                   <h2>All Sales</h2>
                   <p class="lead mb-0">500</p>
@@ -28,39 +28,40 @@
               </a>
             </div>
             <div class="col-md-3">
-              <a href="#" class="btn btn-secondary btn-lg d-flex justify-content-between align-items-center">
+              <a href="allPurchases" class="btn btn-success btn-lg d-flex justify-content-between align-items-center">
                 <div>
-                  <h2>All Customers</h2>
+                  <h2>All Purchases</h2>
+                  <p class="lead mb-0">1000</p>
+                </div>
+                <span ></span>
+              </a>
+            </div>
+            <div class="col-md-3">
+              <a href="allProducts" class="btn btn-secondary btn-lg d-flex justify-content-between align-items-center">
+                <div>
+                  <h2>All Products</h2>
                   <p class="lead mb-0">250</p>
                 </div>
                 <span><i class="fa-solid fa-user"></i></span>
               </a>
             </div>
+            
             <div class="col-md-3">
-              <a href="#" class="btn btn-success btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Products</h2>
-                  <p class="lead mb-0">1000</p>
-                </div>
-                <span class="material-icons fs-1">inventory_2</span>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="btn btn-danger btn-lg d-flex justify-content-between align-items-center">
+              <a href="allSuppliers" class="btn btn-danger btn-lg d-flex justify-content-between align-items-center">
                 <div>
                   <h2>All Suppliers</h2>
                   <p class="lead mb-0">50</p>
                 </div>
-                <span class="material-icons fs-1">local_shipping</span>
+                <span></span>
               </a>
             </div>
             <div class="col-md-3 mt-3">
-              <a href="#" class="btn btn-warning btn-lg d-flex justify-content-between align-items-center">
+              <a href="allCustomers" class="btn btn-warning btn-lg d-flex justify-content-between align-items-center">
                 <div>
-                  <h2>All Expenses</h2>
+                  <h2>All Customers</h2>
                   <p class="lead mb-0">$10,000</p>
                 </div>
-                <span ><i class="fa-duotone fa-dollar-sign fa-bounce fa-lg"></i></span>
+                <span ></span>
               </a>
             </div>
           </div>

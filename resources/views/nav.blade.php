@@ -25,7 +25,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="addSupplier">Add Supplier</a></li>
-              <li><a class="dropdown-item" href="allSuppliers#">Suppliers</a></li>
+              <li><a class="dropdown-item" href="allSuppliers">Suppliers</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
