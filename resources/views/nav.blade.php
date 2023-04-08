@@ -12,10 +12,11 @@
          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sales Data
+              Sales
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addSale">New Sale</a></li>
+               <li><a class="dropdown-item" href="newSale">New</a></li>
+              {{-- <li><a class="dropdown-item" href="addSale">New Sale</a></li> --}}
               <li><a class="dropdown-item" href="allSales">Sales Reports</a></li>
             </ul>
           </li>
@@ -57,6 +58,16 @@
               <li><a class="dropdown-item" href="addExpenses">Add Expense</a></li>
               <li><a class="dropdown-item" href="allExpenses">All Expenses</a></li>
             </ul>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Finance
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="addExpenses">Add Bank</a></li>
+              <li><a class="dropdown-item" href="allExpenses">Banks</a></li>
+              <li><a class="dropdown-item" href="addExpenses">Vouchers</a></li>
+            </ul>
+          </li>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

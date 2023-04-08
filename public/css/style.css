@@ -50,4 +50,13 @@
       display: none;
     }
   }
+
+  .border-left {
+    border-left-width: 50px;
+
+  }
+  .col {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   
