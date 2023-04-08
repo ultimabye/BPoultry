@@ -55,6 +55,9 @@ Route::get('/index2', function () {
 Route::get('/newSale', function () {
     return view('newSale');
 });
+Route::get('/saleSuccess', function () {
+    return view('saleSuccess');
+});
 
 Route::get('/saleReceipt', function () {
     return view('saleReceipt');

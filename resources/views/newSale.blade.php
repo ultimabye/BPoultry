@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/newSale.js') }}"></script>
 
 
@@ -17,12 +16,20 @@
 
 <body>
     @include('nav')
-
     <div class="container mt-5">
-   
     <form>
         <div class="row">
+            <div class="col">
+                <label for="date"><b>Date:</b></label>
+            <input type="date" class="form-control" name="date" id="date">
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+           
           <div class="col">
+            
             <h3>Supplier</h3>
             <div class="mb-3">
               <label for="selectSupplier" class="form-label">Select Supplier</label>
@@ -40,14 +47,20 @@
               <label for="selectProduct" class="form-label">Select Product</label>
               <select class="form-select" id="selectProduct" required>
                 <option value="">Select Product</option>
-                <option value="product1">Product 1</option>
-                <option value="product2">Product 2</option>
-                <option value="product3">Product 3</option>
+                <option value="product1" data-product="Data">Product 1</option>
+                
               </select>
               <div class="invalid-feedback">
                 Please select a product.
               </div>
             </div>
+            <div class="mb-3">
+                <label for="productAmount" class="form-label">Product Amount per unit</label>
+                <input type="number" class="form-control" id="productAmount" required>
+                <div class="invalid-feedback">
+                  Please enter product amount per unit.
+                </div>
+              </div>
             <div class="mb-3">
               <label for="productQuantity" class="form-label">Product Quantity</label>
               <input type="number" class="form-control" id="productQuantity" required>
@@ -55,13 +68,7 @@
                 Please enter product quantity.
               </div>
             </div>
-            <div class="mb-3">
-              <label for="productAmount" class="form-label">Product Amount per unit</label>
-              <input type="number" class="form-control" id="productAmount" required>
-              <div class="invalid-feedback">
-                Please enter product amount per unit.
-              </div>
-            </div>
+            
             <div class="mb-3">
               <label for="commissionAmount" class="form-label">Commission Amount in percentage</label>
               <input type="number" class="form-control" id="commissionAmount" required>
@@ -70,23 +77,24 @@
               </div>
             </div>
             <div class="mb-3">
+                <label for="subtotalLabel" class="form-label">Sub Total</label>
+                <input type="text" class="form-control" id="subtotalLabel" >
+              </div>
+            <div class="mb-3">
               <label for="shippingCharges" class="form-label">Shipping Charges</label>
               <input type="number" class="form-control" id="shippingCharges" required>
               <div class="invalid-feedback">
                 Please enter shipping charges.
               </div>
             </div>
+           
             <div class="mb-3">
-              <label for="subtotalLabel" class="form-label">Sub Total Label</label>
-              <input type="text" class="form-control" id="subtotalLabel" >
+              <label for="DiscountAmout" class="form-label">Discount Amount</label>
+              <input type="text" class="form-control" id="discountAmount">
             </div>
             <div class="mb-3">
-              <label for="shippingChargesLabel" class="form-label">Shipping Charges Label</label>
-              <input type="text" class="form-control" id="shippingChargesLabel" >
-            </div>
-            <div class="mb-3">
-              <label for="totalLabel" class="form-label">Total Label</label>
-              <input type="text" class="form-control" id="totalLabel" >
+              <label for="totalLabel" class="form-label">Total </label>
+              <input type="text" class="form-control" id="totalAmount" >
             </div>
           </div>
           
@@ -102,45 +110,45 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="productName" class="form-label">Product Name</label>
-              <input type="text" class="form-control" id="productName" disabled>
+              <label for="cProductName" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="cProductName" disabled>
             </div>
             <div class="mb-3">
-              <label for="productSaleAmount" class="form-label">Product Sale Amount per unit</label>
-              <input type="number" class="form-control" id="productSaleAmount" disabled>
+              <label for="cProductSaleAmount" class="form-label">Product Sale Amount per unit</label>
+              <input type="number" class="form-control" id="cProductSaleAmount" disabled>
             </div>
+            <div class="mb-3">
+                <label for="cProductQuantity" class="form-label">Product Quantity</label>
+                <input type="number" class="form-control" id="cProductQuantity" disabled>
+              </div>
             <div class="mb-3">
               <label for="discountPercentage" class="form-label">Discount Percentage</label>
               <input type="number" class="form-control" id="discountPercentage" disabled>
             </div>
             <div class="mb-3">
+                <label for="customerSubtotalLabel" class="form-label">Sub Total</label>
+                <input type="number" class="form-control" id="customerSubtotal" disabled>
+              </div>
+            <div class="mb-3">
               <label for="customerShippingCharges" class="form-label">Shipping Charges</label>
               <input type="number" class="form-control" id="customerShippingCharges" disabled>
             </div>
+            
             <div class="mb-3">
-              <label for="customerSubtotalLabel" class="form-label">Sub Total Label</label>
-              <input type="text" class="form-control" id="customerSubtotalLabel" disabled>
+              <label for="discountAmount" class="form-label">Discount</label>
+              <input type="number" class="form-control" id="cDiscountAmount" disabled>
             </div>
             <div class="mb-3">
-              <label for="customerShippingChargesLabel" class="form-label">Shipping Charges Label</label>
-              <input type="text" class="form-control" id="customerShippingChargesLabel" disabled>
-            </div>
-            <div class="mb-3">
-              <label for="customerTotalLabel" class="form-label">Total Label</label>
-              <input type="text" class="form-control" id="customerTotalLabel" disabled>
+              <label for="customerTotal" class="form-label">Total </label>
+              <input type="number" class="form-control" id="customerTotal" disabled>
             </div>
           </div>
         </div>
         <hr class="mb-4">
         <div class="row">
-            <div class="col ">
-              <button class="btn btn-primary w-100 ">Supplier Invoice</button>
-            </div>
-            <div class="col ">
-              <button class="btn btn-primary w-100 ">Customer Invoice</button>
-            </div>
+            
             <div class="col">
-              <button class="btn btn-primary w-100">Invoice</button>
+              <button class="btn btn-primary w-100" >Save</button>
             </div>
           </div>
         
