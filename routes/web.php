@@ -58,6 +58,12 @@ Route::get('/newSale', function () {
 Route::get('/saleSuccess', function () {
     return view('saleSuccess');
 });
+Route::get('/supplierInvoice', function () {
+    return view('supplierInvoice');
+});
+Route::get('/customerInvoice', function () {
+    return view('customerInvoice');
+});
 
 Route::get('/saleReceipt', function () {
     return view('saleReceipt');

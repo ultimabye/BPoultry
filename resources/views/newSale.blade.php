@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body style="margin-bottom: 50px;">
     @include('nav')
     <div class="container mt-5">
     <form>
