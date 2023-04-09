@@ -48,12 +48,19 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_id' => 'required|string|min:1|max:255',
-            'customer_id' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'freight_charges' => 'required|numeric',
-            'discount' => 'required|integer',
-            'due_amount' => 'required|numeric'
+            //purchase data
+            'product' => 'required|string|min:1|max:255',
+            'quantity' => 'required|string|max:255',
+            'price_per_unit' => 'required|integer',
+            'purchase_freight_charges' => 'required|integer',
+            'purchase_discount' => 'required|integer',
+            'date' => 'required|date',
+
+            //sale data
+            'customer' => 'required|string|max:255',
+            'sale_freight_charges' => 'required|numeric',
+            'sale_discount' => 'required|integer',
+            'sale_price_per_unit' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -63,17 +70,26 @@ class SalesController extends Controller
         }
 
 
-        $product = Product::where("id", $request->product_id)->first();
-        if ($product && $request->quantity <= $product->available_stock) {
+        $product = Product::where("id", $request->product)->first();
+        if ($product) {
             $date = new DateTime($request->date);
 
+            $purchase = new Purchase();
+            $purchase->product_id = $request->product;
+            $purchase->price_per_unit = $request->price_per_unit;
+            $purchase->quantity = $request->quantity;
+            $purchase->freight_charges = $request->purchase_freight_charges;
+            $purchase->amount_due = $request->price_per_unit * $request->quantity;
+            $purchase->date = $date->getTimestamp();
+            $purchase->save();
+
             $item = new Sale();
-            $item->product_id = $request->product_id;
-            $item->customer_id = $request->customer_id;
+            $item->product_id = $request->product;
+            $item->customer_id = $request->customer;
             $item->quantity = $request->quantity;
-            $item->freight_charges = $request->freight_charges;
-            $item->amount_due = $request->due_amount;
-            $item->discount = $request->discount;
+            $item->freight_charges = $request->sale_freight_charges;
+            $item->amount_due = $request->sale_price_per_unit * $request->quantity;
+            $item->discount = $request->sale_discount;
             $item->date = $date->getTimestamp();
             $item->save();
 
@@ -90,23 +106,16 @@ class SalesController extends Controller
             $discountRate = $item->discount;
             $discountAmount = 0;
             $discountAmount = $subTotal / 100 * $discountRate;
-            
-            return redirect()->route('saleReceipt')->with(
+
+            return redirect()->route('saleSuccess')->with(
                 [
-                    'sale_data' => $item,
-                    'product_data' => $product,
-                    'supplier' => $product->supplier,
-                    'sub_total' => $subTotal,
-                    'total' => $total,
-                    'discountAmount' => $discountAmount,
-                    'discountRate' => $discountRate,
-                    'customer' => $item->customer
+                    'order_id' => $purchase->id
                 ]
             );
         }
 
         Session::flash('status', "error");
-        Session::flash('status-message', 'Specified product is out of stock.');
+        Session::flash('status-message', 'Specified product not found.');
         return back()->withInput();
     }
 
@@ -116,6 +125,6 @@ class SalesController extends Controller
         $suppliers = Supplier::all();
         $products = Product::all();
         $customers = Customer::all();
-        return view('addSale', compact('suppliers', 'products', 'customers'));
+        return view('newSale', compact('suppliers', 'products', 'customers'));
     }
 }

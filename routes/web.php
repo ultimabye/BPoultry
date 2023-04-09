@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
 */
+
 Route::get('/', function () {
     return view('index2');
 });
@@ -52,12 +54,11 @@ Route::get('/addSale', function () {
 Route::get('/index2', function () {
     return view('index2');
 });
-Route::get('/newSale', function () {
-    return view('newSale');
-});
+
 Route::get('/saleSuccess', function () {
     return view('saleSuccess');
-});
+})->name('saleSuccess');
+
 Route::get('/supplierInvoice', function () {
     return view('supplierInvoice');
 });
@@ -103,6 +104,9 @@ Route::get('/allPurchases',  [PurchaseController::class, 'index']);
 
 
 
-Route::get('/addSale',  [SalesController::class, 'prepareNewSale']);
+Route::get('/newSale',  [SalesController::class, 'prepareNewSale']);
 Route::post('save-new-sale', [SalesController::class, 'store']);
 Route::get('/allSales',  [SalesController::class, 'index']);
+
+
+Route::get('/customerInvoice/{order_id}',  [InvoiceController::class, 'index'])->name('customerInvoice');

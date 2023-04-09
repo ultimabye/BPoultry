@@ -22,6 +22,7 @@ return new class extends Migration
                 ->on("products");
 
             $table->integer('quantity');
+            $table->integer('price_per_unit');
             $table->bigInteger('freight_charges')->default(0);
             $table->bigInteger('amount_due')->default(0);
             $table->unsignedBigInteger("date")->default(0);

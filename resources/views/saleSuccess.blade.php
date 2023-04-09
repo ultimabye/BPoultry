@@ -15,31 +15,48 @@
 
 <body>
     @include('nav')
+    @if (session('status'))
+        @if (session('status') === 'success')
+            <div class="alert alert-success">
+                {{ session('status-message') }}
+            </div>
+        @else
+            <div class="alert alert-danger">
+                {{ session('status-message') }}
+            </div>
+        @endif
+    @endif
     <div class="container my-5">
         <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="alert alert-success" role="alert">
-              Your order has been saved successfully!
+            <div class="col-md-8">
+                <div class="alert alert-success" role="alert">
+                    Your order has been saved successfully!
+                </div>
             </div>
-          </div>
         </div>
-      
+
         <div class="row justify-content-center my-3">
-          <div class="col-md-6">
-            <button class="btn btn-primary w-100">Print Customer Invoice</button>
-          </div>
-          <div class="col-md-6">
-            <button class="btn btn-primary w-100">Print Supplier Invoice</button>
-          </div>
-          <br>
-          <br>
-          <br>
-          <div class="col-md-12 mt-3 mt-md-0">
-            <button class="btn btn-primary w-100">Print Invoice</button>
-          </div>
+            <div class="col-md-6">
+                <a href="{{ URL::route('customerInvoice', ['order_id' => Session::get('order_id')]) }}"><button
+                        class="btn btn-primary w-100">Print
+                        Customer Invoice</button></a>
+
+
+
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary w-100" onclick="window.location='{{ url('purchaseReceipt') }}'">Print
+                    Supplier Invoice</button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-12 mt-3 mt-md-0">
+                <button class="btn btn-primary w-100">Print Invoice</button>
+            </div>
         </div>
-      </div>
-      
+    </div>
+
 </body>
 
 </html>
