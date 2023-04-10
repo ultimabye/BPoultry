@@ -27,7 +27,7 @@ class SalesController extends Controller
         $amountDue = 0;
 
         foreach ($sales as $item) {
-            $totalAmount += ($item->quantity * $item->product->unit_price) - (($item->quantity * $item->product->unit_price) / 100 * $item->discount);
+            $totalAmount += ($item->quantity * $item->price_per_unit) - (($item->quantity * $item->price_per_unit) / 100 * $item->discount);
             $totalAmount += $item->freight_charges;
 
             $amountDue += $item->amount_due;
@@ -89,7 +89,11 @@ class SalesController extends Controller
             $item->quantity = $request->quantity;
             $item->freight_charges = $request->sale_freight_charges;
             $item->price_per_unit = $request->sale_price_per_unit;
-            $item->amount_due = $request->sale_price_per_unit * $request->quantity;
+
+            $item->amount_due = ($request->sale_price_per_unit * $request->quantity)
+                - (($request->sale_price_per_unit * $request->quantity) / 100 * $request->sale_discount)
+                + $item->freight_charges;
+
             $item->discount = $request->sale_discount;
             $item->date = $date->getTimestamp();
             $item->save();

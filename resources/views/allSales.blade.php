@@ -34,12 +34,15 @@
                     <thead>
                         <tr>
                             <th>Sale Date</th>
-                            <th>Product Name</th>
+                            <th>Product</th>
                             <th>Quantity</th>
-                            <th>Customer Name</th>
+                            <th>Customer</th>
                             <th>Discount (%)</th>
-                            <th>Supplier Name</th>
-                            <th>Total Amount</th>
+                            <th>Supplier</th>
+                            <th>Unit Price (Rs.)</th>
+                            <th>Sub Total</th>
+                            <th>Freight</th>
+                            <th>Total</th>
                             <th>Amount Due</th>
 
                         </tr>
@@ -54,8 +57,12 @@
                                 <td>{{ $sale->customer->name }}</td>
                                 <td>{{ $sale->discount }}</td>
                                 <td>{{ $sale->product->supplier->name }}</td>
+                                <td>Rs.{{ $sale->price_per_unit }}</td>
+                                <td>Rs.{{ $sale->price_per_unit * $sale->quantity - (($sale->price_per_unit * $sale->quantity) / 100) * $sale->discount }}
+                                </td>
+                                <td>Rs.{{ $sale->freight_charges }}</td>
                                 <td>Rs.
-                                    {{ $sale->product->unit_price * $sale->quantity - (($sale->product->unit_price * $sale->quantity) / 100) * $sale->discount }}
+                                    {{ $sale->price_per_unit * $sale->quantity - (($sale->price_per_unit * $sale->quantity) / 100) * $sale->discount + $sale->freight_charges }}
                                 </td>
                                 <td>Rs. {{ $sale->amount_due }}</td>
                             </tr>
@@ -77,10 +84,16 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th>Grand Total</th>
                             <th>Total Due</th>
                         </tr>
                         <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -97,10 +110,16 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th>Amount Received</th>
                             <th></th>
                         </tr>
                         <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
