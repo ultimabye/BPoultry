@@ -65,6 +65,16 @@ Route::get('/supplierInvoice', function () {
 Route::get('/customerInvoice', function () {
     return view('customerInvoice');
 });
+Route::get('/addBank', function () {
+    return view('addBank');
+});
+Route::get('/allBanks', function () {
+    return view('allBanks');
+});
+
+Route::get('/searchVoucher', function () {
+    return view('searchVoucher');
+});
 
 Route::get('/saleReceipt', function () {
     return view('saleReceipt');

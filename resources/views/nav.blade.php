@@ -63,9 +63,9 @@
               Finance
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addExpenses">Add Bank</a></li>
-              <li><a class="dropdown-item" href="allExpenses">Banks</a></li>
-              <li><a class="dropdown-item" href="addExpenses">Vouchers</a></li>
+              <li><a class="dropdown-item" href="addBank">Add Bank</a></li>
+              <li><a class="dropdown-item" href="allBanks">Banks</a></li>
+              <li><a class="dropdown-item" href="searchVoucher">Vouchers</a></li>
             </ul>
           </li>
           </li>
