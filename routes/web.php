@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
+use App\Models\BankAccount;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,15 +64,11 @@ Route::get('/saleSuccess', function () {
 Route::get('/supplierInvoice', function () {
     return view('supplierInvoice');
 });
-Route::get('/customerInvoice', function () {
-    return view('customerInvoice');
-});
+
 Route::get('/addBank', function () {
     return view('addBank');
 });
-Route::get('/allBanks', function () {
-    return view('allBanks');
-});
+
 
 Route::get('/searchVoucher', function () {
     return view('searchVoucher');
@@ -123,3 +121,8 @@ Route::get(
     '/customerInvoice/{order_id}&{invoice_type}',
     [InvoiceController::class, 'index']
 )->name('customerInvoice');
+
+
+
+Route::post('save-new-bank-account', [BankAccountsController::class, 'store']);
+Route::get('/allBanks',  [BankAccountsController::class, 'index']);
