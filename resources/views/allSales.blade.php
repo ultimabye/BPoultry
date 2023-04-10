@@ -33,7 +33,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Sale Date</th>
+                            <th>Date</th>
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Customer</th>
@@ -55,7 +55,7 @@
                                 <td>{{ $sale->product->name }}</td>
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->customer->name }}</td>
-                                <td>{{ $sale->discount }}</td>
+                                <td>{{ $sale->discount }}%</td>
                                 <td>{{ $sale->product->supplier->name }}</td>
                                 <td>Rs.{{ $sale->price_per_unit }}</td>
                                 <td>Rs.{{ $sale->price_per_unit * $sale->quantity - (($sale->price_per_unit * $sale->quantity) / 100) * $sale->discount }}
