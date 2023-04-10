@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
@@ -43,9 +44,7 @@ Route::get('/addCustomer', function () {
 Route::get('/addExpenses', function () {
     return view('addExpenses');
 });
-Route::get('/allExpenses', function () {
-    return view('allExpenses');
-});
+
 Route::get('/addSupplier', function () {
     return view('addSupplier');
 });
@@ -126,3 +125,8 @@ Route::get(
 
 Route::post('save-new-bank-account', [BankAccountsController::class, 'store']);
 Route::get('/allBanks',  [BankAccountsController::class, 'index']);
+
+
+
+Route::post('save-new-expense', [ExpenseController::class, 'store']);
+Route::get('/allExpenses',  [ExpenseController::class, 'index']);

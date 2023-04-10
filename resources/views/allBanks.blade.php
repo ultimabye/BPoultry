@@ -22,7 +22,7 @@
     @include('nav')
 
     <div class="container">
-        <h1 class="my-4">Bank Detail Table</h1>
+        <h1 class="my-4">Bank Accounts</h1>
         <div class="mb-3">
             <input type="text" class="form-control" id="search" placeholder="Search bank">
         </div>
