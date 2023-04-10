@@ -17,4 +17,14 @@ class Purchase extends Model
             "product_id"
         );
     }
+
+
+    public function sale()
+    {
+        return $this->hasOne(
+            Sale::class,
+            "id",
+            "sale_id"
+        );
+    }
 }

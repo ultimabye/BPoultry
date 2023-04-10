@@ -21,6 +21,11 @@ return new class extends Migration
                 ->references("id")
                 ->on("products");
 
+            $table->bigInteger('sale_id')->unsigned();
+            $table->foreign('sale_id')
+                ->references("id")
+                ->on("sales");
+
             $table->integer('quantity');
             $table->integer('price_per_unit');
             $table->bigInteger('freight_charges')->default(0);

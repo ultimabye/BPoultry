@@ -81,17 +81,22 @@ class SalesController extends Controller
             $purchase->freight_charges = $request->purchase_freight_charges;
             $purchase->amount_due = $request->price_per_unit * $request->quantity;
             $purchase->date = $date->getTimestamp();
-            $purchase->save();
+
 
             $item = new Sale();
             $item->product_id = $request->product;
             $item->customer_id = $request->customer;
             $item->quantity = $request->quantity;
             $item->freight_charges = $request->sale_freight_charges;
+            $item->price_per_unit = $request->sale_price_per_unit;
             $item->amount_due = $request->sale_price_per_unit * $request->quantity;
             $item->discount = $request->sale_discount;
             $item->date = $date->getTimestamp();
             $item->save();
+
+            $purchase->sale_id = $item->id;
+            $purchase->save();
+
 
             $product->available_stock = $product->available_stock - $item->quantity;
             if ($product->available_stock < 0) {

@@ -17,69 +17,60 @@
 <body style="margin-bottom: 50px;">
     @include('nav')
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1>Supplier Invoice</h1>
+        <div class="row">
+            <div class="col-12">
+                <h1>Supplier Invoice</h1>
+            </div>
         </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-6">
-          <p><strong>Supplier Name:</strong> ABC Supplier</p>
+        <div class="row mt-3">
+            <div class="col-6">
+                <p><strong>Supplier Name:</strong> ABC Supplier</p>
+            </div>
+            <div class="col-6">
+                <p><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>
+            </div>
         </div>
-        <div class="col-6">
-          <p><strong>Date:</strong> 09-Apr-2023</p>
-        </div>
-      </div>
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Product A</td>
-            <td>5</td>
-            <td>$500.00</td>
-          </tr>
-          <tr>
-            <td>Product B</td>
-            <td>3</td>
-            <td>$300.00</td>
-          </tr>
-          <tr>
-            <td>Product C</td>
-            <td>2</td>
-            <td>$200.00</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row mt-3">
-        <div class="col-9">
-          <p><strong>Discount Rate:</strong> 5%</p>
-          <p><strong>Shipping Charges:</strong> $50.00</p>
-        </div>
-        <div class="col-3">
-          <table class="table">
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
             <tbody>
-              <tr>
-                <td><strong>Subtotal:</strong></td>
-                <td>$1000.00</td>
-              </tr>
-              <tr>
-                <td><strong>Discount Amount:</strong></td>
-                <td>$50.00</td>
-              </tr>
-              <tr>
-                <td><strong>Total Amount:</strong></td>
-                <td>$1000.00</td>
-              </tr>
+                <tr>
+                    <td>{{ $purchase->product->name }}</td>
+                    <td>{{ $purchase->quantity }}</td>
+                    <td>Rs. {{ $purchase->price_per_unit * $purchase->quantity }}</td>
+                </tr>
             </tbody>
-          </table>
+        </table>
+        <div class="row mt-3">
+            <div class="col-9">
+                <p><strong>Discount Rate:</strong> {{ $purchase->discount }}%</p>
+                <p><strong>Shipping Charges:</strong>Rs.
+                    {{ (($purchase->price_per_unit * $purchase->quantity) / 100) * $purchase->discount }}</p>
+            </div>
+            <div class="col-3">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><strong>Subtotal:</strong></td>
+                            <td>$1000.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Discount Amount:</strong></td>
+                            <td>$50.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Amount:</strong></td>
+                            <td>$1000.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
 </body>
 

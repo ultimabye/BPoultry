@@ -119,4 +119,7 @@ Route::post('save-new-sale', [SalesController::class, 'store']);
 Route::get('/allSales',  [SalesController::class, 'index']);
 
 
-Route::get('/customerInvoice/{order_id}',  [InvoiceController::class, 'index'])->name('customerInvoice');
+Route::get(
+    '/customerInvoice/{order_id}&{invoice_type}',
+    [InvoiceController::class, 'index']
+)->name('customerInvoice');

@@ -9,13 +9,23 @@ use Illuminate\Support\Facades\Session;
 
 class InvoiceController extends Controller
 {
-    public function index(Request $request, $orderId)
+    public function index(Request $request, $orderId, $invoiceType)
     {
         if ($orderId) {
             $purchase = Purchase::where('id',  $orderId)->first();
-            return view('customerInvoice', compact(
-                'purchase',
-            ));
+            if ($invoiceType === "customer") {
+                return view('customerInvoice', compact(
+                    'purchase',
+                ));
+            } else if ($invoiceType === "supplier") {
+                return view('supplierInvoice', compact(
+                    'purchase',
+                ));
+            } else {
+                return view('customerInvoice', compact(
+                    'purchase',
+                ));
+            }
         }
 
         Session::flash('status', "error");

@@ -37,12 +37,10 @@
 
         <div class="row justify-content-center my-3">
             <div class="col-md-6">
-                <a href="{{ URL::route('customerInvoice', ['order_id' => Session::get('order_id')]) }}"><button
+                <a
+                    href="{{ URL::route('customerInvoice', ['order_id' => Session::get('order_id'), 'invoice_type' => 'customer']) }}"><button
                         class="btn btn-primary w-100">Print
                         Customer Invoice</button></a>
-
-
-
             </div>
             <div class="col-md-6">
                 <button class="btn btn-primary w-100" onclick="window.location='{{ url('purchaseReceipt') }}'">Print
