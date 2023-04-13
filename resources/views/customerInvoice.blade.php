@@ -25,9 +25,10 @@
         <div class="row mt-3">
             <div class="col-6">
                 <p><strong>Customer Name:</strong> {{ $purchase->sale->customer->name }}</p>
+                <p><strong>Voutcher No:</strong> 01</p>
             </div>
             <div class="col-6">
-                <p><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>
+                <p class="float-right"><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>
             </div>
         </div>
         <table class="table mt-3">
@@ -35,29 +36,36 @@
                 <tr>
                     <th>Product Name</th>
                     <th>Quantity</th>
+                    <th>Discount Amount</th>
                     <th>Subtotal</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>{{ $purchase->product->name }}</td>
-                    <td>{{ $purchase->sale->quantity }}</td>
+                    <td>{{ $purchase->sale->quantity }} x {{$purchase->sale->price_per_unit}}</td>
+                    <td>Rs.
+                        {{ (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount }}</td>
                     <td>Rs. {{ $purchase->sale->price_per_unit * $purchase->sale->quantity }}</td>
                 </tr>
 
             </tbody>
         </table>
+    
         <div class="row mt-3">
-            <div class="col-9">
+            <div class="col-8">
                 <p><strong>Discount Rate:</strong> {{ $purchase->sale->discount }}%</p>
-                <p><strong>Shipping Charges:</strong> Rs. {{ $purchase->sale->freight_charges }}</p>
             </div>
-            <div class="col-3">
-                <table class="table">
+            <div class="col-4">
+                <table class="table mt-3">
                     <tbody>
                         <tr>
                             <td><strong>Subtotal:</strong></td>
                             <td>Rs. {{ $purchase->sale->price_per_unit * $purchase->sale->quantity }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shipping Charges:</strong></td>
+                            <td> Rs. {{ $purchase->sale->freight_charges }}</td>
                         </tr>
                         <tr>
                             <td><strong>Discount Amount:</strong></td>
@@ -66,7 +74,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>Total Amount:</strong></td>
+                            <td><strong>Amount Due:</strong></td>
                             <td>Rs.
                                 {{ $purchase->sale->price_per_unit * $purchase->sale->quantity - (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount + $purchase->sale->freight_charges }}
                             </td>
