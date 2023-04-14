@@ -44,9 +44,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="addProduct">New Product</a></li>
-              <li><a class="dropdown-item" href="addPurchase">New Purchase</a></li>
+              {{-- <li><a class="dropdown-item" href="addPurchase">New Purchase</a></li>
               <li><a class="dropdown-item" href="allPurchases">Purchases</a></li>
-              <li><a class="dropdown-item" href="allProducts">Available Stock</a></li>
+              <li><a class="dropdown-item" href="allProducts">Available Stock</a></li> --}}
               
             </ul>
           </li>
