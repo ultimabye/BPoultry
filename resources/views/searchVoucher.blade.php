@@ -20,6 +20,32 @@
         <input type="text" class="form-control" placeholder="Enter voucher number..." aria-label="Enter voucher number..." aria-describedby="searchButton">
         <button class="btn btn-primary" type="button" id="searchButton">Search</button>
       </div>
+
+      <div class="container">
+        <h1>Payment Records</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Voucher Number</th>
+                    <th>Voucher Type</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023-04-17</td>
+                    <td>CV-123</td>
+                    <td>Payment Voucher</td>
+                    <td>John Doe</td>
+                    <td>Rs. 1000</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    
     </div>
 </body>
 </html>

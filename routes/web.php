@@ -73,6 +73,17 @@ Route::get('/searchVoucher', function () {
     return view('searchVoucher');
 });
 
+Route::get('/customerVoucher', function () {
+    return view('customerVoucher');
+});
+Route::get('/supplierVoucher', function () {
+    return view('supplierVoucher');
+});
+Route::get('/payAmount', function () {
+    return view('payAmount');
+});
+
+
 Route::get('/saleReceipt', function () {
     return view('saleReceipt');
 })->name('saleReceipt');
