@@ -18,28 +18,23 @@ class SalesController extends Controller
     {
         $query = $request->search;
         if ($query) {
-            $sales = Sale::where('name', 'like', '%' . $query . '%')->get();
+            $purchases = Purchase::where('name', 'like', '%' . $query . '%')->get();
         } else {
-            $sales = Sale::all();
+            $purchases = Purchase::all();
         }
 
-        $totalAmount = 0;
-        $amountDue = 0;
+        $totalPayable = 0;
+        $totalReceivable = 0;
 
-        foreach ($sales as $item) {
-            $totalAmount += ($item->quantity * $item->price_per_unit) - (($item->quantity * $item->price_per_unit) / 100 * $item->discount);
-            $totalAmount += $item->freight_charges;
-
-            $amountDue += $item->amount_due;
+        foreach ($purchases as $item) {
+            $totalPayable += $item->amount_due;
+            $totalReceivable += $item->sale->amount_due;
         }
-
-        $amountReceived = $totalAmount - $amountDue;
 
         return view('allSales', compact(
-            'sales',
-            'totalAmount',
-            'amountReceived',
-            'amountDue'
+            'purchases',
+            'totalPayable',
+            'totalReceivable'
         ));
     }
 
@@ -80,6 +75,7 @@ class SalesController extends Controller
             $purchase->quantity = $request->quantity;
             $purchase->freight_charges = $request->purchase_freight_charges;
             $purchase->amount_due = $request->price_per_unit * $request->quantity;
+            $purchase->discount = $request->purchase_discount;
             $purchase->date = $date->getTimestamp();
 
 
