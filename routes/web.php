@@ -10,6 +10,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\VoucherController;
 use App\Models\BankAccount;
 use Illuminate\Support\Facades\Route;
 
@@ -69,10 +70,6 @@ Route::get('/addBank', function () {
     return view('addBank');
 });
 
-
-Route::get('/searchVoucher', function () {
-    return view('searchVoucher');
-});
 
 Route::get('/customerVoucher', function () {
     return view('customerVoucher');
@@ -141,3 +138,6 @@ Route::get('/allBanks',  [BankAccountsController::class, 'index']);
 
 Route::post('save-new-expense', [ExpenseController::class, 'store']);
 Route::get('/allExpenses',  [ExpenseController::class, 'index']);
+
+
+Route::get('/searchVoucher',  [VoucherController::class, 'index']);
