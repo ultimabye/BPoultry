@@ -24,7 +24,7 @@
         </div>
         <div class="row mt-3">
             <div class="col-6">
-                <p><strong>Supplier Name:</strong> ABC Supplier</p>
+                <p><strong>Supplier Name: </strong>{{ $purchase->product->supplier->name }}</p>
             </div>
             <div class="col-6">
                 <p><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>
@@ -41,7 +41,7 @@
             <tbody>
                 <tr>
                     <td>{{ $purchase->product->name }}</td>
-                    <td>{{ $purchase->quantity }}</td>
+                    <td>{{ $purchase->quantity }} x Rs. {{ $purchase->sale->price_per_unit }}</td>
                     <td>Rs. {{ $purchase->price_per_unit * $purchase->quantity }}</td>
                 </tr>
             </tbody>
@@ -49,7 +49,7 @@
         <div class="row mt-3">
             <div class="col-9">
                 <p><strong>Discount Rate:</strong> {{ $purchase->discount }}%</p>
-                <p><strong>Shipping Charges:</strong>Rs.
+                <p><strong>Shipping Charges: </strong>Rs.
                     {{ (($purchase->price_per_unit * $purchase->quantity) / 100) * $purchase->discount }}</p>
             </div>
             <div class="col-3">
@@ -57,15 +57,19 @@
                     <tbody>
                         <tr>
                             <td><strong>Subtotal:</strong></td>
-                            <td>$1000.00</td>
+                            <td>Rs. {{ $purchase->price_per_unit * $purchase->quantity }}</td>
                         </tr>
                         <tr>
                             <td><strong>Discount Amount:</strong></td>
-                            <td>$50.00</td>
+                            <td>Rs.
+                                {{ (($purchase->price_per_unit * $purchase->quantity) / 100) * $purchase->discount }}
+                            </td>
                         </tr>
                         <tr>
-                            <td><strong>Total Amount:</strong></td>
-                            <td>$1000.00</td>
+                            <td><strong>Due Amount:</strong></td>
+                            <td>Rs.
+                                {{ $purchase->price_per_unit * $purchase->quantity - (($purchase->price_per_unit * $purchase->quantity) / 100) * $purchase->discount + $purchase->freight_charges }}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

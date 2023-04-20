@@ -60,9 +60,10 @@ Route::get('/saleSuccess', function () {
     return view('saleSuccess');
 })->name('saleSuccess');
 
-Route::get('/supplierInvoice', function () {
-    return view('supplierInvoice');
-});
+// Route::get('/supplierInvoice', function () {
+//     return view('supplierInvoice');
+// });
+
 
 Route::get('/addBank', function () {
     return view('addBank');
@@ -128,15 +129,14 @@ Route::get('/allSales',  [SalesController::class, 'index']);
 
 
 Route::get(
-    '/customerInvoice/{order_id}&{invoice_type}',
+    '/invoice/{order_id}&{invoice_type}',
     [InvoiceController::class, 'index']
-)->name('customerInvoice');
+)->name('invoice');
 
 
 
 Route::post('save-new-bank-account', [BankAccountsController::class, 'store']);
 Route::get('/allBanks',  [BankAccountsController::class, 'index']);
-
 
 
 Route::post('save-new-expense', [ExpenseController::class, 'store']);

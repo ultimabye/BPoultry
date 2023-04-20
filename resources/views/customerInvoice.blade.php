@@ -25,7 +25,7 @@
         <div class="row mt-3">
             <div class="col-6">
                 <p><strong>Customer Name:</strong> {{ $purchase->sale->customer->name }}</p>
-                <p><strong>Voutcher No:</strong> 01</p>
+                <p><strong>Voucher No:</strong> {{ $purchase->sale_id }}</p>
             </div>
             <div class="col-6">
                 <p class="float-right"><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>
@@ -43,7 +43,7 @@
             <tbody>
                 <tr>
                     <td>{{ $purchase->product->name }}</td>
-                    <td>{{ $purchase->sale->quantity }} x {{$purchase->sale->price_per_unit}}</td>
+                    <td>{{ $purchase->sale->quantity }} x Rs. {{$purchase->sale->price_per_unit}}</td>
                     <td>Rs.
                         {{ (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount }}</td>
                     <td>Rs. {{ $purchase->sale->price_per_unit * $purchase->sale->quantity }}</td>
