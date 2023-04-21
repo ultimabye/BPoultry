@@ -77,8 +77,11 @@ Route::get('/customerVoucher', function () {
 Route::get('/supplierVoucher', function () {
     return view('supplierVoucher');
 });
-Route::get('/payAmount', function () {
-    return view('payAmount');
+Route::get('/inBoundPayment', function () {
+    return view('inBoundPayment');
+});
+Route::get('/outBoundPayment', function () {
+    return view('outnBoundPayment');
 });
 
 
