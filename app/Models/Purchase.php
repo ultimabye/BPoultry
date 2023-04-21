@@ -9,7 +9,7 @@ class Purchase extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "purchase_id";
+    protected $primaryKey = "id";
 
     public $incrementing = false;
 

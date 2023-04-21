@@ -25,6 +25,7 @@
         <div class="row mt-3">
             <div class="col-6">
                 <p><strong>Supplier Name: </strong>{{ $purchase->product->supplier->name }}</p>
+                <p><strong>Voucher No:</strong> {{ $purchase->id }}</p>
             </div>
             <div class="col-6">
                 <p><strong>Date:</strong> {{ date('m/d/Y', $purchase->date) }}</p>

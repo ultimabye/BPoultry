@@ -43,19 +43,24 @@
                     <tr>
                         <th>Date</th>
                         <th>Voucher Number</th>
-                        <th>Voucher Type</th>
-                        <th>Name</th>
                         <th>Amount</th>
+                        <th>Payment Type</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2023-04-17</td>
-                        <td>CV-123</td>
-                        <td>Payment Voucher</td>
-                        <td>John Doe</td>
-                        <td>Rs. 1000</td>
-                    </tr>
+                    @forelse($payments as $payment)
+                        <tr>
+                            <td>{{ date('m/d/Y', strtotime($payment->created_at)) }}</td>
+                            <td>{{ $payment->voucher_no }}</td>
+                            <td>Rs. {{ $payment->amount }}</td>
+                            <td>{{ $payment->type }}</td>
+
+                            <td><button class="btn btn-primary edit-btn">Edit</button></td>
+
+                        </tr>
+                    @empty
+                        <li class="list-group-item list-group-item-danger">No payments found.</li>
+                    @endforelse
 
                 </tbody>
             </table>

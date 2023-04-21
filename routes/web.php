@@ -4,6 +4,7 @@ use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseController;
@@ -81,7 +82,7 @@ Route::get('/inBoundPayment', function () {
     return view('inBoundPayment');
 });
 Route::get('/outBoundPayment', function () {
-    return view('outnBoundPayment');
+    return view('outBoundPayment');
 });
 
 
@@ -144,3 +145,6 @@ Route::get('/allExpenses',  [ExpenseController::class, 'index']);
 
 
 Route::get('/searchVoucher',  [VoucherController::class, 'index']);
+
+Route::post('save-outbound-payment', [PaymentController::class, 'handleOutboundPayment']);
+Route::post('save-inbound-payment', [PaymentController::class, 'handleInboundPayment']);

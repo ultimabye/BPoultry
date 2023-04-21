@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
+use App\Models\Payment;
 use App\Models\Purchase;
 use App\Models\Sale;
 use Illuminate\Http\Request;
@@ -15,18 +17,22 @@ class VoucherController extends Controller
         if ($query) {
             $purchase = Purchase::where('id', '=', $query)->first();
             if ($purchase) {
-                return view('payAmount', compact("purchase"));
+                $banks = BankAccount::all();
+                return view('outBoundPayment', compact("purchase", "banks"));
             } else {
                 $sale = Sale::where('id', '=', $query)->first();
-                return view('payAmount', compact("sale"));
+                if ($sale) {
+                    $banks = BankAccount::all();
+                    return view('inBoundPayment', compact("sale", "banks"));
+                } else {
+                    Session::flash('status', "error");
+                    Session::flash('status-message', "Voucher not found!");
+                    return back()->withInput();
+                }
             }
         }
 
-
-
-        Session::flash('status', "error");
-        Session::flash('status-message', "Voucher not found!");
-        //return back()->withInput();
-        return view('searchVoucher');
+        $payments = Payment::all();
+        return view('searchVoucher', compact('payments'));
     }
 }

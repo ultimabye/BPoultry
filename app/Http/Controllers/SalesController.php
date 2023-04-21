@@ -80,7 +80,7 @@ class SalesController extends Controller
             $purchase->date = $date->getTimestamp();
 
 
-            $saleId = floor(time() - 9999999);
+            $saleId = floor((time() - 1) - 9999999);
             $item = new Sale();
             $item->id = $saleId;
             $item->product_id = $request->product;
