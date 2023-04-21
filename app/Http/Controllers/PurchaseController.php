@@ -64,6 +64,7 @@ class PurchaseController extends Controller
         $date = new DateTime($request->date);
 
         $item = new Purchase();
+        $item->id = floor(time()-9999999);
         $item->product_id = $request->product;
         $item->quantity = $request->quantity;
         $item->freight_charges = $request->freight_charges;

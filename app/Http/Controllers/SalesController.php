@@ -70,6 +70,7 @@ class SalesController extends Controller
             $date = new DateTime($request->date);
 
             $purchase = new Purchase();
+            $purchase->id = floor(time() - 9999999);
             $purchase->product_id = $request->product;
             $purchase->price_per_unit = $request->price_per_unit;
             $purchase->quantity = $request->quantity;
@@ -79,7 +80,9 @@ class SalesController extends Controller
             $purchase->date = $date->getTimestamp();
 
 
+            $saleId = floor(time() - 9999999);
             $item = new Sale();
+            $item->id = $saleId;
             $item->product_id = $request->product;
             $item->customer_id = $request->customer;
             $item->quantity = $request->quantity;

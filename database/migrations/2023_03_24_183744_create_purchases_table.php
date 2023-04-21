@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("id")->primary();
 
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references("id")
                 ->on("products");
 
-            $table->bigInteger('sale_id')->unsigned();
+            $table->unsignedBigInteger('sale_id');
             $table->foreign('sale_id')
                 ->references("id")
                 ->on("sales");

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("id")->primary();
 
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')

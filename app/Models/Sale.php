@@ -9,6 +9,11 @@ class Sale extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "id";
+
+    public $incrementing = false;
+    
+
     public function product()
     {
         return $this->hasOne(
