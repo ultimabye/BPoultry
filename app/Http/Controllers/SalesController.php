@@ -75,7 +75,7 @@ class SalesController extends Controller
             $purchase->price_per_unit = $request->price_per_unit;
             $purchase->quantity = $request->quantity;
             $purchase->freight_charges = $request->purchase_freight_charges;
-            $purchase->amount_due = $request->price_per_unit * $request->quantity;
+            $purchase->amount_due = ($request->price_per_unit * $request->quantity)-(($request->price_per_unit * $request->quantity)/100)* $request->purchase_discount;
             $purchase->discount = $request->purchase_discount;
             $purchase->date = $date->getTimestamp();
 
