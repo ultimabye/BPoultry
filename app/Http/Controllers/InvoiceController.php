@@ -12,6 +12,7 @@ class InvoiceController extends Controller
     public function index(Request $request, $orderId, $invoiceType)
     {
         if ($orderId) {
+
             $purchase = Purchase::where('id',  $orderId)->first();
             if ($invoiceType === "customer") {
                 return view('customerInvoice', compact(
@@ -22,7 +23,25 @@ class InvoiceController extends Controller
                     'purchase',
                 ));
             } else {
-                return view('customerInvoice', compact(
+                Session::flash('status', "error");
+                Session::flash('status-message', 'Failed to print invoice, unknown error.');
+                return back()->withInput();
+            }
+        }
+
+        Session::flash('status', "error");
+        Session::flash('status-message', 'Failed to print invoice, unknown error.');
+        return back()->withInput();
+    }
+
+
+
+    public function prepareForPrint(Request $request, $orderId)
+    {
+        if ($orderId) {
+            $purchase = Purchase::where('id',  $orderId)->first();
+            if ($purchase) {
+                return view('invoiceDetails', compact(
                     'purchase',
                 ));
             }
@@ -31,33 +50,5 @@ class InvoiceController extends Controller
         Session::flash('status', "error");
         Session::flash('status-message', 'Failed to print invoice, unknown error.');
         return back()->withInput();
-
-
-        return $orderId;
-        $query = $request->search;
-        if ($query) {
-            $sales = Sale::where('name', 'like', '%' . $query . '%')->get();
-        } else {
-            $sales = Sale::all();
-        }
-
-        $totalAmount = 0;
-        $amountDue = 0;
-
-        foreach ($sales as $item) {
-            $totalAmount += ($item->quantity * $item->product->unit_price) - (($item->quantity * $item->product->unit_price) / 100 * $item->discount);
-            $totalAmount += $item->freight_charges;
-
-            $amountDue += $item->amount_due;
-        }
-
-        $amountReceived = $totalAmount - $amountDue;
-
-        return view('customerInvoice', compact(
-            'sales',
-            'totalAmount',
-            'amountReceived',
-            'amountDue'
-        ));
     }
 }

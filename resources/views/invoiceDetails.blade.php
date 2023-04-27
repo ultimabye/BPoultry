@@ -16,33 +16,36 @@
 <body>
     @include('nav')
     <div class="container py-5">
-      <h1 class="text-center mb-5">Invoice Details</h1>
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Supplier Invoice Details</h2>
-          <p>Supplier Name: XYZ Corporation</p>
-          <p>Voucher Number: 12345</p>
-          <p>Invoice Date: 2023-04-27</p>
-          <p>Amount : 90000</p>
-          
+        <h1 class="text-center mb-5">Invoice Details</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Supplier</h2>
+                <p>Supplier Name: {{ $purchase->product->supplier->name }}</p>
+                <p>Voucher Number: {{ $purchase->id }}</p>
+                <p>Invoice Date: {{ date('m/d/Y', $purchase->date) }} </p>
+                <p>Amount : Rs.{{ $purchase->amount_due }}</p>
+                <a class="btn btn-primary" href="{{ url('/invoice/' . $purchase->id . '&supplier') }}"
+                    target="_blank">Print Invoice</a>
+                <a class="btn btn-primary" href="{{ url('/voucher/out/' . $purchase->id) }}" type="button" target="_blank">Pay
+                    Amount</a>
+
+            </div>
+            <div class="col-md-6">
+                <h2>Customer</h2>
+                <p>Customer Name: {{ $purchase->sale->customer->name }}</p>
+                <p>Voucher Number: {{ $purchase->sale->id }}</p>
+                <p>Invoice Date: {{ date('m/d/Y', $purchase->sale->date) }}</p>
+                <p>Amount: Rs.{{ $purchase->sale->amount_due }}</p>
+                <a class="btn btn-primary" href="{{ url('/invoice/' . $purchase->id . '&customer') }}"
+                    target="_blank">Print Invoice</a>
+                <a class="btn btn-primary" href="{{ url('/voucher/in/' . $purchase->sale->id) }}"
+                    type="button" target="_blank">Receive Payment</a>
+            </div>
         </div>
-        <div class="col-md-6">
-          <h2>Customer Invoice Details</h2>
-          <p>Customer Name: ABC Inc.</p>
-          <p>Voucher Number: 67890</p>
-          <p>Invoice Date: 2023-04-25</p>
-          <p>Amount: 90000</p>
-        </div>
-      </div>
-      <div class="d-grid gap-2 col-md-6 mx-auto mt-5">
-        <a class="btn btn-primary" href="{{ url('/supplierInvoice') }}" target="_blank">Print Supplier Invoice</a>
-        <a class="btn btn-primary" href="{{ url('/customerInvoice') }}" type="button">Print Customer Invoice</a>
-        <a class="btn btn-primary" href="{{ url('/inBoundPayment') }}" type="button">Receive Payment</a>
-        <a class="btn btn-primary" href="{{ url('/outBoundPayment') }}" type="button">Pay Amount</a>
-      </div>
+
     </div>
 
-    
+
 </body>
 
 

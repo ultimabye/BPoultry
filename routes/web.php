@@ -82,6 +82,7 @@ Route::get('/customerVoucher', function () {
 Route::get('/supplierVoucher', function () {
     return view('supplierVoucher');
 });
+
 Route::get('/inBoundPayment', function () {
     return view('inBoundPayment');
 });
@@ -138,6 +139,11 @@ Route::get(
     [InvoiceController::class, 'index']
 )->name('invoice');
 
+Route::get(
+    '/invoice/view/{order_id}',
+    [InvoiceController::class, 'prepareForPrint']
+)->name('view_invoice');
+
 
 
 Route::post('save-new-bank-account', [BankAccountsController::class, 'store']);
@@ -149,6 +155,9 @@ Route::get('/allExpenses',  [ExpenseController::class, 'index']);
 
 
 Route::get('/searchVoucher',  [VoucherController::class, 'index']);
+Route::get('/voucher/out/{id}',  [VoucherController::class, 'prepareOutboundPayment']);
+Route::get('/voucher/in/{id}',  [VoucherController::class, 'prepareInboundPayment']);
+
 
 Route::post('save-outbound-payment', [PaymentController::class, 'handleOutboundPayment']);
 Route::post('save-inbound-payment', [PaymentController::class, 'handleInboundPayment']);

@@ -35,4 +35,34 @@ class VoucherController extends Controller
         $payments = Payment::all();
         return view('searchVoucher', compact('payments'));
     }
+
+
+
+    public function prepareInboundPayment(Request $request, $id)
+    {
+        $sale = Sale::where('id', '=', $id)->first();
+        if ($sale) {
+            $banks = BankAccount::all();
+            return view('inBoundPayment', compact("sale", "banks"));
+        }
+
+        Session::flash('status', "error");
+        Session::flash('status-message', "Voucher not found!");
+        return back()->withInput();
+    }
+
+
+
+    public function prepareOutboundPayment(Request $request, $id)
+    {
+        $purchase = Purchase::where('id', '=', $id)->first();
+        if ($purchase) {
+            $banks = BankAccount::all();
+            return view('outBoundPayment', compact("purchase", "banks"));
+        }
+
+        Session::flash('status', "error");
+        Session::flash('status-message', "Voucher not found!");
+        return back()->withInput();
+    }
 }

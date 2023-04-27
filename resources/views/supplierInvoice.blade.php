@@ -68,8 +68,7 @@
                         </tr>
                         <tr>
                             <td><strong>Due Amount:</strong></td>
-                            <td>Rs.
-                                {{ $purchase->price_per_unit * $purchase->quantity - (($purchase->price_per_unit * $purchase->quantity) / 100) * $purchase->discount + $purchase->freight_charges }}
+                            <td>Rs. {{ $purchase->amount_due }}
                             </td>
                         </tr>
                     </tbody>

@@ -43,15 +43,16 @@
             <tbody>
                 <tr>
                     <td>{{ $purchase->product->name }}</td>
-                    <td>{{ $purchase->sale->quantity }} x Rs. {{$purchase->sale->price_per_unit}}</td>
+                    <td>{{ $purchase->sale->quantity }} x Rs. {{ $purchase->sale->price_per_unit }}</td>
                     <td>Rs.
-                        {{ (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount }}</td>
+                        {{ (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount }}
+                    </td>
                     <td>Rs. {{ $purchase->sale->price_per_unit * $purchase->sale->quantity }}</td>
                 </tr>
 
             </tbody>
         </table>
-    
+
         <div class="row mt-3">
             <div class="col-8">
                 <p><strong>Discount Rate:</strong> {{ $purchase->sale->discount }}%</p>
@@ -75,8 +76,7 @@
                         </tr>
                         <tr>
                             <td><strong>Amount Due:</strong></td>
-                            <td>Rs.
-                                {{ $purchase->sale->price_per_unit * $purchase->sale->quantity - (($purchase->sale->price_per_unit * $purchase->sale->quantity) / 100) * $purchase->sale->discount + $purchase->sale->freight_charges }}
+                            <td>Rs. {{ $purchase->sale->amount_due }}
                             </td>
                         </tr>
                     </tbody>
