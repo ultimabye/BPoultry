@@ -66,7 +66,6 @@
               <li><a class="dropdown-item" href="addBank">Add Bank</a></li>
               <li><a class="dropdown-item" href="allBanks">Banks</a></li>
               <li><a class="dropdown-item" href="searchVoucher">Vouchers</a></li>
-              <li><a class="dropdown-item" href="invoices">Invoices</a></li>
             </ul>
           </li>
           </li>

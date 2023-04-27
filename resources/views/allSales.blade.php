@@ -8,8 +8,10 @@
     <title>Ad Group</title>
     <!-- Bootstrap CSS -->
     @include('cdn')
+    <script type="text/javascript" src="{{ asset('js/tableJavaScript.js') }}"></script> 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
+    
 
 </head>
 
@@ -29,7 +31,7 @@
                                 placeholder="Search by Product Name or Customer Name">
                         </div>
                         <div class="col-md-6 text-end">
-                            <button type="button" class="btn btn-primary me-2">New Sale</button>
+                            <a class="btn btn-primary" href="{{ url('/newSale') }}" type="button">New</a>
                             <button type="button" class="btn btn-success"onclick="printSaleReport()">Print Sales
                                 Report</button>
 
@@ -77,6 +79,9 @@
                                             {{ $sale->price_per_unit * $sale->quantity - (($sale->price_per_unit * $sale->quantity) / 100) * $sale->discount + $sale->freight_charges }}
                                         </td> --}}
                                         <td>Rs. {{ $purchase->sale->amount_due }}</td>
+                                        <td><button data-item-id="{{ $purchase->id }}" id="print-invoice" class="btn btn-primary">
+                                            <i class="fa fa-print"></i> 
+                                          </button></td>
                                     </tr>
 
 
@@ -163,7 +168,14 @@
 
 
 
+<script>
+    $('#print-invoice').click(function() {
+    var itemId = $(this).data('item-id');
+  alert("Button Clicked" + itemId);
+  window.open("/invoiceDetails");
 
+});
+</script>
     <script>
         function printSaleReport() {
             window.print();

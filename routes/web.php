@@ -71,8 +71,8 @@ Route::get('/addBank', function () {
     return view('addBank');
 });
 
-Route::get('/invoices', function () {
-    return view('invoices');
+Route::get('/invoiceDetails', function () {
+    return view('invoiceDetails');
 });
 
 
