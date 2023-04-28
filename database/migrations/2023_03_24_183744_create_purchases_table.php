@@ -27,10 +27,10 @@ return new class extends Migration
                 ->on("sales");
 
             $table->integer('quantity');
-            $table->integer('price_per_unit');
+            $table->double('price_per_unit');
             $table->integer('discount')->default(0);
-            $table->bigInteger('freight_charges')->default(0);
-            $table->bigInteger('amount_due')->default(0);
+            $table->double('freight_charges')->default(0);
+            $table->double('amount_due')->default(0);
             $table->unsignedBigInteger("date")->default(0);
 
             $table->timestamps();

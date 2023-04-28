@@ -26,9 +26,9 @@ return new class extends Migration
                 ->references("id")
                 ->on("customers");
 
-            $table->float('price_per_unit')->default(0.0);
-            $table->float('freight_charges')->default(0.0);
-            $table->float('amount_due')->default(0.0);
+            $table->double('price_per_unit')->default(0.0);
+            $table->double('freight_charges')->default(0.0);
+            $table->double('amount_due')->default(0.0);
             $table->integer('discount')->default(0);
             $table->integer('quantity');
             $table->unsignedBigInteger('date')->default(0);
