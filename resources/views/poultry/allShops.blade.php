@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Add Driver</title>
+    <title>Shops</title>
     <!-- Bootstrap CSS -->
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -28,7 +28,8 @@
     @endif
     <div class="container mt-5">
         <div class="container">
-            <h1 class="my-4">Drivers Details</h1>
+            <h1 class="my-4">Shops Details</h1>
+
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="input-group">
@@ -43,32 +44,22 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Contact No</th>
-                        <th>CNIC</th>
-                        <th>License Number</th>
-                        <th>Route Number</th>
-                        <th>Route Name</th>
-                        <th>Shops</th>
+                        <th>Address</th>
+                        <th>Drivers</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Add your bank data rows here -->
                     @forelse($items as $item)
                         <tr>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->contact_no }}</td>
-                            <td>{{ $item->cnic }}</td>
-                            <td>{{ $item->license }}</td>
-                            <td>{{ $item->route_no }}</td>
-                            <td>{{ $item->route_name }}</td>
+                            <td>{{ $item->address }}</td>
                             <td>TBI</td>
-                            <td><button type="button" class="btn btn-primary">Edit</button></td>
+
                         </tr>
                     @empty
-                        <li class="list-group-item list-group-item-danger">No drivers found.</li>
+                        <li class="list-group-item list-group-item-danger">No shops found.</li>
                     @endforelse
-
                 </tbody>
             </table>
 

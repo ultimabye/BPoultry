@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\VoucherController;
 use App\Models\BankAccount;
@@ -99,6 +101,7 @@ Route::get('/purchaseReceipt', function () {
     return view('purchaseReceipt');
 })->name('purchaseReceipt');
 
+
 Route::get('/addDriver', function () {
     return view('poultry/addDriver');
 });
@@ -106,18 +109,14 @@ Route::get('/updateDriver', function () {
     return view('poultry/updateDriver');
 });
 
-Route::get('/allDrivers', function () {
-    return view('poultry/allDrivers');
-});
+
 Route::get('/addShop', function () {
     return view('poultry/addShop');
 });
 Route::get('/updateShop', function () {
     return view('poultry/updateShop');
 });
-Route::get('/allShops', function () {
-    return view('poultry/allShops');
-});
+
 
 
 
@@ -125,6 +124,17 @@ Route::get('/allShops', function () {
 
 
 Auth::routes();
+
+Route::post('/save-driver', [DriverController::class, 'store']);
+Route::get('/allDrivers',  [DriverController::class, 'index']);
+
+
+Route::post('/save-shop', [ShopController::class, 'store']);
+Route::get('/allShops', [ShopController::class, 'index']);
+
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -29,28 +29,30 @@
     <div class="container mt-5">
         <div class="container">
             <h1 class="my-4">Enter Shop Details</h1>
-            
-            <form>
-              <div class="mb-3">
-                <label for="shop-name" class="form-label">Shop Name</label>
-                <input type="text" class="form-control" id="shop-name" name="shop-name" placeholder="Enter shop name">
-              </div>
-              <div class="mb-3">
-                <label for="shop-address" class="form-label">Shop Address</label>
-                <textarea class="form-control" id="shop-address" name="shop-address" placeholder="Enter shop address"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="drivers-list" class="form-label">Drivers List</label>
-                <select class="form-select" id="drivers-list" name="drivers-list[]" multiple>
-                  <option value="driver-1">Driver 1</option>
-                  <option value="driver-2">Driver 2</option>
-                  <option value="driver-3">Driver 3</option>
-                  <option value="driver-4">Driver 4</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Save</button>
+
+            <form method="post" action="{{ url('save-shop') }}">
+                @csrf
+                <div class="mb-3">
+                    <label for="shop-name" class="form-label">Shop Name</label>
+                    <input type="text" class="form-control" id="shop-name" name="shop_name"
+                        placeholder="Enter shop name">
+                </div>
+                <div class="mb-3">
+                    <label for="shop-address" class="form-label">Shop Address</label>
+                    <textarea class="form-control" id="shop-address" name="shop_address" placeholder="Enter shop address"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="drivers-list" class="form-label">Drivers List</label>
+                    <select class="form-select" id="drivers-list" name="drivers-list[]" multiple>
+                        <option value="driver-1">Driver 1</option>
+                        <option value="driver-2">Driver 2</option>
+                        <option value="driver-3">Driver 3</option>
+                        <option value="driver-4">Driver 4</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
-            
+
         </div>
     </div>
 </body>
