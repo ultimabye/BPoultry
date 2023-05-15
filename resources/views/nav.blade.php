@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2">Ad Group</a>
+      <a class="navbar-brand" href="index2">B. Poultry</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,76 +10,33 @@
             <a class="nav-link active" aria-current="page" href="index2">Home</a>
           </li>
          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sales
+          <li>
+            <a class="nav-link " href="#" id="navbarScrollingDropdown" role="button"  >
+              Reports
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-               <li><a class="dropdown-item" href="newSale">New</a></li>
-              {{-- <li><a class="dropdown-item" href="addSale">New Sale</a></li> --}}
-              <li><a class="dropdown-item" href="allSales">Sales Reports</a></li>
-            </ul>
+            
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Suppliers
+              Drivers
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addSupplier">Add Supplier</a></li>
-              <li><a class="dropdown-item" href="allSuppliers">Suppliers</a></li>
+              <li><a class="dropdown-item" href="addDriver">Add Driver</a></li>
+              <li><a class="dropdown-item" href="allDrivers">Drivers</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Customers
+              Shops
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addCustomer">New Customer</a></li>
-              <li><a class="dropdown-item" href="allCustomers">Customers</a></li>
+              <li><a class="dropdown-item" href="addShop">New Shop</a></li>
+              <li><a class="dropdown-item" href="allShops">Shops</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Products
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addProduct">New Product</a></li>
-              {{-- <li><a class="dropdown-item" href="addPurchase">New Purchase</a></li>
-              <li><a class="dropdown-item" href="allPurchases">Purchases</a></li>
-              <li><a class="dropdown-item" href="allProducts">Available Stock</a></li> --}}
-              
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Expenses
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addExpenses">Add Expense</a></li>
-              <li><a class="dropdown-item" href="allExpenses">All Expenses</a></li>
-            </ul>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Finance
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addBank">Add Bank</a></li>
-              <li><a class="dropdown-item" href="allBanks">Banks</a></li>
-              <li><a class="dropdown-item" href="searchVoucher">Vouchers</a></li>
-            </ul>
-          </li>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Others
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Chuza</a></li>
-              <li><a class="dropdown-item" href="#">Constructions</a></li>
-              <li><a class="dropdown-item" href="#">Property</a></li>
-              <li><a class="dropdown-item" href="#">Hotels</a></li>
-            </ul>
-          </li>
+          
+          
+          
         </ul>
         <form class="d-flex">
          

@@ -99,7 +99,25 @@ Route::get('/purchaseReceipt', function () {
     return view('purchaseReceipt');
 })->name('purchaseReceipt');
 
+Route::get('/addDriver', function () {
+    return view('poultry/addDriver');
+});
+Route::get('/updateDriver', function () {
+    return view('poultry/updateDriver');
+});
 
+Route::get('/allDrivers', function () {
+    return view('poultry/allDrivers');
+});
+Route::get('/addShop', function () {
+    return view('poultry/addShop');
+});
+Route::get('/updateShop', function () {
+    return view('poultry/updateShop');
+});
+Route::get('/allShops', function () {
+    return view('poultry/allShops');
+});
 
 
 
