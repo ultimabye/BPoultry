@@ -102,20 +102,7 @@ Route::get('/purchaseReceipt', function () {
 })->name('purchaseReceipt');
 
 
-Route::get('/addDriver', function () {
-    return view('poultry/addDriver');
-});
-Route::get('/updateDriver', function () {
-    return view('poultry/updateDriver');
-});
 
-
-Route::get('/addShop', function () {
-    return view('poultry/addShop');
-});
-Route::get('/updateShop', function () {
-    return view('poultry/updateShop');
-});
 
 
 
@@ -125,12 +112,34 @@ Route::get('/updateShop', function () {
 
 Auth::routes();
 
-Route::post('/save-driver', [DriverController::class, 'store']);
-Route::get('/allDrivers',  [DriverController::class, 'index']);
 
 
-Route::post('/save-shop', [ShopController::class, 'store']);
-Route::get('/allShops', [ShopController::class, 'index']);
+Route::middleware('auth')->group(function () {
+
+    Route::get('/addDriver', function () {
+        return view('poultry/addDriver');
+    });
+    Route::get('/updateDriver', function () {
+        return view('poultry/updateDriver');
+    });
+
+
+    Route::get('/addShop', function () {
+        return view('poultry/addShop');
+    });
+    Route::get('/updateShop', function () {
+        return view('poultry/updateShop');
+    });
+
+
+    Route::post('/save-driver', [DriverController::class, 'store']);
+    Route::get('/allDrivers',  [DriverController::class, 'index']);
+
+
+    Route::post('/save-shop', [ShopController::class, 'store']);
+    Route::get('/allShops', [ShopController::class, 'index']);
+});
+
 
 
 
