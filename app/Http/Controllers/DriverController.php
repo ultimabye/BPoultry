@@ -42,6 +42,7 @@ class DriverController extends Controller
 
         $driver = new User();
         $driver->name = $request->name;
+        $driver->email = $request->cnic;
         $driver->password = Str::random(6);
         $driver->contact_no = $request->contact_number;
         $driver->cnic = $request->cnic;

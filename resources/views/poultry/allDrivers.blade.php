@@ -59,7 +59,7 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->contact_no }}</td>
                             <td>{{ $item->cnic }}</td>
-                            <td>{{ $item->license }}</td>
+                            <td>{{ $item->license_no }}</td>
                             <td>{{ $item->route_no }}</td>
                             <td>{{ $item->route_name }}</td>
                             <td>TBI</td>
