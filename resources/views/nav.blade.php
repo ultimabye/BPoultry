@@ -34,6 +34,15 @@
               <li><a class="dropdown-item" href="allShops">Shops</a></li>
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contracters
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="addContracter">New Contracter</a></li>
+              <li><a class="dropdown-item" href="allContracters">Contracters</a></li>
+            </ul>
+          </li>
           
           
           

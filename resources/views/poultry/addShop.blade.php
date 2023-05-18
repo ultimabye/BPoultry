@@ -41,15 +41,7 @@
                     <label for="shop-address" class="form-label">Shop Address</label>
                     <textarea class="form-control" id="shop-address" name="shop_address" placeholder="Enter shop address"></textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="drivers-list" class="form-label">Drivers List</label>
-                    <select class="form-select" id="drivers-list" name="drivers-list[]" multiple>
-                        <option value="driver-1">Driver 1</option>
-                        <option value="driver-2">Driver 2</option>
-                        <option value="driver-3">Driver 3</option>
-                        <option value="driver-4">Driver 4</option>
-                    </select>
-                </div>
+                
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
 
