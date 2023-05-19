@@ -104,7 +104,6 @@ Route::get('/purchaseReceipt', function () {
 
 
 
-<<<<<<< HEAD
 Route::get('/addShop', function () {
     return view('poultry/addShop');
 });
@@ -116,8 +115,6 @@ Route::get('/addContracter', function () {
     return view('poultry/addContracter');
 });
 
-=======
->>>>>>> 3c86d4b4618c2fcef8ed071dbcfa4bfe214743de
 
 
 
