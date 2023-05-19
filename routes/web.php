@@ -114,6 +114,9 @@ Route::get('/updateShop', function () {
 Route::get('/addContracter', function () {
     return view('poultry/addContracter');
 });
+Route::get('/allContracters', function () {
+    return view('poultry/allContracters');
+});
 
 
 

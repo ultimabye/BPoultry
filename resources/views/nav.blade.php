@@ -9,13 +9,16 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index2">Home</a>
           </li>
-         
-          <li>
-            <a class="nav-link " href="#" id="navbarScrollingDropdown" role="button"  >
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Reports
             </a>
-            
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Shops Ledger</a></li>
+              <li><a class="dropdown-item" href="#">Contracters Ledger</a></li>
+            </ul>
           </li>
+        
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Drivers

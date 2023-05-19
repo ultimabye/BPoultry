@@ -33,7 +33,7 @@
             <form method="post" action="{{ url('save-shop') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="contracter-name" class="form-label">Shop Name</label>
+                    <label for="contracter-name" class="form-label">Contracter Name</label>
                     <input type="text" class="form-control" id="contracter-name" name="contracter_name"
                         placeholder="Enter contracter name">
                 </div>
