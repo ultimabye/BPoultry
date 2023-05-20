@@ -41,13 +41,6 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>John Doe</td>
-                    <td>1234567890</td>
-                    <td>3</td>
-                    <td>$150.00</td>
-                    <td><button class="btn btn-primary">Pay</button></td>
-                  </tr>
-                  <tr>
                     <td>Jane Smith</td>
                     <td>9876543210</td>
                     <td>2</td>

@@ -14,8 +14,8 @@
               Reports
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Shops Ledger</a></li>
-              <li><a class="dropdown-item" href="#">Contracters Ledger</a></li>
+              <li><a class="dropdown-item" href="shopsReport">Shops Ledger</a></li>
+              <li><a class="dropdown-item" href="contractorsReport">Contractors Ledger</a></li>
             </ul>
           </li>
         
@@ -39,15 +39,13 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Contracters
+              Contractors
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="addContracter">New Contracter</a></li>
-              <li><a class="dropdown-item" href="allContracters">Contracters</a></li>
+              <li><a class="dropdown-item" href="addContractor">New Contractor</a></li>
+              <li><a class="dropdown-item" href="allContractors">Contractors</a></li>
             </ul>
           </li>
-          
-          
           
         </ul>
         <form class="d-flex">

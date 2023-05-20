@@ -26,9 +26,9 @@
             </div>
         @endif
     @endif
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5 ">
         <div class="row">
-            <div class="col-md-6 card">
+            <div class="col-md-6 card pb-2">
                 <h1 class="my-4">Enter Driver Details</h1>
                 <form method="post" action="{{ url('save-driver') }}">
                     @csrf
@@ -61,28 +61,28 @@
             </div>
             <div class="col-md-6 card">
         
-                    <div class="card-body">
-                      <h1 class="card-title">Shops</h1>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option1">
-                        <label class="form-check-label" for="option1">
-                          Option 1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option2">
-                        <label class="form-check-label" for="option2">
-                          Option 2
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option3">
-                        <label class="form-check-label" for="option3">
-                          Option 3
-                        </label>
-                      </div>
-                
-                  </div>
+                <div class="card-body">
+                    <h3 class="card-title mt-5">Shops</h3>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="option1">
+                      <label class="form-check-label" for="option1">
+                        Option 1
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="option2">
+                      <label class="form-check-label" for="option2">
+                        Option 2
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="option3">
+                      <label class="form-check-label" for="option3">
+                        Option 3
+                      </label>
+                    </div>
+              
+                </div>
             </div>
         </div>
     </div>

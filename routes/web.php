@@ -111,12 +111,26 @@ Route::get('/updateShop', function () {
     return view('poultry/updateShop');
 });
 
-Route::get('/addContracter', function () {
-    return view('poultry/addContracter');
+Route::get('/addContractor', function () {
+    return view('poultry/addContractor');
 });
-Route::get('/allContracters', function () {
-    return view('poultry/allContracters');
+Route::get('/allContractors', function () {
+    return view('poultry/allContractors');
 });
+Route::get('/shopsReport', function () {
+    return view('poultry/shopsReport');
+});
+Route::get('/contractorsReport', function () {
+    return view('poultry/contractorsReport');
+});
+Route::get('/contractorDetails', function () {
+    return view('poultry/contractorDetails');
+});
+Route::get('/shopDetails', function () {
+    return view('poultry/shopDetails');
+});
+
+
 
 
 
