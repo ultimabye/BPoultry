@@ -39,7 +39,7 @@
 
             </div>
 
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -49,13 +49,13 @@
                         <th>Route Number</th>
                         <th>Route Name</th>
                         <th>Shops</th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Add your bank data rows here -->
                     @forelse($items as $item)
-                        <tr>
+                        <tr onclick="window.location='updateDriver'">
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->contact_no }}</td>
                             <td>{{ $item->cnic }}</td>
@@ -63,7 +63,7 @@
                             <td>{{ $item->route_no }}</td>
                             <td>{{ $item->route_name }}</td>
                             <td>TBI</td>
-                            <td><button type="button" class="btn btn-primary">Edit</button></td>
+                            
                         </tr>
                     @empty
                         <li class="list-group-item list-group-item-danger">No drivers found.</li>

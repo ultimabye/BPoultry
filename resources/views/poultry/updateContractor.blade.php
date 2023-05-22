@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Add Shop</title>
+    <title>Update Contractor</title>
     <!-- Bootstrap CSS -->
     @include('cdn')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -29,23 +29,23 @@
     <div class="container mt-5">
         <div class="container">
             <div class="row">
-            <div class="col-md-12 card pb-2">
+            <div class="col-md-6 card pb-2">
                 <h1 class="my-4">Contractor Details</h1>
 
                 <form method="post" action="{{ url('save-shop') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="contracter-name" class="form-label">Contractor Name</label>
-                        <input type="text" class="form-control" id="contracter-name" name="contracter_name"
-                            placeholder="Enter contracter name">
+                        <label for="contractor-name" class="form-label">Contractor Name</label>
+                        <input type="text" class="form-control" id="contractor-name" name="contractor_name"
+                            placeholder="Enter contractor name">
                     </div>
                     <div class="mb-3">
-                        <label for="contracter-phone" class="form-label">Contractor Phone</label>
-                        <input class="form-control" id="contracter-phone" name="contracter_phone" placeholder="Enter contracter phone"></input>
+                        <label for="contractor-phone" class="form-label">Contractor Phone</label>
+                        <input class="form-control" id="contractor-phone" name="contractor_phone" placeholder="Enter contractor phone">
                     </div>
                     <div class="mb-3">
-                        <label for="contracter-address" class="form-label">Contractor Address</label>
-                        <textarea class="form-control" id="contracter-address" name="contracter_address" placeholder="Enter contracter address"></textarea>
+                        <label for="contractor-address" class="form-label">Contractor Address</label>
+                        <textarea class="form-control" id="contractor-address" name="contractor_address" placeholder="Enter contractor address"></textarea>
                     </div>
     
                     
@@ -54,7 +54,7 @@
                 </form>
     
             </div>
-            {{-- <div class="col-md-6 card">
+            <div class="col-md-6 card">
                 <div class="card-body">
                     <h3 class="card-title mt-5">Shops</h3>
                     <div class="form-check">
@@ -76,7 +76,7 @@
                       </label>
                     </div>
               
-                </div> --}}
+                </div>
 
             </div>
             </div>

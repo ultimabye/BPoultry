@@ -129,6 +129,16 @@ Route::get('/contractorDetails', function () {
 Route::get('/shopDetails', function () {
     return view('poultry/shopDetails');
 });
+Route::get('/updateContractor', function () {
+    return view('poultry/updateContractor');
+});
+Route::get('/updateDriver', function () {
+    return view('poultry/updateDriver');
+});
+
+
+
+
 
 
 

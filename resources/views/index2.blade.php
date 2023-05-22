@@ -16,56 +16,93 @@
 <body>
     @include('nav')
     <body>
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md-3">
-              <a href="allSales" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Sales</h2>
-                  <p class="lead mb-0">500</p>
-                </div>
-                <span><i class="fa-solid fa-cart-shopping-fast"></i></span>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="allPurchases" class="btn btn-success btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Purchases</h2>
-                  <p class="lead mb-0">1000</p>
-                </div>
-                <span ></span>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="allProducts" class="btn btn-secondary btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Products</h2>
-                  <p class="lead mb-0">250</p>
-                </div>
-                <span><i class="fa-solid fa-user"></i></span>
-              </a>
-            </div>
-            
-            <div class="col-md-3">
-              <a href="allSuppliers" class="btn btn-danger btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Suppliers</h2>
-                  <p class="lead mb-0">50</p>
-                </div>
-                <span></span>
-              </a>
-            </div>
-            <div class="col-md-3 mt-3">
-              <a href="allCustomers" class="btn btn-warning btn-lg d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>All Customers</h2>
-                  <p class="lead mb-0">$10,000</p>
-                </div>
-                <span ></span>
-              </a>
+    
+      <div class="container">
+        <div class="row mb-3 mt-5">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Company Details</h5>
+                <p class="card-text">
+                  Company Name: ABC Corporation<br>
+                  Address: 123 Main Street, City<br>
+                  Phone: (123) 456-7890<br>
+                  Email: info@abccorp.com
+                </p>
+              </div>
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Today's Rate</h5>
+                <p class="card-text">20</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Total Collection Today</h5>
+                <p class="card-text">200Kg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Daily Collection</h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Header 1</th>
+                      <th>Header 2</th>
+                      <th>Header 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Data 1</td>
+                      <td>Data 2</td>
+                      <td>Data 3</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Monthly collection</h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Header 1</th>
+                      <th>Header 2</th>
+                      <th>Header 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Data 1</td>
+                      <td>Data 2</td>
+                      <td>Data 3</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </body>
 

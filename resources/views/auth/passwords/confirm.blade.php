@@ -1,3 +1,6 @@
+@include('cdn')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
 @extends('layouts.app')
 
 @section('content')
