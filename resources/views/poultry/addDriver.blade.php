@@ -69,9 +69,16 @@
 
                     <h3 class="card-title mt-5">Shops</h3>
                     @forelse(App\Models\Shop::all() as $shop)
-                        <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
-                            value="{{ $shop->id }}"> {{ $shop->name }}
-                        <br>
+                        @if (!is_null($shop->driver))
+                            <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
+                                value="{{ $shop->id }}"> {{ $shop->name }}
+                            {{-- Show assigned driver name here. --}}
+                            <br>
+                        @else
+                            <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
+                                value="{{ $shop->id }}"> {{ $shop->name }}
+                            <br>
+                        @endif
                     @empty
                         <li class="list-group-item list-group-item-danger">No shops found.</li>
                     @endforelse

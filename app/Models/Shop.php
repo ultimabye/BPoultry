@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Shop extends Model
 {
@@ -38,6 +39,30 @@ class Shop extends Model
             "id",
         );
     }
+
+
+
+    // public function driver()
+    // {
+    //     return $this->hasOneThrough(
+    //         User::class,
+    //         ShopDriverPivot::class,
+    //         "driver_id",
+    //         "id"
+    //     );
+    // }
+
+
+
+    // public function driver(): HasOneThrough
+    // {
+    //     return $this->hasOneThrough(
+    //         User::class,
+    //         ShopDriverPivot::class,
+    //         "driver_id",
+    //         "id"
+    //     );
+    // }
 
 
 
