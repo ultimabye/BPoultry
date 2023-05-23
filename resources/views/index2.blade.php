@@ -38,7 +38,9 @@
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title">Today's Rate</h5>
+                
                 <p class="card-text">20</p>
+                <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
 
               </div>
             </div>
@@ -105,5 +107,33 @@
       </div>
 
 </body>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form method="post" action="{{ url('save-contractor-payment') }}">
+              @csrf
+              <div class="modal-header">
+                  <h5 class="modal-title" id="paymentModalLabel">Change Rate</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="mb-3">
+                      <label for="amount" class="form-label">Amount</label>
+                      <input type="text" class="form-control" id="amount" name="amount"
+                          placeholder="Enter amount">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<!-- End Payment Modal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
