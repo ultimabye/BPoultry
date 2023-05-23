@@ -83,9 +83,6 @@ class ContractorController extends Controller
             return back()->withInput();
         }
 
-
-        $item = new Contractor();
-
         if ($request->id) {
             $item = Contractor::where('id', '=', $request->id)->first();
             if ($request->name) {

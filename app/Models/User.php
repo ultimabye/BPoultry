@@ -55,4 +55,18 @@ class User extends Authenticatable
             "shop_id"
         );
     }
+
+
+    public function isHandlingShop($shopId): bool
+    {
+        info("searching for shop=" . $shopId . "driver=" . $this->id);
+        $pivot = ShopDriverPivot::where("shop_id", $shopId)
+            ->where("driver_id", $this->id)->first();
+        //info("pivot for " . $pivot->shop_id);
+        if ($pivot != null) {
+            info("found for shop=" . $shopId . "driver=" . $this->id);
+            return true;
+        }
+        return false;
+    }
 }

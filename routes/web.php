@@ -174,10 +174,17 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/save-driver', [DriverController::class, 'store']);
     Route::get('/allDrivers',  [DriverController::class, 'index']);
+    Route::get(
+        '/drivers/{id}/edit',
+        [DriverController::class, 'viewDriver']
+    )->name('view-driver');
+    Route::post('/update-driver', [DriverController::class, 'update']);
 
 
     Route::post('/save-shop', [ShopController::class, 'store']);
     Route::get('/allShops', [ShopController::class, 'index']);
+
+
 
     Route::post('/save-contractor', [ContractorController::class, 'store']);
     Route::post('/update-contractor', [ContractorController::class, 'update']);
