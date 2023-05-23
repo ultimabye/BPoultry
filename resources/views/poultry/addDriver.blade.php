@@ -56,32 +56,43 @@
                         <label for="route-name" class="form-label">Route Name</label>
                         <input type="text" class="form-control" id="route-name" name="route_name" required>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="password" name="password" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="repeat_password" class="form-label">Repeat Password</label>
+                        <input type="text" class="form-control" id="repeat_password" name="repeat_password" required>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
             <div class="col-md-6 card">
-        
+
                 <div class="card-body">
                     <h3 class="card-title mt-5">Shops</h3>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="option1">
-                      <label class="form-check-label" for="option1">
-                        Option 1
-                      </label>
+                        <input class="form-check-input" type="checkbox" value="" id="option1">
+                        <label class="form-check-label" for="option1">
+                            Option 1
+                        </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="option2">
-                      <label class="form-check-label" for="option2">
-                        Option 2
-                      </label>
+                        <input class="form-check-input" type="checkbox" value="" id="option2">
+                        <label class="form-check-label" for="option2">
+                            Option 2
+                        </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="option3">
-                      <label class="form-check-label" for="option3">
-                        Option 3
-                      </label>
+                        <input class="form-check-input" type="checkbox" value="" id="option3">
+                        <label class="form-check-label" for="option3">
+                            Option 3
+                        </label>
                     </div>
-              
+
                 </div>
             </div>
         </div>

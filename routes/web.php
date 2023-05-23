@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShopPaymentController;
@@ -196,6 +197,8 @@ Route::middleware('auth')->group(function () {
         [ContractorController::class, 'viewContractor']
     )->name('view-contractor');
     Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
+
+    Route::post('save-todays-rate', [RateController::class, 'store']);
 });
 
 

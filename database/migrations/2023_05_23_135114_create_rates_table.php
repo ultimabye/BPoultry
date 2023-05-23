@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("amount");
             $table->timestamps();
         });
     }

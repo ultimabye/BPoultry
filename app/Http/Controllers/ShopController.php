@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +21,14 @@ class ShopController extends Controller
         }
         return view('poultry/allShops', compact('items'));
     }
+
+
+
+    public function driverShops(Request $request, $driverId)
+    {
+        return Auth::user()->shops;
+    }
+
 
 
     public function store(Request $request)

@@ -32,7 +32,9 @@ class DriverController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
             'contact_number' => 'required|string|max:255',
-            'cnic' => 'required|string|max:255'
+            'cnic' => 'required|string|max:255',
+            'password' => 'required|min:5|string|max:255',
+            'repeat_password' => 'required|min:5|string|max:255'
         ]);
 
         if ($validator->fails()) {
@@ -41,11 +43,16 @@ class DriverController extends Controller
             return back()->withInput();
         }
 
+        if ($request->password != $request->repeat_password) {
+            Session::flash('status', "error");
+            Session::flash('status-message', "Password does not match!");
+            return back()->withInput();
+        }
 
         $driver = new User();
         $driver->name = $request->name;
         $driver->email = $request->cnic;
-        $driver->password = Str::random(6);
+        $driver->password = Hash::make($request->password);
         $driver->contact_no = $request->contact_number;
         $driver->cnic = $request->cnic;
         $driver->license_no = $request->license;
