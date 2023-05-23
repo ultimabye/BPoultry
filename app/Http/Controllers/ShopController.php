@@ -54,4 +54,51 @@ class ShopController extends Controller
         Session::flash('status-message', 'Shop details saved successfully.');
         return back()->withInput();
     }
+
+
+    public function viewShop(Request $request, $id)
+    {
+        if ($id) {
+            $item = Shop::where('id', '=', $id)->first();
+            return view('poultry/updateShop', compact('item'));
+        }
+        Session::flash('status', "error");
+        Session::flash('status-message', "No shop found with given id:" . $id);
+        return back()->withInput();
+    }
+
+
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string|min:1|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            Session::flash('status', "error");
+            Session::flash('status-message', $validator->messages()->first());
+            return back()->withInput();
+        }
+
+        if ($request->id) {
+            $item = Shop::where('id', '=', $request->id)->first();
+            if ($request->name) {
+                $item->name = $request->name;
+            }
+
+            if ($request->address) {
+                $item->address = $request->address;
+            }
+
+            $item->save();
+            Session::flash('status', "success");
+            Session::flash('status-message', 'Shop updated successfully.');
+            return back()->withInput();
+        }
+
+        Session::flash('status', "error");
+        Session::flash('status-message', "No shop found with given id:" . $request->id);
+        return back()->withInput();
+    }
 }

@@ -13,6 +13,7 @@ class ContractorPaymentController extends Controller
     {
         if ($request->type == "cash") {
             $validator = Validator::make($request->all(), [
+                'contractor_id' => 'required|integer',
                 'amount' => 'required|integer',
                 'type' => 'required|string|max:255',
             ]);
@@ -24,6 +25,7 @@ class ContractorPaymentController extends Controller
             }
         } else if ($request->type == "cheque") {
             $validator = Validator::make($request->all(), [
+                'contractor_id' => 'required|integer',
                 'amount' => 'required|integer',
                 'type' => 'required|string|max:255',
                 'cheque_no' => 'required|string|max:255',
@@ -43,6 +45,7 @@ class ContractorPaymentController extends Controller
 
 
         $item = new ContractorPayment();
+        $item->contractor_id = $request->contractor_id;
         $item->cheque_no = $request->cheque_no;
         $item->amount = $request->amount;
         $item->type = $request->type;

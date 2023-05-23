@@ -58,8 +58,27 @@ class DriverController extends Controller
         $driver->license_no = $request->license;
         $driver->route_no = $request->route_number;
         $driver->route_name = $request->route_name;
-
         $driver->save();
+        if ($request->shops) {
+            if (!empty($request->shops)) {
+                //delete all previous pivots
+                $pivots = ShopDriverPivot::where("driver_id", $driver->id);
+                $pivots->delete();
+                //save all pivots.
+                foreach ($request->shops as $shop) {
+                    $pivot = ShopDriverPivot::where("shop_id", $shop)
+                        ->where("driver_id", $driver->id)->first();
+                    if ($pivot === null) {
+                        $pivot = ShopDriverPivot::create([
+                            "shop_id" => $shop,
+                            "driver_id" => $driver->id
+                        ]);
+                    }
+                }
+            }
+        }
+        $driver->save();
+        
         Session::flash('status', "success");
         Session::flash('status-message', 'Driver details saved successfully.');
         return back()->withInput();

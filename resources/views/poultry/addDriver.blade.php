@@ -67,34 +67,20 @@
                         <input type="text" class="form-control" id="repeat_password" name="repeat_password" required>
                     </div>
 
+                    <h3 class="card-title mt-5">Shops</h3>
+                    @forelse(App\Models\Shop::all() as $shop)
+                        <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
+                            value="{{ $shop->id }}"> {{ $shop->name }}
+                        <br>
+                    @empty
+                        <li class="list-group-item list-group-item-danger">No shops found.</li>
+                    @endforelse
+
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
-            <div class="col-md-6 card">
 
-                <div class="card-body">
-                    <h3 class="card-title mt-5">Shops</h3>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option1">
-                        <label class="form-check-label" for="option1">
-                            Option 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option2">
-                        <label class="form-check-label" for="option2">
-                            Option 2
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="option3">
-                        <label class="form-check-label" for="option3">
-                            Option 3
-                        </label>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
 </body>

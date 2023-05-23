@@ -173,6 +173,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/updateShop', function () {
         return view('poultry/updateShop');
     });
+    Route::get(
+        '/shops/{id}/edit',
+        [ShopController::class, 'viewShop']
+    )->name('view-shop');
+    Route::post('/update-shop', [ShopController::class, 'update']);
+
+
 
 
     Route::post('/save-driver', [DriverController::class, 'store']);
