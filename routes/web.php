@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\ContractorController;
+use App\Http\Controllers\ContractorPaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ShopPaymentController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\VoucherController;
 use App\Models\BankAccount;
@@ -183,7 +185,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/save-shop', [ShopController::class, 'store']);
     Route::get('/allShops', [ShopController::class, 'index']);
-
+    Route::post('save-shop-payment', [ShopPaymentController::class, 'store']);
 
 
     Route::post('/save-contractor', [ContractorController::class, 'store']);
@@ -193,6 +195,7 @@ Route::middleware('auth')->group(function () {
         '/contractors/{id}/edit',
         [ContractorController::class, 'viewContractor']
     )->name('view-contractor');
+    Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
 });
 
 
