@@ -64,6 +64,7 @@
                             <td>{{ $item->license_no }}</td>
                             <td>{{ $item->route_no }}</td>
                             <td>{{ $item->route_name }}</td>
+                            {{-- <td>{{ $item->shops()->toSql() }}</td> --}}
                             <td>
 
                                 @forelse($item->shops as $shop)

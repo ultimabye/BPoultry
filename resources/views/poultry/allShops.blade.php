@@ -59,8 +59,12 @@
                             <td>Rs. {{ $item->getTotalBilled() }}</td>
                             <td>Rs. {{ $item->getAmountPaid() }}</td>
                             <td>Rs. {{ $item->getAmountDue() }}</td>
+                            
+                            @if ($item->getAmountDue() > 0)
                             <td><button class="btn btn-primary " data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal">Pay</button></td>
+                                data-bs-target="#paymentModal">Pay</button></td>
+                            @endif
+
                             <td><button class="btn btn-primary "
                                     onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'">Edit</button>
                             </td>
