@@ -27,28 +27,45 @@
         @endif
     @endif
     <div class="container mt-5">
-        <h1 class="my-4">Contractors Details</h1>
+        <h1 class="my-4">Contractors</h1>
         <div class="container">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Phone</th>
+                        <th>Address</th>
                         <th>Shops</th>
                         <th>Total Amount</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Jane Smith</td>
-                        <td>9876543210</td>
-                        <td>2</td>
-                        <td>$100.00</td>
-                        <td><button class="btn btn-primary " data-bs-toggle="modal"
-                                data-bs-target="#paymentModal">Pay</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
+                    @forelse($items as $item)
+                        <tr>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->phone_number }}</td>
+                            <td>{{ $item->address }}</td>
+                            <td>
+
+                                @forelse($item->shops as $shop)
+                                    <li>{{ $shop->name }}</li>
+
+
+                                @empty
+                                    <li class="list-group-item list-group-item-danger">No shops found.</li>
+                                @endforelse
+
+                            </td>
+                            <td><button class="btn btn-primary " data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal">Pay</button></td>
+                            <td><a href="{{ URL::route('view-contractor', ['id' => $item->id]) }}"
+                                    class="btn btn-xs btn-info pull-right">Edit</a></td>
+
+                        </tr>
+                    @empty
+                        <li class="list-group-item list-group-item-danger">No contractors found.</li>
+                    @endforelse
                 </tbody>
             </table>
         </div>

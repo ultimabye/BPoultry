@@ -49,7 +49,7 @@
                         <th>Route Number</th>
                         <th>Route Name</th>
                         <th>Shops</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -62,8 +62,18 @@
                             <td>{{ $item->license_no }}</td>
                             <td>{{ $item->route_no }}</td>
                             <td>{{ $item->route_name }}</td>
-                            <td>TBI</td>
-                            
+                            <td>
+
+                                @forelse($item->shops as $shop)
+                                    <li>{{ $shop->name }}</li>
+
+
+                                @empty
+                                    <li class="list-group-item list-group-item-danger">No shops found.</li>
+                                @endforelse
+                                
+                            </td>
+
                         </tr>
                     @empty
                         <li class="list-group-item list-group-item-danger">No drivers found.</li>

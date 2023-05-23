@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BankAccountsController;
+use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
@@ -111,12 +112,8 @@ Route::get('/updateShop', function () {
     return view('poultry/updateShop');
 });
 
-Route::get('/addContractor', function () {
-    return view('poultry/addContractor');
-});
-Route::get('/allContractors', function () {
-    return view('poultry/allContractors');
-});
+
+
 Route::get('/shopsReport', function () {
     return view('poultry/shopsReport');
 });
@@ -162,6 +159,11 @@ Route::middleware('auth')->group(function () {
     });
 
 
+    Route::get('/addContractor', function () {
+        return view('poultry/addContractor');
+    });
+
+
     Route::get('/addShop', function () {
         return view('poultry/addShop');
     });
@@ -176,6 +178,14 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/save-shop', [ShopController::class, 'store']);
     Route::get('/allShops', [ShopController::class, 'index']);
+
+    Route::post('/save-contractor', [ContractorController::class, 'store']);
+    Route::post('/update-contractor', [ContractorController::class, 'update']);
+    Route::get('/allContractors', [ContractorController::class, 'index']);
+    Route::get(
+        '/contractors/{id}/edit',
+        [ContractorController::class, 'viewContractor']
+    )->name('view-contractor');
 });
 
 
