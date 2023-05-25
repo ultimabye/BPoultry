@@ -29,36 +29,32 @@
     <div class="container mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 card pb-2">
+                <div class="col-md-12 card pb-2">
                     <h1 class="my-4">Update Contractor</h1>
 
                     <form method="post" action="{{ url('update-contractor') }}">
                         @csrf
                         <input name="id" type="hidden" value="{{ $item->id }}">
-
-                        <div class="mb-3">
-                            <label for="contractor-name" class="form-label">Contractor Name</label>
-                            <input type="text" class="form-control" id="contractor-name" name="name"
-                                placeholder="Enter contractor name" value="{{ $item->name }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="contractor-phone" class="form-label">Contractor Phone</label>
-                            <input class="form-control" id="phone_number" value="{{ $item->phone_number }}"
-                                name="contractor_phone" placeholder="Enter contractor phone">
-                        </div>
-                        <div class="mb-3">
-                            <label for="contractor-address" class="form-label">Contractor Address</label>
-                            <textarea class="form-control" id="contractor-address" name="address" placeholder="Enter contractor address">{{ $item->address }}</textarea>
-                        </div>
-
-
-                        <div class="mt-5"></div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-
-
-                        <div class="col-md-6 card">
-                            <div class="card-body">
-                                <h3 class="card-title mt-5">Shops</h3>
+                    
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="contractor-name" class="form-label">Contractor Name</label>
+                                    <input type="text" class="form-control" id="contractor-name" name="name"
+                                        placeholder="Enter contractor name" value="{{ $item->name }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contractor-phone" class="form-label">Contractor Phone</label>
+                                    <input class="form-control" id="phone_number" value="{{ $item->phone_number }}"
+                                        name="contractor_phone" placeholder="Enter contractor phone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contractor-address" class="form-label">Contractor Address</label>
+                                    <textarea class="form-control" id="contractor-address" name="address" placeholder="Enter contractor address">{{ $item->address }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="card-title mt-4">Shops</h3>
                                 @forelse($shops as $shop)
                                     @if ($item->isManagingShop($shop->id))
                                         <input class="form-check-input" checked type="checkbox" name="shops[]"
@@ -73,9 +69,12 @@
                                     <li class="list-group-item list-group-item-danger">No shops found.</li>
                                 @endforelse
                             </div>
-
                         </div>
+                    
+                        <div class="mt-5"></div>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
+                    
 
                 </div>
 

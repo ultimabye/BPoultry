@@ -8,6 +8,7 @@
     <title>Contracters</title>
     <!-- Bootstrap CSS -->
     @include('cdn')
+    
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script type="text/javascript" src="{{ asset('js/customJavaScript.js') }}"></script>
 
@@ -36,7 +37,7 @@
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Shops</th>
-                        <th>Total Amount</th>
+                        
                         <th></th>
                     </tr>
                 </thead>
@@ -49,22 +50,23 @@
                             <td>
 
                                 @forelse($item->shops as $shop)
-                                    <li>{{ $shop->name }}</li>
+                                    <li class="list-group-item">{{ $shop->name }}</li>
 
 
                                 @empty
-                                    <li class="list-group-item list-group-item-danger">No shops found.</li>
+                                    <li class="list-group-item">No shops found.</li>
                                 @endforelse
 
                             </td>
-                            <td><button class="btn btn-primary " data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal">Pay</button></td>
+                           
+                            <td><button class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal"> <i class="fa-solid fa-dollar-sign"></i></button></td>
                             <td><a href="{{ URL::route('view-contractor', ['id' => $item->id]) }}"
-                                    class="btn btn-xs btn-info pull-right">Edit</a></td>
+                                    class="btn"><i class="fa-solid fa-pen-to-square"></i></a></td>
 
                         </tr>
                     @empty
-                        <li class="list-group-item list-group-item-danger">No contractors found.</li>
+                        <li class="list-group-item">No contractors found.</li>
                     @endforelse
                 </tbody>
             </table>
@@ -113,7 +115,6 @@
         </div>
     </div>
     <!-- End Payment Modal -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         // Handle dropdown change event

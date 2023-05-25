@@ -68,18 +68,18 @@
                             <td>
 
                                 @forelse($item->shops as $shop)
-                                    <li>{{ $shop->name }}</li>
+                                    <li class="list-group-item">{{ $shop->name }}</li>
 
 
                                 @empty
-                                    <li class="list-group-item list-group-item-danger">No shops found.</li>
+                                    <li class="list-group-item ">No shops found.</li>
                                 @endforelse
 
                             </td>
 
                         </tr>
                     @empty
-                        <li class="list-group-item list-group-item-danger">No drivers found.</li>
+                        <li class="list-group-item ">No drivers found.</li>
                     @endforelse
 
                 </tbody>

@@ -27,7 +27,7 @@
         @endif
     @endif
     <div class="container mt-5">
-        <div class="container">
+        <div class="container card pb-2">
             <h1 class="my-4">Update Shop</h1>
 
             <form method="post" action="{{ url('update-shop') }}">

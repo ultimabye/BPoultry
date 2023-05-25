@@ -24,12 +24,10 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Company Details</h5>
+                            <h5 class="card-title">Bismillah Poultry Feeds</h5>
                             <p class="card-text">
-                                Company Name: ABC Corporation<br>
-                                Address: 123 Main Street, City<br>
-                                Phone: (123) 456-7890<br>
-                                Email: info@abccorp.com
+                                Address: Chak # 36 N. B., 20 KM Kandiwal Road, Sargodha<br>
+                                Phone: 0316 7772034<br>
                             </p>
                         </div>
                     </div>
@@ -41,9 +39,15 @@
                         <div class="card-body">
                             <h5 class="card-title">Today's Rate</h5>
 
-                            <p class="card-text">20</p>
-                            <button class="btn btn-primary " data-bs-toggle="modal"
-                                data-bs-target="#editModal">Edit</button>
+                            <div class="row">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <p class="card-text">20</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                                </div>
+                            </div>
+                            
 
                         </div>
                     </div>
@@ -137,6 +141,5 @@
         </div>
     </div>
     <!-- End Payment Modal -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

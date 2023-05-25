@@ -27,44 +27,45 @@
         @endif
     @endif
     <div class="container mt-5">
-        <div class="container">
-            <h1 class="my-4">Update Driver</h1>
+        <div class="container card pb-2">
+            <h1 class="my-4 ">Update Driver</h1>
             <form method="post" action="{{ url('update-driver') }}">
                 @csrf
                 <input name="id" type="hidden" value="{{ $item->id }}">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required
-                        value="{{ $item->name }}">
-                </div>
-                <div class="mb-3">
-                    <label for="contact" class="form-label">Contact No</label>
-                    <input type="tel" class="form-control" value="{{ $item->contact_no }}" id="contact"
-                        name="contact_number" required>
-                </div>
-                <div class="mb-3">
-                    <label for="cnic" class="form-label">CNIC</label>
-                    <input type="text" class="form-control" id="cnic" value="{{ $item->cnic }}" name="cnic"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="license" class="form-label">Driver License Number</label>
-                    <input type="text" class="form-control" value="{{ $item->license_no }}" id="license"
-                        name="license_number">
-                </div>
-                <div class="mb-3">
-                    <label for="route-number" class="form-label">Vehicle Route Number</label>
-                    <input type="text" class="form-control" id="route-number" value="{{ $item->route_no }}"
-                        name="route_number" required>
-                </div>
-                <div class="mb-3">
-                    <label for="route-name" class="form-label">Route Name</label>
-                    <input type="text" class="form-control" id="route-name" value="{{ $item->route_name }}"
-                        name="route_name" required>
-                </div>
-
-
-                <h3 class="card-title mt-5">Shops</h3>
+            
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required value="{{ $item->name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact" class="form-label">Contact No</label>
+                            <input type="tel" class="form-control" value="{{ $item->contact_no }}" id="contact"
+                                name="contact_number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cnic" class="form-label">CNIC</label>
+                            <input type="text" class="form-control" id="cnic" value="{{ $item->cnic }}" name="cnic" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="license" class="form-label">Driver License Number</label>
+                            <input type="text" class="form-control" value="{{ $item->license_no }}" id="license"
+                                name="license_number">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="route-number" class="form-label">Vehicle Route Number</label>
+                            <input type="text" class="form-control" id="route-number" value="{{ $item->route_no }}"
+                                name="route_number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="route-name" class="form-label">Route Name</label>
+                            <input type="text" class="form-control" id="route-name" value="{{ $item->route_name }}"
+                                name="route_name" required>
+                        </div>
+                        <h3 class="card-title mt-5">Shops</h3>
                 @forelse($shops as $shop)
                     @if ($item->isHandlingShop($shop->id))
                         <input class="form-check-input" checked type="checkbox" name="shops[]" id="{{ $shop->id }}"
@@ -78,10 +79,14 @@
                 @empty
                     <li class="list-group-item list-group-item-danger">No shops found.</li>
                 @endforelse
-
-
+                    </div>
+                </div>
+            
+                
+            
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
+            
 
         </div>
     </div>

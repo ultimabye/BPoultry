@@ -61,12 +61,12 @@
                             <td>Rs. {{ $item->getAmountDue() }}</td>
                             
                             @if ($item->getAmountDue() > 0)
-                            <td><button class="btn btn-primary " data-bs-toggle="modal"
-                                data-bs-target="#paymentModal">Pay</button></td>
+                            <td><button class="btn" data-bs-toggle="modal"
+                                data-bs-target="#paymentModal"><i class="fa-solid fa-dollar-sign"></i></button></td>
                             @endif
 
-                            <td><button class="btn btn-primary "
-                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'">Edit</button>
+                            <td><button class="btn"
+                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'"><i class="fa-solid fa-pen-to-square"></i></button>
                             </td>
 
 
@@ -120,7 +120,7 @@
                             <!-- End Payment Modal -->
                         </tr>
                     @empty
-                        <li class="list-group-item list-group-item-danger">No shops found.</li>
+                        <li class="">No shops found.</li>
                     @endforelse
                 </tbody>
             </table>
@@ -132,7 +132,6 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         // Handle dropdown change event
