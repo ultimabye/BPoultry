@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rate;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,11 +16,24 @@ class ShopController extends Controller
     {
         $query = $request->search;
         if ($query) {
-            $items = Shop::where('name', 'like', '%' . $query . '%')->get();
+            $items = Shop::doesntHave('contractor')->where('name', 'like', '%' . $query . '%')->get();
         } else {
-            $items = Shop::all();
+            $items = Shop::doesntHave('contractor')->get();
         }
         return view('poultry/allShops', compact('items'));
+    }
+
+
+
+    public function report(Request $request)
+    {
+        $query = $request->search;
+        if ($query) {
+            $items = Shop::doesntHave('contractor')->where('name', 'like', '%' . $query . '%')->get();
+        } else {
+            $items = Shop::doesntHave('contractor')->get();
+        }
+        return view('poultry/shopsReport', compact('items'));
     }
 
 
@@ -36,6 +50,7 @@ class ShopController extends Controller
         $validator = Validator::make($request->all(), [
             'shop_name' => 'required|string|min:1|max:255',
             'shop_address' => 'required|string|max:255',
+            'shop_rate' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -45,11 +60,17 @@ class ShopController extends Controller
         }
 
 
-        $driver = new Shop();
-        $driver->name = $request->shop_name;
-        $driver->address = $request->shop_address;
+        $item = new Shop();
+        $item->name = $request->shop_name;
+        $item->address = $request->shop_address;
 
-        $driver->save();
+        $item->save();
+
+        $shopRate = new Rate();
+        $shopRate->amount = $request->shop_rate;
+        $shopRate->shop_id = $item->id;
+        $shopRate->save();
+
         Session::flash('status', "success");
         Session::flash('status-message', 'Shop details saved successfully.');
         return back()->withInput();
@@ -91,6 +112,13 @@ class ShopController extends Controller
                 $item->address = $request->address;
             }
 
+            if ($request->shop_rate) {
+                $shopRate = new Rate();
+                $shopRate->amount = $request->shop_rate;
+                $shopRate->shop_id = $item->id;
+                $shopRate->save();
+            }
+
             $item->save();
             Session::flash('status', "success");
             Session::flash('status-message', 'Shop updated successfully.');
@@ -99,6 +127,20 @@ class ShopController extends Controller
 
         Session::flash('status', "error");
         Session::flash('status-message', "No shop found with given id:" . $request->id);
+        return back()->withInput();
+    }
+
+
+
+
+    public function shopLedger(Request $request, $id)
+    {
+        if ($id) {
+            $item = Shop::where('id', '=', $id)->first();
+            return view('poultry/shopDetails', compact('item'));
+        }
+        Session::flash('status', "error");
+        Session::flash('status-message', "No shop found with given id:" . $id);
         return back()->withInput();
     }
 }

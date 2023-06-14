@@ -115,20 +115,13 @@ Route::get('/updateShop', function () {
     return view('poultry/updateShop');
 });
 
-
-
-Route::get('/shopsReport', function () {
-    return view('poultry/shopsReport');
-});
 Route::get('/contractorsReport', function () {
     return view('poultry/contractorsReport');
 });
 Route::get('/contractorDetails', function () {
     return view('poultry/contractorDetails');
 });
-Route::get('/shopDetails', function () {
-    return view('poultry/shopDetails');
-});
+
 Route::get('/updateContractor', function () {
     return view('poultry/updateContractor');
 });
@@ -194,6 +187,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-shop', [ShopController::class, 'store']);
     Route::get('/allShops', [ShopController::class, 'index']);
     Route::post('save-shop-payment', [ShopPaymentController::class, 'store']);
+    Route::get('/shopsReport', [ShopController::class, 'report']);
+    Route::get('/shop/{id}/detail', [ShopController::class, 'shopLedger']);
 
 
     Route::post('/save-contractor', [ContractorController::class, 'store']);
@@ -204,8 +199,6 @@ Route::middleware('auth')->group(function () {
         [ContractorController::class, 'viewContractor']
     )->name('view-contractor');
     Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
-
-    Route::post('save-todays-rate', [RateController::class, 'store']);
 });
 
 

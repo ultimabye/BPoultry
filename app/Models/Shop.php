@@ -19,6 +19,34 @@ class Shop extends Model
     ];
 
 
+    public function contractor(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Contractor::class,
+            ShopContractorPivot::class,
+            "shop_id",
+            "id",
+            "id",
+            "contractor_id"
+        );
+    }
+
+
+
+    public function driver(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            User::class,
+            ShopDriverPivot::class,
+            "shop_id",
+            "id",
+            "id",
+            "driver_id"
+        );
+    }
+
+
+
 
     public function totalCollections(): HasMany
     {
@@ -42,27 +70,23 @@ class Shop extends Model
 
 
 
-    // public function driver()
-    // {
-    //     return $this->hasOneThrough(
-    //         User::class,
-    //         ShopDriverPivot::class,
-    //         "driver_id",
-    //         "id"
-    //     );
-    // }
+    public function rates(): HasMany
+    {
+        return $this->hasMany(
+            Rate::class,
+            "shop_id",
+            "id",
+        )->orderBy('updated_at', 'DESC');
+    }
 
 
 
-    // public function driver(): HasOneThrough
-    // {
-    //     return $this->hasOneThrough(
-    //         User::class,
-    //         ShopDriverPivot::class,
-    //         "driver_id",
-    //         "id"
-    //     );
-    // }
+
+    public function latestRate()
+    {
+        return $this->rates()->first()->amount;
+    }
+
 
 
 

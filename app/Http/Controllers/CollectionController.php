@@ -29,7 +29,7 @@ class CollectionController extends Controller
             $item->shop_id = $request->shop_id;
             $item->collection_amount = $request->collection_amount;
 
-            $todaysRate = Rate::orderBy('updated_at', 'DESC')->first();
+            $todaysRate = $shop->rates()->first();
 
             if ($todaysRate) {
                 $item->rate_id = $todaysRate->id;

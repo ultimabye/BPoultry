@@ -44,9 +44,12 @@
                     <tr>
                         <th>Name</th>
                         <th>Address</th>
+                        <th>Driver</th>
+                        <th>Rate (PKR)</th>
                         <th>Total Billed</th>
                         <th>Amount Paid</th>
                         <th>Amount Due</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -56,17 +59,26 @@
                         <tr>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->address }}</td>
+
+                            @if (!is_null($item->driver))
+                                <td>{{ $item->driver->name }}</td>
+                            @else
+                                <td>---</td>
+                            @endif
+
+                            <td>Rs. {{ $item->latestRate() }}</td>
                             <td>Rs. {{ $item->getTotalBilled() }}</td>
                             <td>Rs. {{ $item->getAmountPaid() }}</td>
                             <td>Rs. {{ $item->getAmountDue() }}</td>
-                            
+
                             @if ($item->getAmountDue() > 0)
-                            <td><button class="btn" data-bs-toggle="modal"
-                                data-bs-target="#paymentModal"><i class="fa-solid fa-dollar-sign"></i></button></td>
+                                <td><button class="btn" data-bs-toggle="modal" data-bs-target="#paymentModal"><i
+                                            class="fa-solid fa-dollar-sign"></i></button></td>
                             @endif
 
                             <td><button class="btn"
-                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'"><i
+                                        class="fa-solid fa-pen-to-square"></i></button>
                             </td>
 
 

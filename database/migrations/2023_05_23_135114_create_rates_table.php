@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("shop_id");
+
+            $table->foreign("shop_id")
+                ->references("id")
+                ->on("shops")
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->unsignedBigInteger("amount");
             $table->timestamps();
         });
