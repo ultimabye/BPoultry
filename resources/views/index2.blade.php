@@ -44,10 +44,11 @@
                                     <p class="card-text">20</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#editModal"><i
+                                            class="fa-solid fa-pen-to-square"></i></button>
                                 </div>
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -56,7 +57,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Total Collection Today</h5>
-                            <p class="card-text">200Kg</p>
+                            <p class="card-text">{{ $data->totalToday }} KG</p>
                         </div>
                     </div>
                 </div>
@@ -65,22 +66,28 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Daily Collection</h5>
+                            <h5 class="card-title">Collection (Today)</h5>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Header 1</th>
-                                        <th>Header 2</th>
-                                        <th>Header 3</th>
+                                        <th>Time</th>
+                                        <th>Shop</th>
+                                        <th>Driver</th>
+                                        <th>Quantity (KGs)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Data 1</td>
-                                        <td>Data 2</td>
-                                        <td>Data 3</td>
-                                    </tr>
-                                    <!-- Add more rows as needed -->
+                                    @forelse($data->todaysCollection as $tCollection)
+                                        <tr>
+                                            <td>{{ date('h:i A', strtotime($tCollection->created_at)) }}</td>
+                                            <td>{{ $tCollection->shop->name }}</td>
+                                            <td>{{ $tCollection->driver->name }}</td>
+                                            <td>{{ $tCollection->collection_amount }}</td>
+
+                                        </tr>
+                                    @empty
+                                        <li class="">No data found.</li>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

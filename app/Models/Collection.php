@@ -18,4 +18,25 @@ class Collection extends Model
             "rate_id"
         );
     }
+
+
+
+    public function shop()
+    {
+        return $this->hasOne(
+            Shop::class,
+            "id",
+            "shop_id"
+        );
+    }
+
+
+    public function driver()
+    {
+        return $this->hasOne(
+            User::class,
+            "id",
+            "driver_id"
+        );
+    }
 }

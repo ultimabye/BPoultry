@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
+use App\Models\CollectionData;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = new CollectionData();
+
+        $todaysCollections = Collection::whereDate('created_at', Carbon::today())
+            ->orderBy("created_at", "DESC")->get();
+
+        $data->todaysCollection = $todaysCollections;
+
+        $totalToday = 0;
+        foreach ($todaysCollections as $tCollection) {
+            $totalToday += $tCollection->collection_amount;
+        }
+
+        $data->totalToday = $totalToday;
+        return view('index2', compact("data"));
     }
 }

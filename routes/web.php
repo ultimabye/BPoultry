@@ -6,6 +6,7 @@ use App\Http\Controllers\ContractorPaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -60,9 +61,7 @@ Route::get('/addSupplier', function () {
 Route::get('/addSale', function () {
     return view('addSale');
 });
-Route::get('/index2', function () {
-    return view('index2');
-});
+
 
 Route::get('/saleSuccess', function () {
     return view('saleSuccess');
@@ -146,6 +145,10 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/index2',  [HomeController::class, 'index']);
+
+
 
     Route::get('/addDriver', function () {
         return view('poultry/addDriver');
