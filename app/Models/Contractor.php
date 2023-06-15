@@ -57,30 +57,49 @@ class Contractor extends Model
 
     public function getTotalBilled()
     {
-
         $totalAmount = 0;
-
         foreach ($this->shops as $shop) {
             $totalAmount += $shop->getTotalBilled();
         }
-
         return $totalAmount;
     }
+
+
+    public function getTotalBilledTill($date)
+    {
+        $totalAmount = 0;
+        foreach ($this->shops as $shop) {
+            $totalAmount += $shop->getTotalBilledTill($date);
+        }
+        return $totalAmount;
+    }
+
 
 
 
     public function getAmountPaid()
     {
         $payments = $this->allPayments;
-
         $totalPaid = 0;
-
         foreach ($payments as $payment) {
             $totalPaid += $payment->amount;
         }
-
         return $totalPaid;
     }
+
+
+
+    public function getAmountPaidTill($date)
+    {
+        $payments = $this->allPayments()->where("created_at", "<=", $date)->get();
+        $totalPaid = 0;
+        foreach ($payments as $payment) {
+            $totalPaid += $payment->amount;
+        }
+        return $totalPaid;
+    }
+
+
 
 
 
@@ -88,6 +107,17 @@ class Contractor extends Model
     {
         $totalAmount = $this->getTotalBilled();
         $totalPaid = $this->getAmountPaid();
+        $amountDue = $totalAmount - $totalPaid;
+
+        return $amountDue;
+    }
+
+
+
+    public function getAmountDueTill($date)
+    {
+        $totalAmount = $this->getTotalBilledTill($date);
+        $totalPaid = $this->getAmountPaidTill($date);
         $amountDue = $totalAmount - $totalPaid;
 
         return $amountDue;

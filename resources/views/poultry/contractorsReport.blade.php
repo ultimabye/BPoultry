@@ -30,36 +30,35 @@
         <h1 class="my-4">Contractors Details</h1>
         <div class="container">
 
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Total Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr onclick="window.location='contractorDetails'">
-              <td>Person</td>
-              <td>123-456-7890</td>
-              <td>123 Main St</td>
-              <td>$100.00</td>
-            </tr>
-            <tr onclick="window.location='contractorDetails'">
-              <td>Person 2</td>
-              <td>987-654-3210</td>
-              <td>456 Elm St</td>
-              <td>$150.00</td>
-            </tr>
-            <!-- Add more table rows as needed -->
-          </tbody>
-        </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Total Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($items as $item)
+                        <tr onclick="window.location='contractor/{{ $item->id }}/detail'">
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->phone_number }}</td>
+
+                            <td>{{ $item->address }}</td>
+
+                            <td>Rs. {{ $item->getAmountDue() }}</td>
+                        </tr>
+                    @empty
+                        <li class="">No data found.</li>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-      </div>
-    
     </div>
-    
+
+    </div>
+
 </body>
 
 </html>

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ContractorPayment extends Model
 {
     use HasFactory;
+
+    public function isCollection() {
+        return false;
+    }
 }

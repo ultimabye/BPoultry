@@ -114,12 +114,7 @@ Route::get('/updateShop', function () {
     return view('poultry/updateShop');
 });
 
-Route::get('/contractorsReport', function () {
-    return view('poultry/contractorsReport');
-});
-Route::get('/contractorDetails', function () {
-    return view('poultry/contractorDetails');
-});
+
 
 Route::get('/updateContractor', function () {
     return view('poultry/updateContractor');
@@ -194,6 +189,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/shop/{id}/detail', [ShopController::class, 'shopLedger']);
 
 
+
     Route::post('/save-contractor', [ContractorController::class, 'store']);
     Route::post('/update-contractor', [ContractorController::class, 'update']);
     Route::get('/allContractors', [ContractorController::class, 'index']);
@@ -201,6 +197,9 @@ Route::middleware('auth')->group(function () {
         '/contractors/{id}/edit',
         [ContractorController::class, 'viewContractor']
     )->name('view-contractor');
+    Route::get('/contractorsReport', [ContractorController::class, 'report']);
+    Route::get('/contractor/{id}/detail', [ContractorController::class, 'ledger']);
+
     Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
 });
 

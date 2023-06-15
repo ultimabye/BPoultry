@@ -96,9 +96,7 @@
                                         <td>{{ $item->amount }}</td>
                                         <td>{{ $shop->getAmountDueTill($item->created_at) }}</td>
                                     @endif
-                                    {{-- <td>{{ $tCollection->shop->name }}</td>
-                                <td>{{ $tCollection->driver->name }}</td>
-                                <td>{{ $tCollection->collection_amount }}</td> --}}
+
 
                                 </tr>
                             @empty

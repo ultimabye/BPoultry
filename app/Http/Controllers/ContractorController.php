@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
 use App\Models\Contractor;
+use App\Models\ContractorPayment;
 use App\Models\Shop;
 use App\Models\ShopContractorPivot;
+use App\Models\ShopPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -124,6 +127,46 @@ class ContractorController extends Controller
 
         Session::flash('status', "error");
         Session::flash('status-message', "No contractor found with given id:" . $request->id);
+        return back()->withInput();
+    }
+
+
+
+    public function report(Request $request)
+    {
+        $query = $request->search;
+        if ($query) {
+            $items = Contractor::where('name', 'like', '%' . $query . '%')->get();
+        } else {
+            $items = Contractor::all();
+        }
+        return view('poultry/contractorsReport', compact('items'));
+    }
+
+
+
+    public function ledger(Request $request, $id)
+    {
+        if ($id) {
+            $contractor = Contractor::where('id', '=', $id)->first();
+
+            $items = null;
+            $payments = ContractorPayment::where("contractor_id", $contractor->id)
+                ->orderBy("created_at", "ASC")->get();
+
+            $shops = $contractor->shops;
+            foreach ($shops as $shop) {
+                $collections = Collection::where("shop_id", $shop->id)
+                    ->orderBy("created_at", "ASC")->get();
+                $items = $payments->merge($collections)->sortBy('created_at');
+            }
+
+            //return $items;
+
+            return view('poultry/contractorDetails', compact('contractor', 'items'));
+        }
+        Session::flash('status', "error");
+        Session::flash('status-message', "No shop found with given id:" . $id);
         return back()->withInput();
     }
 }
