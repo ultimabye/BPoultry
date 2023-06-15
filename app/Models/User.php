@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -57,6 +60,18 @@ class User extends Authenticatable
     }
 
 
+
+    public function collections(): HasMany
+    {
+        return $this->HasMany(
+            Collection::class,
+            "driver_id",
+            "id"
+        );
+    }
+
+
+
     public function isHandlingShop($shopId): bool
     {
         info("searching for shop=" . $shopId . "driver=" . $this->id);
@@ -68,5 +83,30 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+
+
+    public function totalCollectionInCurrentMonth()
+    {
+        $totalCollection = 0;
+        foreach ($this->collections as $collection) {
+            $totalCollection += $collection->collection_amount;
+        }
+        return $totalCollection;
+    }
+
+
+
+    public function noOfShopsCollectedFrom()
+    {
+        $shopsIds = [];
+        $start = Carbon::now()->startOfMonth();
+        $end = Carbon::now();
+        $collectionsInThisMonth = $this->collections()->whereBetween('created_at', [$start, $end])->get();
+        foreach ($collectionsInThisMonth as $collection) {
+            $shopsIds[] = $collection->shop->id;
+        }
+        return collect($shopsIds)->unique()->count();
     }
 }

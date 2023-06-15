@@ -34,6 +34,8 @@ class DriverController extends Controller
             'name' => 'required|string|min:1|max:255',
             'contact_number' => 'required|string|max:255',
             'cnic' => 'required|string|max:255',
+            'vehicle_no' => 'required|string|max:255',
+            'route_name' => 'required|string|max:255',
             'password' => 'required|min:5|string|max:255',
             'repeat_password' => 'required|min:5|string|max:255'
         ]);
@@ -57,7 +59,7 @@ class DriverController extends Controller
         $driver->contact_no = $request->contact_number;
         $driver->cnic = $request->cnic;
         $driver->license_no = $request->license;
-        $driver->route_no = $request->route_number;
+        $driver->vehicle_no = $request->vehicle_no;
         $driver->route_name = $request->route_name;
         $driver->save();
         if ($request->shops) {
@@ -134,8 +136,8 @@ class DriverController extends Controller
             }
 
 
-            if ($request->route_number) {
-                $item->route_no = $request->route_number;
+            if ($request->vehicle_no) {
+                $item->vehicle_no = $request->vehicle_no;
             }
 
             if ($request->route_name) {

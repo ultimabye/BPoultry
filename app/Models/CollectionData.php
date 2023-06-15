@@ -11,7 +11,7 @@ class CollectionData extends Model
 
     var $todaysCollection;
 
-    var $weeksCollection;
-
     var $totalToday;
+
+    var $drivers;
 }

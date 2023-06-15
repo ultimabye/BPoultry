@@ -56,9 +56,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="route-number" class="form-label">Vehicle Route Number</label>
-                            <input type="text" class="form-control" id="route-number" value="{{ $item->route_no }}"
-                                name="route_number" required>
+                            <label for="route-number" class="form-label">Vehicle Number</label>
+                            <input type="text" class="form-control" id="route-number" value="{{ $item->vehicle_no }}"
+                                name="vehicle_no" required>
                         </div>
                         <div class="mb-3">
                             <label for="route-name" class="form-label">Route Name</label>

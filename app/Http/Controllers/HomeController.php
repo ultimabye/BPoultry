@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Collection;
 use App\Models\CollectionData;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
 
 class HomeController extends Controller
 {
@@ -37,6 +39,8 @@ class HomeController extends Controller
         foreach ($todaysCollections as $tCollection) {
             $totalToday += $tCollection->collection_amount;
         }
+
+        $data->drivers = User::where("is_admin", false)->get();
 
         $data->totalToday = $totalToday;
         return view('index2', compact("data"));

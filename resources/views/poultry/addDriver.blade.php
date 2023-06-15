@@ -40,7 +40,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="contact" class="form-label">Contact No</label>
-                                <input type="tel" class="form-control" id="contact" name="contact_number" required>
+                                <input type="tel" class="form-control" id="contact" name="contact_number"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="cnic" class="form-label">CNIC</label>
@@ -51,8 +52,8 @@
                                 <input type="text" class="form-control" id="license" name="license">
                             </div>
                             <div class="mb-3">
-                                <label for="route-number" class="form-label">Vehicle Route Number</label>
-                                <input type="text" class="form-control" id="route-number" name="route_number" required>
+                                <label for="route-number" class="form-label">Vehicle Number</label>
+                                <input type="text" class="form-control" id="route-number" name="vehicle_no" required>
                             </div>
                             <div class="mb-3">
                                 <label for="route-name" class="form-label">Route Name</label>
@@ -66,18 +67,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="repeat_password" class="form-label">Repeat Password</label>
-                                <input type="text" class="form-control" id="repeat_password" name="repeat_password" required>
+                                <input type="text" class="form-control" id="repeat_password" name="repeat_password"
+                                    required>
                             </div>
                             <h3 class="card-title mt-5">Shops</h3>
                             @forelse(App\Models\Shop::all() as $shop)
                                 @if (!is_null($shop->driver))
-                                    <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
-                                        value="{{ $shop->id }}"> {{ $shop->name }}
+                                    <input class="form-check-input" type="checkbox" name="shops[]"
+                                        id="{{ $shop->id }}" value="{{ $shop->id }}"> {{ $shop->name }}
                                     {{-- Show assigned driver name here. --}}
                                     <br>
                                 @else
-                                    <input class="form-check-input" type="checkbox" name="shops[]" id="{{ $shop->id }}"
-                                        value="{{ $shop->id }}"> {{ $shop->name }}
+                                    <input class="form-check-input" type="checkbox" name="shops[]"
+                                        id="{{ $shop->id }}" value="{{ $shop->id }}"> {{ $shop->name }}
                                     <br>
                                 @endif
                             @empty
@@ -87,7 +89,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
-                
+
             </div>
 
         </div>

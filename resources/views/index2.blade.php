@@ -100,18 +100,27 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Header 1</th>
-                                        <th>Header 2</th>
-                                        <th>Header 3</th>
+                                        <th>Vehicle No.</th>
+                                        <th>Route</th>
+                                        <th>No. of Shops</th>
+                                        <th>Collection</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Data 1</td>
-                                        <td>Data 2</td>
-                                        <td>Data 3</td>
-                                    </tr>
-                                    <!-- Add more rows as needed -->
+                                    @forelse($data->drivers as $driver)
+                                        <tr>
+                                            <td>{{ $driver->vehicle_no }}</td>
+                                            <td>{{ $driver->route_name }}</td>
+                                            <td>{{ $driver->noOfShopsCollectedFrom() }}</td>
+                                            <td>{{ $driver->totalCollectionInCurrentMonth() }}</td>
+                                            {{-- <td>{{ $tCollection->shop->name }}</td>
+                                            <td>{{ $tCollection->driver->name }}</td>
+                                            <td>{{ $tCollection->collection_amount }}</td> --}}
+
+                                        </tr>
+                                    @empty
+                                        <li class="">No data found.</li>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

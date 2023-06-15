@@ -35,9 +35,7 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-Route::get('/', function () {
-    return view('index2');
-});
+
 
 Route::get('/contact', function () {
     return view('contact');
@@ -142,7 +140,7 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/index2',  [HomeController::class, 'index']);
-
+    Route::get('/', [HomeController::class, 'index']);
 
 
     Route::get('/addDriver', function () {

@@ -46,7 +46,7 @@
                         <th>Contact No</th>
                         <th>CNIC</th>
                         <th>License Number</th>
-                        <th>Route Number</th>
+                        <th>Vehicle Number</th>
                         <th>Route Name</th>
                         <th>Shops</th>
 
@@ -62,7 +62,7 @@
                             <td>{{ $item->contact_no }}</td>
                             <td>{{ $item->cnic }}</td>
                             <td>{{ $item->license_no }}</td>
-                            <td>{{ $item->route_no }}</td>
+                            <td>{{ $item->vehicle_no }}</td>
                             <td>{{ $item->route_name }}</td>
                             {{-- <td>{{ $item->shops()->toSql() }}</td> --}}
                             <td>

@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('contact_no')->nullable();
             $table->string('cnic');
             $table->string('license_no')->nullable();
-            $table->string('route_no')->nullable();
-            $table->string('route_name')->nullable();
+            $table->string('vehicle_no')->default(0);
+            $table->string('route_name')->default("n/a");
             $table->rememberToken();
             $table->timestamps();
         });
