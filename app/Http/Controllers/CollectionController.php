@@ -25,7 +25,7 @@ class CollectionController extends Controller
         if ($shop) {
             $item = new Collection();
             $item->shop_id = $request->shop_id;
-            $item->driver_id = $request->shop_id;
+            $item->driver_id = $request->driver_id;
             $item->shop_id = $request->shop_id;
             $item->collection_amount = $request->collection_amount;
 

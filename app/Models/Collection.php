@@ -39,4 +39,9 @@ class Collection extends Model
             "driver_id"
         );
     }
+
+
+    public function isCollection() {
+        return true;
+    }
 }

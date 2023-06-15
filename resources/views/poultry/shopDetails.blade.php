@@ -35,13 +35,13 @@
                     <form>
                         <div class="mb-3">
                             <label for="contractorName" class="form-label">Name:</label>
-                            <h4 id="contractorName">{{ $item->name }}</h4>
+                            <h4 id="contractorName">{{ $shop->name }}</h4>
                         </div>
 
-                        @if (!is_null($item->driver))
+                        @if (!is_null($shop->driver))
                             <div class="mb-3">
-                                <label for="contractorPhone" class="form-label">Phone:</label>
-                                <h4 id="contractorPhone">{{ $item->driver->name }}</h4>
+                                <label for="contractorPhone" class="form-label">Driver:</label>
+                                <h4 id="contractorPhone">{{ $shop->driver->name }}</h4>
                             </div>
                         @else
                             <div class="mb-3">
@@ -54,7 +54,7 @@
 
                         <div class="mb-3">
                             <label for="contractorAddress" class="form-label">Address:</label>
-                            <h4 id="contractorAddress">{{ $item->address }}</h4>
+                            <h4 id="contractorAddress">{{ $shop->address }}</h4>
                         </div>
                     </form>
                 </div>
@@ -69,33 +69,42 @@
                             <tr>
                                 <th>Date</th>
                                 <th>Particulars</th>
-                                <th>Rate</th>
-                                <th>Weight</th>
-                                <th>Amount</th>
-                                <th>Credit</th>
-                                <th>Balance</th>
+                                <th>Rate (PKR)</th>
+                                <th>Weight (KG)</th>
+                                <th>Amount (PKR)</th>
+                                <th>Credit (PKR)</th>
+                                <th>Balance (PKR)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>12-2-21</td>
-                                <td>abc</td>
-                                <td>10</td>
-                                <td>5</td>
-                                <td>50</td>
-                                <td>0</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>abc</td>
-                                <td>15</td>
-                                <td>3</td>
-                                <td>45</td>
-                                <td>10</td>
-                                <td>85</td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            @forelse($items as $item)
+                                <tr>
+                                    <td>{{ date('d/m/y', strtotime($item->created_at)) }}</td>
+
+                                    @if ($item->isCollection())
+                                        <td></td>
+                                        <td>{{ $item->rate->amount }}</td>
+                                        <td>{{ $item->collection_amount }}</td>
+                                        <td>{{ $item->rate->amount * $item->collection_amount }}</td>
+                                        <td></td>
+                                        <td>{{ $shop->getAmountDueTill($item->created_at) }}</td>
+                                    @else
+                                        <td>{{ $item->description }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $item->amount }}</td>
+                                        <td>{{ $shop->getAmountDueTill($item->created_at) }}</td>
+                                    @endif
+                                    {{-- <td>{{ $tCollection->shop->name }}</td>
+                                <td>{{ $tCollection->driver->name }}</td>
+                                <td>{{ $tCollection->collection_amount }}</td> --}}
+
+                                </tr>
+                            @empty
+                                <li class="">No data found.</li>
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>

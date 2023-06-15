@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
 use App\Models\Rate;
 use App\Models\Shop;
+use App\Models\ShopPayment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -136,8 +138,16 @@ class ShopController extends Controller
     public function shopLedger(Request $request, $id)
     {
         if ($id) {
-            $item = Shop::where('id', '=', $id)->first();
-            return view('poultry/shopDetails', compact('item'));
+            $shop = Shop::where('id', '=', $id)->first();
+
+            $collections = Collection::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
+            $payments = ShopPayment::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
+
+            $items = $collections->merge($payments)->sortBy('created_at');;
+
+            //return $items;
+
+            return view('poultry/shopDetails', compact('shop', 'items'));
         }
         Session::flash('status', "error");
         Session::flash('status-message', "No shop found with given id:" . $id);

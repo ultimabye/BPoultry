@@ -105,6 +105,21 @@ class Shop extends Model
 
 
 
+    public function getTotalBilledTill($date)
+    {
+        $totalCollection = $this->totalCollections()->where("created_at", "<=", $date)->get();
+
+        $totalAmount = 0;
+
+        foreach ($totalCollection as $collection) {
+            $totalAmount += $collection->rate->amount * $collection->collection_amount;
+        }
+
+        return $totalAmount;
+    }
+
+
+
     public function getAmountPaid()
     {
         $payments = $this->allPayments;
@@ -119,11 +134,37 @@ class Shop extends Model
     }
 
 
+    public function getAmountPaidTill($date)
+    {
+        $payments = $this->allPayments()->where("created_at", "<=", $date)->get();;
+
+        $totalPaid = 0;
+
+        foreach ($payments as $payment) {
+            $totalPaid += $payment->amount;
+        }
+
+        return $totalPaid;
+    }
+
+
+
 
     public function getAmountDue()
     {
         $totalAmount = $this->getTotalBilled();
         $totalPaid = $this->getAmountPaid();
+        $amountDue = $totalAmount - $totalPaid;
+
+        return $amountDue;
+    }
+
+
+
+    public function getAmountDueTill($date)
+    {
+        $totalAmount = $this->getTotalBilledTill($date);
+        $totalPaid = $this->getAmountPaidTill($date);
         $amountDue = $totalAmount - $totalPaid;
 
         return $amountDue;
