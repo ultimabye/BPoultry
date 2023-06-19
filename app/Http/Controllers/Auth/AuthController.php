@@ -28,36 +28,6 @@ class AuthController extends Controller
         $this->client = DB::table('oauth_clients')->where('password_client', 1)->first();
     }
 
-   
-
-
-
-
-    // public function register(NewUserRequest $request)
-    // {
-    //     if ($this->client == null) {
-    //         abort(500, 'Invalid client.');
-    //         return;
-    //     }
-
-    //     $signature = $request->signature;
-    //     Log::channel('slackNotification')->info('New Sign Up Request', [
-    //         'Package Signature' => json_encode($signature)
-    //     ]);
-
-    //     $user = User::create([
-    //         User::NAME => $request->name,
-    //         User::EMAIL => $request->email,
-    //         User::PASSWORD => Hash::make($request->password),
-    //         User::LOCALE => $request->locale,
-    //         User::SIGNUP_SOURCE => $request->signature
-    //     ]);
-
-    //     event(new Registered($user));
-
-    //     return $user;
-    // }
-
 
 
 
@@ -134,6 +104,9 @@ class AuthController extends Controller
             $token->delete();
         });
 
-        return response()->json('Logged out successfully', 200);
+        auth()->logout();
+        Session()->flush();
+
+        return redirect("login");
     }
 }

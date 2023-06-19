@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,7 +63,7 @@ Route::group([
         //     '/email/resend',
         //     [ApiEmailVerificationController::class, 'resend']
         // )->name('verification.resend');
-
+        Route::get('/user', [UserController::class, 'viewUser']);
         Route::post('/collection', [CollectionController::class, 'store']);
         Route::get('/driver/{id}/shops', [ShopController::class, 'driverShops']);
     });

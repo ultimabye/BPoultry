@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="index2">B. Poultry</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -55,7 +55,23 @@
             </ul>
             <form class="d-flex">
 
-                <button class="btn btn-outline-success" type="submit">Login</button>
+                {{-- <button class="btn btn-outline-success" type="submit">Login</button> --}}
+                @if (Route::has('login'))
+                    <div class="hidden fixed top-0 right-0 sm:block">
+                        @auth
+                            <a href="{{ route('logout') }}" class="text-sm text-white dark:text-gray-500 underline">Log
+                                Out</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                                in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}"
+                                    class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </form>
         </div>
     </div>

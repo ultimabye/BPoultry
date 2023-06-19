@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\ContractorPaymentController;
@@ -138,6 +139,9 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/logout', [AuthController::class, 'logout']);
+
 
     Route::get('/index2',  [HomeController::class, 'index']);
     Route::get('/', [HomeController::class, 'index']);
