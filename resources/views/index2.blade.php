@@ -34,25 +34,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Today's Rate</h5>
-
-                            <div class="row">
-                                <div class="col-md-6 d-flex align-items-center">
-                                    <p class="card-text">20</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#editModal"><i
-                                            class="fa-solid fa-pen-to-square"></i></button>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -157,5 +139,11 @@
         </div>
     </div>
     <!-- End Payment Modal -->
+
+    <script>
+      setTimeout(function() {
+  location.reload();
+}, 30000);
+    </script>
 
 </html>
