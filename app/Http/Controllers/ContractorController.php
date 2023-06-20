@@ -158,7 +158,7 @@ class ContractorController extends Controller
             foreach ($shops as $shop) {
                 $collections = Collection::where("shop_id", $shop->id)
                     ->orderBy("created_at", "ASC")->get();
-                $items = $payments->merge($collections)->sortBy('created_at');
+                $items = $payments->concat($collections)->sortBy('created_at');
             }
 
             //return $items;

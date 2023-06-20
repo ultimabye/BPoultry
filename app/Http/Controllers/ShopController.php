@@ -143,7 +143,7 @@ class ShopController extends Controller
             $collections = Collection::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
             $payments = ShopPayment::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
 
-            $items = $collections->merge($payments)->sortBy('created_at');;
+            $items = $collections->concat($payments)->sortBy('created_at');;
 
             //return $items;
 
