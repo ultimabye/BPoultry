@@ -65,6 +65,7 @@ Route::group([
         // )->name('verification.resend');
         Route::get('/user', [UserController::class, 'viewUser']);
         Route::post('/collection', [CollectionController::class, 'store']);
+        Route::get('/collection/today', [CollectionController::class, 'today']);
         Route::get('/driver/{id}/shops', [ShopController::class, 'driverShops']);
     });
 });

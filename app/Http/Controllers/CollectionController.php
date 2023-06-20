@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CollectionResource;
 use App\Models\Collection;
 use App\Models\Rate;
 use App\Models\Shop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -42,5 +44,15 @@ class CollectionController extends Controller
 
 
         throw new RuntimeException("Shop associated with the request not found");
+    }
+
+
+
+    public function today(Request $request)
+    {
+        $todaysCollections = Collection::whereDate('created_at', Carbon::today())
+            ->orderBy("created_at", "DESC")->get();
+        return CollectionResource::collection($todaysCollections);
+        return $todaysCollections;
     }
 }
