@@ -70,7 +70,8 @@
                             {{-- <td><button class="btn" data-bs-toggle="modal" data-bs-target="#paymentModal"> <i
                                         class="fa-solid fa-dollar-sign"></i></button></td> --}}
                             @if ($item->getAmountDue() > 0)
-                                <td><button class="btn" data-bs-toggle="modal" data-bs-target="#paymentModal"><i
+                                <td><button class="btn" data-bs-toggle="modal"
+                                        data-bs-target="#paymentModal{{ $item->id }}"><i
                                             class="fa-solid fa-dollar-sign"></i></button></td>
                             @endif
                             <td><a href="{{ URL::route('view-contractor', ['id' => $item->id]) }}" class="btn"><i
@@ -78,8 +79,8 @@
 
 
                             <!-- Payment Modal -->
-                            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="paymentModal{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="paymentModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <form method="post" action="{{ url('save-contractor-payment') }}">

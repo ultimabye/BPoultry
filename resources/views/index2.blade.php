@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -95,9 +95,6 @@
                                             <td>{{ $driver->route_name }}</td>
                                             <td>{{ $driver->noOfShopsCollectedFrom() }}</td>
                                             <td>{{ $driver->totalCollectionInCurrentMonth() }}</td>
-                                            {{-- <td>{{ $tCollection->shop->name }}</td>
-                                            <td>{{ $tCollection->driver->name }}</td>
-                                            <td>{{ $tCollection->collection_amount }}</td> --}}
 
                                         </tr>
                                     @empty
@@ -141,9 +138,9 @@
     <!-- End Payment Modal -->
 
     <script>
-      setTimeout(function() {
-  location.reload();
-}, 30000);
+        setTimeout(function() {
+            location.reload();
+        }, 30000);
     </script>
 
 </html>

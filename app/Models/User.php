@@ -102,7 +102,7 @@ class User extends Authenticatable
     {
         $shopsIds = [];
         $start = Carbon::now()->startOfMonth();
-        $end = Carbon::now();
+        $end = Carbon::now()->endOfMonth();
         $collectionsInThisMonth = $this->collections()->whereBetween('created_at', [$start, $end])->get();
         foreach ($collectionsInThisMonth as $collection) {
             $shopsIds[] = $collection->shop->id;
