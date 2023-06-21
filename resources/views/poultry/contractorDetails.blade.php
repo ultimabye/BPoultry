@@ -47,7 +47,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 text-end"> <button type="button" class="btn btn-primary">Print</button></div>
+                <div class="col-md-6 text-end"> <button type="button" id="printBtn" onclick="printPage()" class="btn btn-primary">Print</button></div>
             </div>
 
             <div class="row mt-4">
@@ -99,5 +99,9 @@
 
     </div>
 </body>
-
+<script>
+    function printPage() {
+      window.print();
+    }
+  </script>
 </html>
