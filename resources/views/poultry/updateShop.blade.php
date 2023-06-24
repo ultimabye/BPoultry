@@ -39,8 +39,8 @@
                         placeholder="Enter shop name" value="{{ $item->name }}">
                 </div>
                 <div class="mb-3">
-                    <label for="shop-rate" class="form-label">Purchase Rate (PKR)</label>
-                    <input type="number" class="form-control" id="shop-rate" name="shop_rate"
+                    <label for="shop-rate"  class="form-label">Purchase Rate (PKR)</label>
+                    <input type="number" step="any" class="form-control" id="shop-rate" name="shop_rate"
                         value="{{ $item->latestRate() }}" placeholder="Enter purchase rate for shop">
                 </div>
                 <div class="mb-3">
