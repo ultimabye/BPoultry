@@ -47,7 +47,7 @@
 
                             <td>{{ $item->address }}</td>
 
-                            <td>Rs. {{ $item->getAmountDue() }}</td>
+                            <td>Rs. {{ number_format($item->getAmountDue(), 2) }}</td>
                         </tr>
                     @empty
                         <li class="">No data found.</li>

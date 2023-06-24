@@ -66,10 +66,10 @@
                                 <td>---</td>
                             @endif
 
-                            <td>Rs. {{ $item->latestRate() }}</td>
-                            <td>Rs. {{ $item->getTotalBilled() }}</td>
-                            <td>Rs. {{ $item->getAmountPaid() }}</td>
-                            <td>Rs. {{ $item->getAmountDue() }}</td>
+                            <td>Rs. {{ number_format($item->latestRate(), 2) }}</td>
+                            <td>Rs. {{ number_format($item->getTotalBilled(), 2) }}</td>
+                            <td>Rs. {{ number_format($item->getAmountPaid(), 2) }}</td>
+                            <td>Rs. {{ number_format($item->getAmountDue(), 2) }}</td>
 
                             @if ($item->getAmountDue() > 0)
                                 <td><button class="btn" data-bs-toggle="modal"
@@ -78,8 +78,8 @@
                             @endif
 
                             <td><button class="btn"
-                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'"><i
-                                        class="fa-solid fa-pen-to-square"></i></button>
+                                    onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'">
+                                    <i class="fa-solid fa-pen-to-square"></i></button>
                             </td>
 
 

@@ -47,7 +47,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 text-end"> <button type="button" id="printBtn" onclick="printPage()" class="btn btn-primary">Print</button></div>
+                <div class="col-md-6 text-end"> <button type="button" id="printBtn" onclick="printPage()"
+                        class="btn btn-primary">Print</button></div>
             </div>
 
             <div class="row mt-4">
@@ -72,18 +73,20 @@
 
                                     @if ($item->isCollection())
                                         <td>{{ $item->shop->name }}</td>
-                                        <td>{{ $item->rate->amount }}</td>
-                                        <td>{{ $item->collection_amount }}</td>
-                                        <td>{{ $item->rate->amount * $item->collection_amount }}</td>
+                                        <td>{{ number_format($item->rate->amount, 2) }}</td>
+                                        <td>{{ number_format($item->collection_amount, 2) }}</td>
+                                        <td>{{ number_format($item->rate->amount * $item->collection_amount, 2) }}</td>
                                         <td></td>
-                                        <td>{{ $contractor->getAmountDueTill($item->created_at) }}</td>
+                                        <td>{{ number_format($contractor->getAmountDueTill($item->created_at), 2) }}
+                                        </td>
                                     @else
                                         <td>{{ $item->description }}</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>{{ $item->amount }}</td>
-                                        <td>{{ $contractor->getAmountDueTill($item->created_at) }}</td>
+                                        <td>{{ number_format($item->amount, 2) }}</td>
+                                        <td>{{ number_format($contractor->getAmountDueTill($item->created_at), 2) }}
+                                        </td>
                                     @endif
 
 
@@ -101,7 +104,8 @@
 </body>
 <script>
     function printPage() {
-      window.print();
+        window.print();
     }
-  </script>
+</script>
+
 </html>

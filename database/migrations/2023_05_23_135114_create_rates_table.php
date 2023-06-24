@@ -22,7 +22,9 @@ return new class extends Migration
                 ->on("shops")
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
             $table->unsignedBigInteger("amount");
+            
             $table->timestamps();
         });
     }

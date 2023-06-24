@@ -90,26 +90,26 @@ class Shop extends Model
 
 
 
-    public function getTotalBilled()
+    public function getTotalBilled() 
     {
         $totalCollection = $this->totalCollections;
 
-        $totalAmount = 0;
+        $totalAmount = doubleval(0.0);
 
         foreach ($totalCollection as $collection) {
-            $totalAmount += $collection->rate->amount * $collection->collection_amount;
+            $totalAmount += doubleval($collection->rate->amount) * doubleval($collection->collection_amount);
         }
 
-        return $totalAmount;
+        return doubleval($totalAmount);
     }
 
 
 
-    public function getTotalBilledTill($date)
+    public function getTotalBilledTill($date) 
     {
         $totalCollection = $this->totalCollections()->where("created_at", "<=", $date)->get();
 
-        $totalAmount = 0;
+        $totalAmount = 0.0;
 
         foreach ($totalCollection as $collection) {
             $totalAmount += $collection->rate->amount * $collection->collection_amount;
@@ -124,7 +124,7 @@ class Shop extends Model
     {
         $payments = $this->allPayments;
 
-        $totalPaid = 0;
+        $totalPaid = 0.0;
 
         foreach ($payments as $payment) {
             $totalPaid += $payment->amount;

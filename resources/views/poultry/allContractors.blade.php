@@ -63,9 +63,9 @@
 
                             </td>
 
-                            <td>Rs. {{ $item->getTotalBilled() }}</td>
-                            <td>Rs. {{ $item->getAmountPaid() }}</td>
-                            <td>Rs. {{ $item->getAmountDue() }}</td>
+                            <td>Rs. {{ number_format($item->getTotalBilled(), 2) }}</td>
+                            <td>Rs. {{ number_format($item->getAmountPaid(), 2) }}</td>
+                            <td>Rs. {{ number_format($item->getAmountDue(), 2) }}</td>
 
                             {{-- <td><button class="btn" data-bs-toggle="modal" data-bs-target="#paymentModal"> <i
                                         class="fa-solid fa-dollar-sign"></i></button></td> --}}

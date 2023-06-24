@@ -20,7 +20,7 @@ class CollectionController extends Controller
         $request->validate([
             'shop_id' => 'required|integer',
             'driver_id' => 'required|integer',
-            'collection_amount' => 'required|integer'
+            'collection_amount' => 'required|numeric'
         ]);
 
 

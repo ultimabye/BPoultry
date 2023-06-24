@@ -52,7 +52,7 @@ class ShopController extends Controller
         $validator = Validator::make($request->all(), [
             'shop_name' => 'required|string|min:1|max:255',
             'shop_address' => 'required|string|max:255',
-            'shop_rate' => 'required|integer',
+            'shop_rate' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
