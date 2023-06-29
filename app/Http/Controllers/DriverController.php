@@ -62,6 +62,7 @@ class DriverController extends Controller
         $driver->vehicle_no = $request->vehicle_no;
         $driver->route_name = $request->route_name;
         $driver->save();
+
         if ($request->shops) {
             if (!empty($request->shops)) {
                 //save all pivots.
@@ -144,24 +145,26 @@ class DriverController extends Controller
                 $item->route_name = $request->route_name;
             }
 
-            if ($request->shops) {
-                if (!empty($request->shops)) {
-                    //save all pivots.
-                    foreach ($request->shops as $shop) {
-                        //delete all previous pivots
-                        $pivots = ShopDriverPivot::where("shop_id", $shop);
-                        $pivots->delete();
+            if ($request->shops && !empty($request->shops)) {
+                //save all pivots.
+                foreach ($request->shops as $shop) {
+                    //delete all previous pivots
+                    $pivots = ShopDriverPivot::where("shop_id", $shop);
+                    $pivots->delete();
 
-                        $pivot = ShopDriverPivot::where("shop_id", $shop)
-                            ->where("driver_id", $item->id)->first();
-                        if ($pivot === null) {
-                            $pivot = ShopDriverPivot::create([
-                                "shop_id" => $shop,
-                                "driver_id" => $item->id
-                            ]);
-                        }
+                    $pivot = ShopDriverPivot::where("shop_id", $shop)
+                        ->where("driver_id", $item->id)->first();
+                    if ($pivot === null) {
+                        $pivot = ShopDriverPivot::create([
+                            "shop_id" => $shop,
+                            "driver_id" => $item->id
+                        ]);
                     }
                 }
+            } else {
+                //delete driver pivots.
+                $pivots = ShopDriverPivot::where("driver_id", $item->id);
+                $pivots->delete();
             }
 
             $item->save();
