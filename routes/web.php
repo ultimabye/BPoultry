@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/updateContractor', function () {
         return view('poultry/updateContractor');
     });
-    
+
     Route::get('/updateDriver', function () {
         return view('poultry/updateDriver');
     });
@@ -70,6 +70,10 @@ Route::middleware('auth')->group(function () {
         [CollectionController::class, 'view']
     )->name('view-collection');
     Route::post('/update-collection', [CollectionController::class, 'update']);
+    Route::get(
+        '/collection/{id}/delete',
+        [CollectionController::class, 'delete']
+    )->name('delete-collection');
 
 
 

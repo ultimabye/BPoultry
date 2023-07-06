@@ -31,11 +31,15 @@
             <div class="row">
                 <div class="col-md-12 card pb-2">
                     <h1 class="my-4">All Collections</h1>
-                    <div class="d-flex justify-content-end mb-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <button class="btn btn-primary" type="button">Search</button>
-                        </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" id="search" class="form-control" name="search"
+                                    placeholder="Find by driver or shop..." value="{{ request('search') }}">
+
+                            </div>
+                        </form>
+
                     </div>
                     <table class="table">
                         <thead>
@@ -60,9 +64,35 @@
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
                                         <button class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#deleteConfirmationModal">
+                                            data-bs-target="#deleteConfirmationModal{{ $tCollection->id }}">
                                             <i class="fa-sharp fa-solid fa-trash"></i>
                                         </button>
+
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="deleteConfirmationModal{{ $tCollection->id }}"
+                                            tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete
+                                                            Confirmation</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete this item?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger"
+                                                            onclick="window.location='{{ URL::route('delete-collection', ['id' => $tCollection->id]) }}'">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                             @empty
@@ -77,24 +107,5 @@
 
 </body>
 
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this item?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 </html>

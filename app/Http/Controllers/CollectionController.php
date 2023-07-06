@@ -18,11 +18,28 @@ class CollectionController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-
-        $allCollections = Collection::orderBy("created_at", "DESC")->get();
-
+        $search = $request->search;
+        if ($search) {
+            $builder = Collection::with("driver", "shop")->whereHas('shop', function ($query) use ($search) {
+                $query->where(
+                    "name",
+                    "LIKE",
+                    "%" . $search . "%"
+                );
+            })->orWhereHas('driver', function ($query) use ($search) {
+                $query->where(
+                    "name",
+                    "LIKE",
+                    "%" . $search . "%"
+                );
+            });
+            //info("whereHas", [$builder->toSql(), $builder->getBindings()]);
+            $allCollections = $builder->get();
+        } else {
+            $allCollections = Collection::orderBy("created_at", "DESC")->get();
+        }
         return view('poultry/allCollections', compact("allCollections"));
     }
 
@@ -113,6 +130,23 @@ class CollectionController extends Controller
 
         Session::flash('status', "error");
         Session::flash('status-message', "No shop found with given id:" . $request->id);
+        return back()->withInput();
+    }
+
+
+
+    public function delete(Request $request, $id)
+    {
+        if ($id) {
+            $item = Collection::where('id', '=', $id)->with("driver")->first();
+            if ($item->delete()) {
+                Session::flash('status', "success");
+                Session::flash('status-message', 'Collection deleted successfully.');
+                return back()->withInput();
+            }
+        }
+        Session::flash('status', "error");
+        Session::flash('status-message', "No collection found with given id:" . $id);
         return back()->withInput();
     }
 }
