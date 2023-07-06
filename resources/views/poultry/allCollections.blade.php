@@ -31,7 +31,8 @@
             <div class="row">
                 <div class="col-md-12 card pb-2">
                     <h1 class="my-4">All Collections</h1>
-                    <div class="d-flex justify-content-center mb-3">
+            
+                    <div class="col-6 justify-content-center mb-3 ">
                         <form>
                             <div class="input-group">
                                 <input type="text" id="search" class="form-control" name="search"
@@ -41,6 +42,7 @@
                         </form>
 
                     </div>
+                   
                     <table class="table">
                         <thead>
                             <tr>
