@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 card pb-2">
-                    <h1 class="my-4">All Collection</h1>
+                    <h1 class="my-4">All Collections</h1>
                     <div class="d-flex justify-content-end mb-3">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search">
@@ -40,10 +40,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Vehicle No.</th>
-                                <th>Route</th>
-                                <th>No. of Shops</th>
-                                <th>Collection</th>
+                                <th>Time</th>
+                                <th>Shop</th>
+                                <th>Driver</th>
+                                <th>Quantity (KGs)</th>
                                 <th></th>
                             </tr>
                         </thead>
