@@ -122,6 +122,13 @@ Route::get('/updateDriver', function () {
     return view('poultry/updateDriver');
 });
 
+Route::get('/seeAllCollection', function () {
+    return view('poultry/seeAllCollection');
+});
+Route::get('/updateCollection', function () {
+    return view('poultry/updateCollection');
+});
+
 
 
 
