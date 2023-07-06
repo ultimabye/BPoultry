@@ -39,6 +39,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         <li><a class="dropdown-item" href="/addShop">New Shop</a></li>
                         <li><a class="dropdown-item" href="/allShops">Shops</a></li>
+                        <li><a class="dropdown-item" href="/allCollections">Collection</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
