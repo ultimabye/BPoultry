@@ -48,32 +48,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>XYZ789</td>
-                                <td>Route 2</td>
-                                <td>3</td>
-                                <td>$300</td>
-                                <td>
-                                    <button class="btn" onclick="window.location='updateCollection'">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
-                                        <i class="fa-sharp fa-solid fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            @forelse($allCollections as $tCollection)
+                                <tr>
+                                    <td>{{ date('d/m/y (h:i A) ', strtotime($tCollection->created_at)) }}</td>
+                                    <td>{{ $tCollection->shop->name }}</td>
+                                    <td>{{ $tCollection->driver->name }}</td>
+                                    <td>{{ $tCollection->collection_amount }}</td>
+                                    <td>
+                                        <button class="btn"
+                                            onclick="window.location='{{ URL::route('view-collection', ['id' => $tCollection->id]) }}'">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#deleteConfirmationModal">
+                                            <i class="fa-sharp fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
+                                <li class="">No data found.</li>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </body>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

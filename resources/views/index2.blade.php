@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -54,11 +54,11 @@
                                     <h5 class="card-title">Collection (Today)</h5>
                                 </div>
                                 <div class="col-2">
-                                    <a class="btn-primary text-decoration-none" href="/seeAllCollection">See All</a>
+                                    <a class="btn-primary text-decoration-none" href="/allCollections">See All</a>
                                 </div>
                             </div>
-                           
-                            
+
+
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -93,10 +93,10 @@
                                     <h5 class="card-title">Monthly collection</h5>
                                 </div>
                                 <div class="col-3">
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <table class="table">
                                 <thead>
                                     <tr>

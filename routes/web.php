@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BankAccountsController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\ContractorPaymentController;
 use App\Http\Controllers\CustomerController;
@@ -38,107 +39,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/index', function () {
-    return view('index');
-});
-
-Route::get('/addCustomer', function () {
-    return view('addCustomer');
-});
-
-Route::get('/addExpenses', function () {
-    return view('addExpenses');
-});
-
-Route::get('/addSupplier', function () {
-    return view('addSupplier');
-});
-
-Route::get('/addSale', function () {
-    return view('addSale');
-});
-
-
-Route::get('/saleSuccess', function () {
-    return view('saleSuccess');
-})->name('saleSuccess');
-
-// Route::get('/supplierInvoice', function () {
-//     return view('supplierInvoice');
-// });
-
-
-Route::get('/addBank', function () {
-    return view('addBank');
-});
-
-Route::get('/invoiceDetails', function () {
-    return view('invoiceDetails');
-});
-
-
-Route::get('/customerVoucher', function () {
-    return view('customerVoucher');
-});
-Route::get('/supplierVoucher', function () {
-    return view('supplierVoucher');
-});
-
-Route::get('/inBoundPayment', function () {
-    return view('inBoundPayment');
-});
-Route::get('/outBoundPayment', function () {
-    return view('outBoundPayment');
-});
-
-
-Route::get('/saleReceipt', function () {
-    return view('saleReceipt');
-})->name('saleReceipt');
-
-Route::get('/purchaseReceipt', function () {
-    return view('purchaseReceipt');
-})->name('purchaseReceipt');
-
-
-
-
-Route::get('/addShop', function () {
-    return view('poultry/addShop');
-});
-Route::get('/updateShop', function () {
-    return view('poultry/updateShop');
-});
-
-
-
-Route::get('/updateContractor', function () {
-    return view('poultry/updateContractor');
-});
-Route::get('/updateDriver', function () {
-    return view('poultry/updateDriver');
-});
-
-Route::get('/seeAllCollection', function () {
-    return view('poultry/seeAllCollection');
-});
-Route::get('/updateCollection', function () {
-    return view('poultry/updateCollection');
-});
-
-
-
-
-
-
-
-
-
-
-
 
 
 Auth::routes();
@@ -146,6 +46,32 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/addShop', function () {
+        return view('poultry/addShop');
+    });
+    Route::get('/updateShop', function () {
+        return view('poultry/updateShop');
+    });
+
+
+
+    Route::get('/updateContractor', function () {
+        return view('poultry/updateContractor');
+    });
+    
+    Route::get('/updateDriver', function () {
+        return view('poultry/updateDriver');
+    });
+
+    Route::get('/allCollections',  [CollectionController::class, 'index']);
+    Route::get(
+        '/collection/{id}/edit',
+        [CollectionController::class, 'view']
+    )->name('view-collection');
+    Route::post('/update-collection', [CollectionController::class, 'update']);
+
+
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
