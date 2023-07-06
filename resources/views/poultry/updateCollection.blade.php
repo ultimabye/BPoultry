@@ -31,20 +31,20 @@
             <h1 class="my-4 ">Update Collection Data</h1>
             <form>
                 <div class="mb-3">
-                    <label for="vehicleNo" class="form-label">Vehicle No.</label>
-                    <input type="text" class="form-control" disabled id="vehicleNo" name="vehicleNo">
+                    <label for="time" class="form-label">Time</label>
+                    <input type="text" class="form-control" disabled id="time" name="time">
                 </div>
                 <div class="mb-3">
-                    <label for="route" class="form-label">Route</label>
-                    <input type="text" class="form-control"disabled id="route" name="route">
+                    <label for="shop" class="form-label">Shop</label>
+                    <input type="text" class="form-control"disabled id="shop" name="shop">
                 </div>
                 <div class="mb-3">
-                    <label for="numShops" class="form-label">No. of Shops</label>
-                    <input type="number" class="form-control" disabled id="numShops" name="numShops">
+                    <label for="driver" class="form-label">Driver</label>
+                    <input type="number" class="form-control" disabled id="driver" name="driver">
                 </div>
                 <div class="mb-3">
-                    <label for="collection" class="form-label">Collection</label>
-                    <input type="text" class="form-control" id="collection" name="collection">
+                    <label for="quantity" class="form-label">Quantity (KGs)</label>
+                    <input type="text" class="form-control" id="quantity" name="quantity">
                 </div>
                 <div class="mb-3">
                     <button type="button" class="btn btn-primary">Update</button>

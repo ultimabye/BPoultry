@@ -49,7 +49,16 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Collection (Today)</h5>
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5 class="card-title">Collection (Today)</h5>
+                                </div>
+                                <div class="col-2">
+                                    <a class="btn-primary text-decoration-none" href="/seeAllCollection">See All</a>
+                                </div>
+                            </div>
+                           
+                            
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -84,7 +93,7 @@
                                     <h5 class="card-title">Monthly collection</h5>
                                 </div>
                                 <div class="col-3">
-                                    <a class="btn btn-primary" href="/seeAllCollection">See All</a>
+                                    
                                 </div>
                             </div>
                             
