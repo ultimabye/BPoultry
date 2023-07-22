@@ -107,7 +107,7 @@ class CollectionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|string|min:1|max:255',
-            'collection_amount' => 'required|numeric'
+            'collection_amount' => 'required|numeric|min:1'
         ]);
 
         if ($validator->fails()) {
