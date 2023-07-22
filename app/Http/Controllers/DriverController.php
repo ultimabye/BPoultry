@@ -144,6 +144,9 @@ class DriverController extends Controller
             if ($request->route_name) {
                 $item->route_name = $request->route_name;
             }
+            if ($request->password) {
+                $item->password=  Hash::make($request->password);
+            }
 
             if ($request->shops && !empty($request->shops)) {
                 //save all pivots.
