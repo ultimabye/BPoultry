@@ -11,11 +11,12 @@ class ContractorPaymentController extends Controller
 {
     public function store(Request $request)
     {
-        if ($request->type == "cash") {
+        if ($request->type == "cash" || $request->type == "online") {
             $validator = Validator::make($request->all(), [
                 'contractor_id' => 'required|integer',
                 'amount' => 'required|integer',
                 'type' => 'required|string|max:255',
+                'date' => 'required|date',
             ]);
 
             if ($validator->fails()) {
@@ -29,6 +30,7 @@ class ContractorPaymentController extends Controller
                 'amount' => 'required|integer',
                 'type' => 'required|string|max:255',
                 'cheque_no' => 'required|string|max:255',
+                'date' => 'required|date',
             ]);
 
             if ($validator->fails()) {
@@ -50,6 +52,7 @@ class ContractorPaymentController extends Controller
         $item->amount = $request->amount;
         $item->type = $request->type;
         $item->description = $request->description;
+        $item->entry_date = $request->date;
         $item->save();
 
         Session::flash('status', "success");

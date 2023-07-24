@@ -69,7 +69,7 @@
                         <tbody>
                             @forelse($items as $item)
                                 <tr>
-                                    <td>{{ date('d/m/y', strtotime($item->created_at)) }}</td>
+                                    <td>{{ date('d/m/y', strtotime($item->entry_date)) }}</td>
 
                                     @if ($item->isCollection())
                                         <td>{{ $item->shop->name }}</td>
@@ -77,7 +77,7 @@
                                         <td>{{ number_format($item->collection_amount, 2) }}</td>
                                         <td>{{ number_format($item->rate->amount * $item->collection_amount, 2) }}</td>
                                         <td></td>
-                                        <td>{{ number_format($contractor->getAmountDueTill($item->created_at), 2) }}
+                                        <td>{{ number_format($contractor->getAmountDueTill($item->entry_date), 2) }}
                                         </td>
                                     @else
                                         <td>{{ $item->description }}</td>
@@ -85,7 +85,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>{{ number_format($item->amount, 2) }}</td>
-                                        <td>{{ number_format($contractor->getAmountDueTill($item->created_at), 2) }}
+                                        <td>{{ number_format($contractor->getAmountDueTill($item->entry_date), 2) }}
                                         </td>
                                     @endif
 

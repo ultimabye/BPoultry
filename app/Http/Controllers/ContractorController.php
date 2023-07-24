@@ -151,13 +151,13 @@ class ContractorController extends Controller
             $contractor = Contractor::where('id', '=', $id)->first();
 
             $items = ContractorPayment::where("contractor_id", $contractor->id)
-                ->orderBy("created_at", "ASC")->get();
+                ->orderBy("entry_date", "ASC")->get();
 
             $shops = $contractor->shops;
             foreach ($shops as $shop) {
                 $collections = Collection::where("shop_id", $shop->id)
-                    ->orderBy("created_at", "ASC")->get();
-                $items = $items->concat($collections)->sortBy('created_at');
+                    ->orderBy("entry_date", "ASC")->get();
+                $items = $items->concat($collections)->sortBy('entry_date');
             }
 
             //return $items;
