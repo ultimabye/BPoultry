@@ -71,11 +71,9 @@
                             <td>Rs. {{ number_format($item->getAmountPaid(), 2) }}</td>
                             <td>Rs. {{ number_format($item->getAmountDue(), 2) }}</td>
 
-                            @if ($item->getAmountDue() > 0)
-                                <td><button class="btn" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal{{ $item->id }}"><i
-                                            class="fa-solid fa-dollar-sign"></i></button></td>
-                            @endif
+                            <td><button class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal{{ $item->id }}"><i
+                                        class="fa-solid fa-dollar-sign"></i></button></td>
 
                             <td><button class="btn"
                                     onclick="window.location='{{ URL::route('view-shop', ['id' => $item->id]) }}'">

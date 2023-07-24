@@ -107,7 +107,7 @@ class Shop extends Model
 
     public function getTotalBilledTill($date) 
     {
-        $totalCollection = $this->totalCollections()->where("created_at", "<=", $date)->get();
+        $totalCollection = $this->totalCollections()->where("entry_date", "<=", $date)->get();
 
         $totalAmount = 0.0;
 
@@ -136,7 +136,7 @@ class Shop extends Model
 
     public function getAmountPaidTill($date)
     {
-        $payments = $this->allPayments()->where("created_at", "<=", $date)->get();
+        $payments = $this->allPayments()->where("entry_date", "<=", $date)->get();
         $totalPaid = 0;
         foreach ($payments as $payment) {
             $totalPaid += $payment->amount;

@@ -140,10 +140,10 @@ class ShopController extends Controller
         if ($id) {
             $shop = Shop::where('id', '=', $id)->first();
 
-            $collections = Collection::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
-            $payments = ShopPayment::where("shop_id", $shop->id)->orderBy("created_at", "ASC")->get();
+            $collections = Collection::where("shop_id", $shop->id)->orderBy("entry_date", "ASC")->get();
+            $payments = ShopPayment::where("shop_id", $shop->id)->orderBy("entry_date", "ASC")->get();
 
-            $items = $collections->concat($payments)->sortBy('created_at');;
+            $items = $collections->concat($payments)->sortBy('entry_date');;
 
             //return $items;
 
