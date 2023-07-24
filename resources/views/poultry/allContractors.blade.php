@@ -96,6 +96,7 @@
                                                     <select class="form-select" id="paymentMethod" name="type">
                                                         <option value="cash">Cash</option>
                                                         <option value="cheque">Cheque</option>
+                                                        <option value="online">Online</option>
                                                     </select>
                                                 </div>
                                                 <div id="chequeNumberInput" class="mb-3 d-none">
@@ -107,6 +108,11 @@
                                                     <label for="amount" class="form-label">Amount</label>
                                                     <input type="text" class="form-control" id="amount"
                                                         name="amount" placeholder="Enter amount">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="date" class="form-label">Date</label>
+                                                    <input type="date" class="form-control" id="date"
+                                                        name="date" placeholder="Select Date">
                                                 </div>
 
                                                 <div class="mb-3">
