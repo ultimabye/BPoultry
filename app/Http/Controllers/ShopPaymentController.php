@@ -16,6 +16,7 @@ class ShopPaymentController extends Controller
                 'shop_id' => 'required|integer',
                 'amount' => 'required|numeric',
                 'type' => 'required|string|max:255',
+                'date' => 'required|date',
             ]);
 
             if ($validator->fails()) {
@@ -50,6 +51,7 @@ class ShopPaymentController extends Controller
         $item->amount = $request->amount;
         $item->type = $request->type;
         $item->description = $request->description;
+        $item->entry_date = $request->date;
         $item->save();
 
         Session::flash('status', "success");
