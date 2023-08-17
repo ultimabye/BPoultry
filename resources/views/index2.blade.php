@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Total Collection Today</h5>
+                            <h5 class="card-title">Total Collection Last 24 Hours</h5>
                             <p class="card-text">{{ $data->totalToday }} KG</p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-10">
-                                    <h5 class="card-title">Collection (Today)</h5>
+                                    <h5 class="card-title">Collection (Yesterday 4pm - Today 4pm)</h5>
                                 </div>
                                 <div class="col-2">
                                     <a class="btn-primary text-decoration-none" href="/allCollections">See All</a>
@@ -71,7 +71,7 @@
                                 <tbody>
                                     @forelse($data->todaysCollection as $tCollection)
                                         <tr>
-                                            <td>{{ date('h:i A', strtotime($tCollection->created_at)) }}</td>
+                                            <td>{{ date('D h:i A', strtotime($tCollection->created_at)) }}</td>
                                             <td>{{ $tCollection->shop->name }}</td>
                                             <td>{{ $tCollection->driver->name }}</td>
                                             <td>{{ $tCollection->collection_amount }}</td>

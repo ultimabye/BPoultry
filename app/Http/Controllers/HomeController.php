@@ -30,8 +30,21 @@ class HomeController extends Controller
     {
         $data = new CollectionData();
 
-        $todaysCollections = Collection::whereDate('created_at', Carbon::today())
+        $yesterday = Carbon::yesterday();
+        $yesterday->hour = 15;
+        $yesterday->minute = 59;
+        $yesterday->second = 59;
+
+
+        $today = Carbon::today();
+        $today->hour = 15;
+        $today->minute = 59;
+        $today->second = 59;
+
+
+        $todaysCollections = Collection::whereBetween('created_at', [$yesterday, $today])
             ->orderBy("created_at", "DESC")->get();
+
 
         $data->todaysCollection = $todaysCollections;
 
