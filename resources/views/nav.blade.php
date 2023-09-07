@@ -53,6 +53,10 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/payments">Payments</a>
+                </li>
+
             </ul>
             <form class="d-flex">
 
