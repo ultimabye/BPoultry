@@ -63,6 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/updateDriver', function () {
         return view('poultry/updateDriver');
     });
+    Route::get('/payments', function () {
+        return view('poultry/payments');
+    });
 
     Route::get('/allCollections',  [CollectionController::class, 'index']);
     Route::get(
@@ -95,7 +98,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/addContractor', function () {
         return view('poultry/addContractor');
     });
-
 
     Route::get('/addShop', function () {
         return view('poultry/addShop');
