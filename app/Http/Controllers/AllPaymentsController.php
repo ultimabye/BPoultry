@@ -12,11 +12,11 @@ class AllPaymentsController extends Controller
 {
     public function index(Request $request)
     {
-        $shopPayments = ShopPayment::orderBy("entry_date", "ASC")->get();
+        $shopPayments = ShopPayment::orderBy("entry_date", "DESC")->get();
 
-        $contractorPayments = ContractorPayment::orderBy("entry_date", "ASC")->get();
+        $contractorPayments = ContractorPayment::orderBy("entry_date", "DESC")->get();
 
-        $items = $shopPayments->concat($contractorPayments)->sortBy('entry_date');;
+        $items = $shopPayments->concat($contractorPayments)->sortByDesc('entry_date');;
 
         return view('poultry/payments', compact('items'));
     }
