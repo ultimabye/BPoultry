@@ -53,6 +53,10 @@
                                 <td><button class="btn" data-bs-toggle="modal"
                                         data-bs-target="#paymentModal{{ $item->id }}"><i
                                             class="fa-solid fa-edit"></i></button></td>
+                                            <td><button class="btn" data-bs-toggle="modal"
+                                        data-bs-target="#paymentDeleteModal{{ $item->id }}"><i
+                                            class="fa-solid fa-trash"></i></button></td>
+
 
 
 
@@ -75,6 +79,11 @@
 
                                                         <label for="date" class="form-label">Date:
                                                             {{ date('d/m/y', strtotime($item->entry_date)) }} </label>
+                                
+                                                    </div>
+                                                    <div class="mb-3">
+
+                                                        
                                                         <label for="beneficiary" class="form-label">Beneficiary:
                                                             {{ $item->getBeneficiaryName() }} </label>
                                                     </div>
@@ -85,9 +94,6 @@
                                                             name="amount" placeholder="Enter amount"
                                                             value="{{ $item->amount }}">
                                                     </div>
-
-
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -99,6 +105,56 @@
                                     </div>
                                 </div>
                                 <!-- End Payment Modal -->
+
+                                 <!-- Payment Delete Modal -->
+                                 <div class="modal fade" id="paymentDeleteModal{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="paymentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form method="post" action="{{ url('delete-payment') }}">
+                                                @csrf
+                                                <input name="id" type="hidden" value="{{ $item->id }}">
+                                                <input name="type" type="hidden" value="{{ $item->getType() }}">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="paymentModalLabel">Delete Payment</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+
+                                                        <label for="date" class="form-label">Date:
+                                                            {{ date('d/m/y', strtotime($item->entry_date)) }} </label>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="beneficiary" class="form-label">Beneficiary:
+                                                            {{ $item->getBeneficiaryName() }} </label>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="amount" class="form-label">Amount</label>
+                                                        <label for="amount" class="form-label">Beneficiary:
+                                                            {{ $item->amount}} </label>
+                                                       
+                                                    </div>
+
+                                                    <div class="">
+                                                        <label for="amount" class="form-label">Are you sure to delete this payment?</label>
+                                                       
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+    
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Payment Delete Modal -->
                             </tr>
                         @empty
                             <li class="">No payments found.</li>

@@ -144,5 +144,5 @@ Route::middleware('auth')->group(function () {
     Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
 
     Route::post('update-payment', [AllPaymentsController::class, 'update']);
-    Route::delete('delete-payment', [AllPaymentsController::class, 'delete']);
+    Route::post('delete-payment', [AllPaymentsController::class, 'delete']);
 });
