@@ -169,6 +169,7 @@
                 <div class="d-flex justify-content-center">
                     {{-- {{ $data->links() }} --}}
                 </div>
+                 <!-- End Pagination -->
             </div>
 </body>
 
