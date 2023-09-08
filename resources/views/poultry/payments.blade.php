@@ -132,14 +132,14 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="amount" class="form-label">Amount</label>
-                                                        <label for="amount" class="form-label">Beneficiary:
+                                                        
+                                                        <label for="amount" class="form-label">Amount:
                                                             {{ $item->amount}} </label>
                                                        
                                                     </div>
 
                                                     <div class="">
-                                                        <label for="amount" class="form-label">Are you sure to delete this payment?</label>
+                                                        <label for="amount" class="form-label">Are you sure to delete this entry?</label>
                                                        
                                                     </div>
 
