@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm" id="navbarNav">
     <div class="container-fluid">
         <a class="navbar-brand" href="index2">B. Poultry</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/index2">Home</a>
+                    <a class="nav-link" aria-current="page" href="/index2">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Reports
                     </a>
@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/payments">Payments</a>
+                    <a class="nav-link" aria-current="page" href="/payments">Payments</a>
                 </li>
 
             </ul>
@@ -81,3 +81,15 @@
         </div>
     </div>
 </nav>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentLocation = window.location.href;
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(function (link) {
+            if (link.href === currentLocation) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
