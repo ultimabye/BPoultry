@@ -35,70 +35,80 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Shop/Contracter Name</th>
+                            <th>Shop/Contractor Name</th>
                             <th>Narration</th>
-                            <th>Amount</th>
+                            <th>Amount (PKR)</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                       
+                        @forelse($items as $item)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ date('d/m/y', strtotime($item->entry_date)) }}</td>
+                                <td>{{ $item->getBeneficiaryName() }} </td>
+                                <td>{{ $item->description }} </td>
+                                <td>{{ number_format($item->amount, 2) }}</td>
+
                                 <td><button class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal"><i
-                                        class="fa-solid fa-edit"></i></button></td>
-                                <td><button class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal"><i
-                                        class="fa-solid fa-trash"></i></button></td>
+                                        data-bs-target="#paymentModal{{ $item->id }}"><i
+                                            class="fa-solid fa-edit"></i></button></td>
+
+
+
+                                <!-- Payment Modal -->
+                                <div class="modal fade" id="paymentModal{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="paymentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form method="post" action="{{ url('update-payment') }}">
+                                                @csrf
+                                                <input name="id" type="hidden" value="{{ $item->id }}">
+                                                <input name="type" type="hidden" value="{{ $item->getType() }}">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="paymentModalLabel">Update Payment</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+
+                                                        <label for="date" class="form-label">Date:
+                                                            {{ date('d/m/y', strtotime($item->entry_date)) }} </label>
+                                                        <label for="beneficiary" class="form-label">Beneficiary:
+                                                            {{ $item->getBeneficiaryName() }} </label>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="amount" class="form-label">Amount</label>
+                                                        <input type="text" class="form-control" id="amount"
+                                                            name="amount" placeholder="Enter amount"
+                                                            value="{{ $item->amount }}">
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Payment Modal -->
                             </tr>
-                        
+                        @empty
+                            <li class="">No payments found.</li>
+                        @endforelse
+
                     </tbody>
                 </table>
 
-                <!-- Payment Modal -->
-                <div class="modal fade" id="paymentModal" tabindex="-1"
-                    aria-labelledby="paymentModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form method="post" action="">
-                                @csrf
-                                <input name="shop_id" type="hidden" value="">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="paymentModalLabel">Update Payment</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                        
-                                        
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="amount" class="form-label">Amount</label>
-                                        <input type="text" class="form-control" id="amount"
-                                            name="amount" placeholder="Enter amount">
-                                    </div>
-                                   
 
-                                   
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Payment Modal -->
-            
+
                 <!-- Pagination -->
                 <div class="d-flex justify-content-center">
                     {{-- {{ $data->links() }} --}}

@@ -9,7 +9,31 @@ class ContractorPayment extends Model
 {
     use HasFactory;
 
-    public function isCollection() {
+    public function isCollection()
+    {
         return false;
+    }
+
+
+
+    public function contractor()
+    {
+        return $this->hasOne(
+            Contractor::class,
+            "id",
+            "contractor_id"
+        );
+    }
+
+
+    public function getBeneficiaryName()
+    {
+        return $this->contractor->name;
+    }
+
+
+    public function getType()
+    {
+        return "contractor";
     }
 }

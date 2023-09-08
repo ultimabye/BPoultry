@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllPaymentsController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BankAccountsController;
 use App\Http\Controllers\CollectionController;
@@ -63,9 +64,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/updateDriver', function () {
         return view('poultry/updateDriver');
     });
-    Route::get('/payments', function () {
-        return view('poultry/payments');
-    });
+    Route::get('/payments', [AllPaymentsController::class, 'index']);
+
 
     Route::get('/allCollections',  [CollectionController::class, 'index']);
     Route::get(
@@ -142,63 +142,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/contractor/{id}/detail', [ContractorController::class, 'ledger']);
 
     Route::post('save-contractor-payment', [ContractorPaymentController::class, 'store']);
+
+    Route::post('update-payment', [AllPaymentsController::class, 'update']);
+    Route::delete('delete-payment', [AllPaymentsController::class, 'delete']);
 });
-
-
-
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::post('/save-new-supplier', [SuppliersController::class, 'store']);
-Route::get('/allSuppliers',  [SuppliersController::class, 'index']);
-
-
-Route::post('save-new-customer', [CustomerController::class, 'store']);
-Route::get('/allCustomers',  [CustomerController::class, 'index']);
-
-
-Route::get('/addProduct',  [ProductController::class, 'prepareNewProduct']);
-Route::post('save-new-product', [ProductController::class, 'store']);
-Route::get('/allProducts',  [ProductController::class, 'index']);
-
-Route::get('/addPurchase',  [PurchaseController::class, 'prepareNewPurchase']);
-Route::post('save-new-purchase', [PurchaseController::class, 'store']);
-Route::get('/allPurchases',  [PurchaseController::class, 'index']);
-
-
-
-Route::get('/newSale',  [SalesController::class, 'prepareNewSale']);
-Route::post('save-new-sale', [SalesController::class, 'store']);
-Route::get('/allSales',  [SalesController::class, 'index']);
-
-
-Route::get(
-    '/invoice/{order_id}&{invoice_type}',
-    [InvoiceController::class, 'index']
-)->name('invoice');
-
-Route::get(
-    '/invoice/view/{order_id}',
-    [InvoiceController::class, 'prepareForPrint']
-)->name('view_invoice');
-
-
-
-Route::post('save-new-bank-account', [BankAccountsController::class, 'store']);
-Route::get('/allBanks',  [BankAccountsController::class, 'index']);
-
-
-Route::post('save-new-expense', [ExpenseController::class, 'store']);
-Route::get('/allExpenses',  [ExpenseController::class, 'index']);
-
-
-Route::get('/searchVoucher',  [VoucherController::class, 'index']);
-Route::get('/voucher/out/{id}',  [VoucherController::class, 'prepareOutboundPayment']);
-Route::get('/voucher/in/{id}',  [VoucherController::class, 'prepareInboundPayment']);
-
-
-Route::post('save-outbound-payment', [PaymentController::class, 'handleOutboundPayment']);
-Route::post('save-inbound-payment', [PaymentController::class, 'handleInboundPayment']);
